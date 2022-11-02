@@ -78,6 +78,15 @@ nav {
     align-items: center;
     gap: 20px;
 }
+.fa-instagram:hover{
+    color: rgb(255, 52, 177);
+}
+.fa-linkedin:hover{
+    color: #1a0dab;
+}
+.fa-github:hover{
+    color: rgb(56, 53, 55);
+}
 
 .text-description {
     margin-bottom: 50px;
@@ -121,6 +130,10 @@ nav {
     font-weight: 500;
     text-align: center;
 }
-
+.text-portfolio{
+    display: flex;
+    justify-content: space-around;
+    align-content: center;
+}
 /* Body */
 
