@@ -10,7 +10,7 @@
     border:0;
     color: var(--cor-branco);
     background-color: var(--cor-preto);
-    font-family: Georgia;
+    font-family: Arial;
     line-height: 1.2;
     border-radius: 5px;
     scroll-behavior: smooth;
@@ -57,6 +57,7 @@ nav li a{
     font-size: 20px;
 }
 nav a:hover {
+    transition: 0.4s;
     color: var(--cor-roxo);
     text-transform: capitalize;
 }
@@ -96,14 +97,17 @@ main{
 }
 .fa-instagram:hover{
     color: rgb(255, 52, 177);
+    transition: 0.5s;
     transform: scale(1.4);
 }
 .fa-linkedin:hover{
     color: #0a66c2;
+    transition: 0.5s;
     transform: scale(1.4);
 }
 .fa-github:hover{
     color: rgb(56, 53, 55);
+    transition: 0.5s;
     transform: scale(1.4);
 }
 
@@ -131,6 +135,7 @@ main{
 }
 .services:hover{
     transform: scale(1.2);
+    transition: 0.3s;
 }
 .main-services{
     padding: 10px;
@@ -181,6 +186,7 @@ main{
 }
 .fa-circle-chevron-left:hover {
     transform: scale(1.2);
+    transition: 0.3s;
     color: var(--cor-roxo);
 }
 .fa-circle-chevron-right {
@@ -189,11 +195,13 @@ main{
 }
 .fa-circle-chevron-right:hover {
     transform: scale(1.2);
+    transition: 0.3s;
     color: var(--cor-roxo);
 }
 
 .img-rotate:hover img{
     transform: scale(1.1) rotate(5deg);
+    transition: 0.5s;
 }
 
 /* Body */
