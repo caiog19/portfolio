@@ -19,7 +19,10 @@
 
 /* Header */
 header {
-    margin: 15px 15px;
+    
+    width: 100%;
+    height: 3.5rem;
+    background-color: var(--cor-preto);
 }
 
 .span-title-name {
@@ -27,32 +30,44 @@ header {
 }
 nav {
     display: flex;
-    height: 60px;
+    width: 100%;
     align-items: center;
     justify-content: space-around;
+    margin-top: 10px;
+    padding-top: 10px;
+    background-color: var(--cor-preto);
+
 }
 
 .nav-itemList {
     display: flex;
-
-}
-
-.title-name {
+    background-color: var(--cor-preto);
     
 }
-.Nav-li a {
+
+
+
+.title-name {
+    font-size: 32px;
+}
+
+nav li a{
     padding: 10px;
     margin: 10px;
-    font-size: 18px;
+    font-size: 20px;
 }
-.Nav-li a:hover {
+nav a:hover {
     color: var(--cor-roxo);
+    text-transform: capitalize;
 }
 
 /* Header */
 
 /* Body */
 
+main{
+    padding-top: 1px;
+}
 
 .title-text-hero{
     margin-top: 100px;
@@ -81,17 +96,20 @@ nav {
 }
 .fa-instagram:hover{
     color: rgb(255, 52, 177);
+    transform: scale(1.4);
 }
 .fa-linkedin:hover{
-    color: #1a0dab;
+    color: #0a66c2;
+    transform: scale(1.4);
 }
 .fa-github:hover{
     color: rgb(56, 53, 55);
+    transform: scale(1.4);
 }
 
 .text-description {
     margin-bottom: 50px;
-    width: 35vw;
+    width: 30vw;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -111,13 +129,18 @@ nav {
     justify-content: space-evenly;
 
 }
+.services:hover{
+    transform: scale(1.2);
+}
 .main-services{
-    padding: 5px;
+    padding: 10px;
     display: flex;
     margin-top: 100px;
     margin-bottom: 200px;
     align-items: center;
     justify-content: space-evenly;
+    border: 1px;
+
 }
 .name-service {
     background-color: var(--cor-cinza);
@@ -135,6 +158,8 @@ nav {
     display: flex;
     justify-content: space-around;
     align-content: center;
+    padding: 10px;
+    margin: 10px;
 }
 .projects{
     margin-top: 50px;
@@ -150,5 +175,26 @@ nav {
     
     
 }
+.fa-circle-chevron-left {
+    font-size: 2.7em;
+    
+}
+.fa-circle-chevron-left:hover {
+    transform: scale(1.2);
+    color: var(--cor-roxo);
+}
+.fa-circle-chevron-right {
+    font-size: 2.7em;
+    
+}
+.fa-circle-chevron-right:hover {
+    transform: scale(1.2);
+    color: var(--cor-roxo);
+}
+
+.img-rotate:hover img{
+    transform: scale(1.1) rotate(5deg);
+}
+
 /* Body */
 
