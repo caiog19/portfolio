@@ -68,6 +68,7 @@ nav a:hover {
 
 main{
     padding-top: 1px;
+    margin-bottom: 200px;
 }
 
 .title-text-hero{
@@ -141,7 +142,7 @@ main{
     padding: 10px;
     display: flex;
     margin-top: 100px;
-    margin-bottom: 200px;
+    margin-bottom: 100px;
     align-items: center;
     justify-content: space-evenly;
     border: 1px;
@@ -171,6 +172,7 @@ main{
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-bottom: 100px;
 }
 .projects img {
     display: flex;
@@ -204,3 +206,151 @@ main{
     transition: 0.5s;
 }
 
+/* Estilo padrão da seção main-services */
+.main-services {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.main-services{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.services {
+    width: 100%;
+    height: 200px;
+    text-align: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* Altera o estilo da seção main-services em telas menores que 600px */
+@media (max-width: 750px) {
+    .main-services {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        flex-direction: column;
+    }
+    .services {
+        width: 100%;
+        height: 300px;
+        margin: 20px;
+    }
+}
+
+/* Estilo padrão da div services */
+.services {
+    width: 30%;
+    height: 250px;
+    text-align: center;
+    padding: 20px;
+}
+/* Esconde todas as imagens do carrossel */
+#projects img {
+    display: none;
+}
+
+/* Exibe a imagem atual */
+#projects img.active {
+    display: block;
+}
+
+@media (min-width: 750px){
+    .services {
+        width: 20%;
+        
+    }
+}
+.contact-section{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 150px;
+}
+
+.contact-form{
+    display: flex; 
+    align-items: center; 
+    flex-direction: column;
+    
+}
+/* Estilo para o título da seção de contato */
+.contact-section h2 {
+    color: #fff; /* Cor branca para o título */
+    text-align: center;
+    font-size: 2.5em; /* Tamanho da fonte maior */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Sombra para o título */
+}
+
+/* Estilo para o formulário de contato */
+.contact-form {
+    
+    padding: 20px;
+    border-radius: 10px;
+    
+}
+
+/* Estilo para os elementos do formulário */
+.contact-form label,
+.contact-form input,
+.contact-form textarea {
+    color: #fff; /* Cor branca para os elementos do formulário */
+    
+    margin-bottom: 10px;
+}
+.contact-form label{
+    color: white;
+    font-weight: bold;
+}
+.contact-form input{
+    
+    width: 20%;
+    background-color: #FFFFFF;
+    color: black;
+    padding: 5px;
+}
+.contact-form textarea{
+    background-color: white;
+    color: black;
+}
+
+/* Estilo para o botão de envio */
+.contact-form input[type="submit"] {
+    background-color: #7E74F1; /* Cor azul para o botão */
+    color: #fff; /* Cor branca para o texto do botão */
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2em;
+    cursor: pointer;
+}
+
+/* Estilo para as informações de contato */
+.contact-info {
+    
+    padding: 20px;
+    border-radius: 10px;
+    
+    text-align: center;
+    align-items: center;
+}
+
+/* Estilo para os ícones de contato */
+.contact-info i {
+    color: #7E74F1; /* Cor azul para os ícones */
+    margin-right: 10px;
+    
+}
+
+textarea {
+    width: 300px;
+    height: 100px;
+    max-width: 300px;
+    overflow: auto;
+    resize: none;
+}
+.button-send{
+    height: 50px;
+    margin-top: 35px;
+    min-width: 20%;
+}

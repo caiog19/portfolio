@@ -30,9 +30,10 @@
                 <li class="Nav-li"><a href="#services-title">Serviços</a></li>
                 <li class="Nav-li"><a href="#portfolio">Portfólio</a></li>
                 <li class="Nav-li"><a href="">Experiências</a></li>
-                <li class="Nav-li"><a href="">Blog</a></li>
+                <li class="Nav-li"><a href="#contact-section">Contato</a></li>
             </ul>
         </nav>
+    
 
     </header>
 
@@ -116,24 +117,44 @@
 
             </div>
 
-            <div class='projects'>
+            <div class="projects" id="projects">
 
                 <div class="img-rotate">
-                    <img class="img-getsamurais" src="images/getsamurais.png" alt="" style="width: 80%;">
+                    <img class="img-getsamurais" src="images/getsamurais.png" id="project-img" class="active" alt="" style="width: 80%;">
                 </div>
                 <div class="img-rotate">
-                    <img class="img-ipets" src="images/ipets.png" alt="" style="width: 80%;">
+                    <img class="img-ipets" src="images/ipets.png" id="project-img" alt="" style="width: 80%;">
                 </div>
 
             </div>
         </section>
-        <br><br><br><br><br><br>
+
+        <section class="contact-section" id="contact-section">
+            <h2>Entre em contato</h2>
+            <form class="contact-form" action="submit-form.php" method="post" >
+              <label for="name">Nome:</label>
+              <input type="text" id="name" name="name" required>
+              <label for="email">E-mail:</label>
+              <input type="email" id="email" name="email" required>
+              <label for="message">Mensagem:</label>
+              <textarea id="message" name="message" required></textarea>
+              <input class ="button-send" type="submit" value="Enviar">
+            </form>
+            <div class="contact-info">
+              <h3>Informações de contato</h3>
+              <p>E-mail: <a href="mailto:caioinacio19@gmail.com">caioinacio19@gmail.com</a></p>
+              <p>Telefone: <a href="tel:+5521993493749">+55 21 99349-3749</a></p>
+            
+            </div>
+          </section>
+
     </main>
 
     <footer>
 
     </footer>
 <script src="script.js"></script>
+
 <!-- Google Analytics -->
 <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
