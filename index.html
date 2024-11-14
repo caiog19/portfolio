@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfólio - Caio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Importação do Font Awesome sem hash SRI -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- Cabeçalho -->
+    <header>
+        <div class="container">
+            <h1 class="logo">Caio Gullo</h1>
+            <nav>
+                <ul>
+                    <li><a href="#" id="nav-home">Início</a></li>
+                    <li><a href="#about" id="nav-about">Sobre</a></li>
+                    <li><a href="#" id="nav-skills">Habilidades</a></li>
+                    <li><a href="#services" id="nav-services">Projetos</a></li>
+                    <li><a href="#contact" id="nav-contact">Contato</a></li>
+                    <!-- Botão de Alternância de Idioma -->
+                    <li><button id="language-toggle">EN</button></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Seção Hero -->
+    <section class="hero">
+        <div class="container hero-content">
+            <div class="rotating-icons">
+                <img src="icons/javascript.svg" alt="JavaScript">
+                <img src="icons/react.svg" alt="React.js">
+                <img src="icons/vue.svg" alt="Vue.js">
+                <img src="icons/nodejs.svg" alt="Node.js">
+                <img src="icons/html5.svg" alt="HTML5">
+                <img src="icons/css3.svg" alt="CSS3">
+            </div>
+            <!-- Ícones Sociais -->
+            <div class="social-icons">
+                <a href="https://www.linkedin.com/in/seu-perfil" target="_blank" rel="noopener noreferrer"
+                    aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="https://www.instagram.com/seu-perfil" target="_blank" rel="noopener noreferrer"
+                    aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://github.com/seu-perfil" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i
+                        class="fab fa-github"></i></a>
+            </div>
+
+            <!-- Informações -->
+            <div class="info">
+                <h2 id="greeting">Olá, eu sou Caio</h2>
+                <p class="job-title" id="job-title">Desenvolvedor Frontend</p>
+                <p class="description" id="description"> Tenho experiência em desenvolvimento web, produzindo trabalho
+                    de qualidade com as tecnologias mais recentes do mercado.</p>
+                    <a href="assets/CaioGulloInacio.pdf" class="btn" data-i18n="hero.downloadCV" id="download-cv" target="_blank" rel="noopener noreferrer" aria-label="Baixar Currículo">
+                        <i class="fas fa-download"></i> <span data-i18n="hero.downloadCV">Baixar Currículo</span>
+                    </a>
+                    
+            </div>
+
+            <!-- Imagem -->
+            <div class="image">
+                <img src="assets/me.png" alt="Caio">
+            </div>
+        </div>
+    </section>
+
+    <section class="skills-section" id="skills">
+        <div class="container">
+            <h2>Habilidades</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <img src="icons/javascript.svg" alt="JavaScript">
+                    <span>JavaScript</span>
+                </div>
+                <div class="skill-card">
+                    <img src="icons/react.svg" alt="React.js">
+                    <span>React.js</span>
+                </div>
+                <div class="skill-card">
+                    <img src="icons/vue.svg" alt="Vue.js">
+                    <span>Vue.js</span>
+                </div>
+                <div class="skill-card">
+                    <img src="icons/nodejs.svg" alt="Node.js">
+                    <span>Node.js</span>
+                </div>
+                <div class="skill-card">
+                    <img src="icons/html5.svg" alt="HTML5">
+                    <span>HTML5</span>
+                </div>
+                <div class="skill-card">
+                    <img src="icons/css3.svg" alt="CSS3">
+                    <span>CSS3</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rodapé -->
+    <footer>
+        <div class="container">
+            <p id="footer-rights">&copy; 2024 Caio - Todos os Direitos Reservados</p>
+        </div>
+    </footer>
+
+    <!-- Inclusão do Arquivo JavaScript Externo -->
+    <script src="script.js"></script>
+</body>
+
+</html>

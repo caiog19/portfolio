@@ -1,0 +1,424 @@
+/* styles.css */
+
+/* Geral */
+body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Definir .hero-content como posição relativa */
+.hero-content {
+    position: relative;
+}
+
+/* Rotating Icons */
+.hero-content .rotating-icons {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Para não interferir na interação */
+    z-index: 2; /* Acima do conteúdo, mas abaixo de elementos interativos */
+}
+
+.hero-content .rotating-icons img {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    animation: moveAround var(--animation-duration) linear infinite;
+}
+
+/* Definir a duração total da animação e o afastamento */
+:root {
+    --animation-duration: 14s;
+    --offset: 40px; /* Valor do afastamento dos ícones */
+}
+
+/* Atrasos para cada ícone */
+.hero-content .rotating-icons img:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.hero-content .rotating-icons img:nth-child(2) {
+    animation-delay: calc(var(--animation-duration) * -1/7);
+}
+
+.hero-content .rotating-icons img:nth-child(3) {
+    animation-delay: calc(var(--animation-duration) * -2/7);
+}
+
+.hero-content .rotating-icons img:nth-child(4) {
+    animation-delay: calc(var(--animation-duration) * -3/7);
+}
+
+.hero-content .rotating-icons img:nth-child(5) {
+    animation-delay: calc(var(--animation-duration) * -4/7);
+}
+
+.hero-content .rotating-icons img:nth-child(6) {
+    animation-delay: calc(var(--animation-duration) * -5/7);
+}
+
+.hero-content .rotating-icons img:nth-child(7) {
+    animation-delay: calc(var(--animation-duration) * -6/7);
+}
+
+/* Animação moveAround atualizada */
+@keyframes moveAround {
+    0% {
+        top: calc(-25px - var(--offset)); /* Posição inicial acima do contêiner */
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    12.5% {
+        top: calc(-25px - var(--offset)); /* Movimento ao longo do topo */
+        left: calc(100% + var(--offset) - 25px);
+        transform: none;
+    }
+    25% {
+        top: 50%; /* Desce pela borda direita */
+        left: calc(100% + var(--offset) - 25px);
+        transform: translateY(-50%);
+    }
+    37.5% {
+        top: calc(100% + var(--offset) - 25px); /* Canto inferior direito */
+        left: calc(100% + var(--offset) - 25px);
+        transform: none;
+    }
+    50% {
+        top: calc(100% + var(--offset) - 25px); /* Movimento ao longo da base */
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    62.5% {
+        top: calc(100% + var(--offset) - 25px); /* Canto inferior esquerdo */
+        left: calc(-25px - var(--offset));
+        transform: none;
+    }
+    75% {
+        top: 50%; /* Sobe pela borda esquerda */
+        left: calc(-25px - var(--offset));
+        transform: translateY(-50%);
+    }
+    87.5% {
+        top: calc(-25px - var(--offset)); /* Canto superior esquerdo */
+        left: calc(-25px - var(--offset));
+        transform: none;
+    }
+    100% {
+        top: calc(-25px - var(--offset)); /* Retorna ao topo central */
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
+
+/* Resto do seu CSS existente... */
+
+/* Header */
+header {
+    background: #fff;
+    padding: 20px 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+/* Flex container para alinhar logo e menu */
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .logo {
+    font-size: 36px;
+    font-weight: 700;
+    color: #555;
+    margin: 0;
+}
+
+header nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: 20px;
+    margin: 0;
+}
+
+header nav ul li a {
+    text-decoration: none;
+    color: #252222;
+    font-size: 20px;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+header nav ul li a:hover {
+    color: #7b4eff;
+}
+
+/* Botão de Alternância de Idioma */
+#language-toggle {
+    background: transparent;
+    border: 2px solid #7b4eff;
+    color: #7b4eff;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+#language-toggle:hover {
+    background: #7b4eff;
+    color: #fff;
+}
+
+/* Hero Section */
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f7f7f7;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    transform: translateY(-100px);
+}
+
+/* Hero Content */
+.hero-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 40px;
+    margin: 0;
+}
+
+/* Ícones Sociais */
+.social-icons {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+
+.social-icons a {
+    font-size: 24px;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.social-icons a:hover {
+    transform: translateX(5px) scale(1.2);
+}
+
+.social-icons a[href*="linkedin.com"] {
+    color: #0077B5;
+}
+
+.social-icons a[href*="instagram.com"] {
+    color: #E4405F;
+}
+
+.social-icons a[href*="github.com"] {
+    color: #000;
+}
+
+.hero .info {
+    white-space: normal;
+    overflow-wrap: break-word;
+    max-width: 600px;
+}
+
+.hero .info h2 {
+    font-size: 36px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.hero .info .job-title {
+    font-size: 24px;
+    color: #7b4eff;
+    margin-bottom: 20px;
+}
+
+.hero .info .description {
+    font-size: 20px;
+    color: #2c2c2c;
+    margin-bottom: 20px;
+    max-width: 550px;
+}
+
+/* Botão */
+.hero .btn {
+    background: #7b4eff;
+    color: #fff;
+    text-decoration: none;
+    padding: 18px 33px;
+    font-size: 21px;
+    border-radius: 6px;
+    transition: background 0.3s ease, transform 0.3s ease;
+    display: inline-block;
+}
+
+.hero .btn:hover {
+    background: #5f37d6;
+    transform: scale(1.05);
+}
+
+.hero .image img {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/* ...código existente... */
+
+/* Seção Habilidades */
+.skills-section {
+    display: none; /* Inicialmente escondida */
+    padding: 100px 0;
+    background-color: #f7f7f7;
+}
+
+.skills-section h2 {
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: 50px;
+    color: #333;
+}
+
+.skills-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+}
+
+.skill-card {
+    background-color: #eaeaea;
+    border-radius: 8px;
+    width: 300px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 20px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.3s ease; /* Transição suave */
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1); /* Sombra inicial */
+    cursor: pointer; /* Indica interatividade */
+}
+
+
+.skill-card:hover {
+    transform: translateY(-10px); /* Levanta o card */
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2); /* Aumenta a sombra */
+}
+
+.skill-card img {
+    width: 60px;
+    height: 60px;
+    margin-right: 20px;
+}
+
+.skill-card span {
+    font-size: 24px;
+    color: #333;
+}
+
+/* Animação ao exibir os cards */
+.skill-card.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Animação para alinhar os ícones */
+.align-icons {
+    animation: alignIcons 1s forwards;
+}
+
+@keyframes alignIcons {
+    to {
+        opacity: 0;
+        transform: scale(0);
+    }
+}
+
+/* Responsividade para telas menores */
+@media (max-width: 768px) {
+    .skill-card {
+        width: 90%;
+    }
+}
+
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px 0;
+    background-color: #fff;
+    color: #303030;
+    font-size: 14px;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .hero {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .hero-content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .social-icons {
+        flex-direction: row;
+        gap: 15px;
+    }
+
+    .social-icons a {
+        font-size: 20px;
+    }
+
+    .hero .image img {
+        width: 200px;
+        height: 200px;
+    }
+
+    header .container {
+        flex-direction: column;
+    }
+
+    header nav ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    /* Ajuste dos ícones rotativos em dispositivos móveis */
+    .hero-content .rotating-icons img {
+        width: 30px;
+        height: 30px;
+    }
+
+    /* Ajuste do afastamento em telas menores */
+    :root {
+        --offset: 20px; /* Reduz o afastamento em dispositivos móveis */
+    }
+}
