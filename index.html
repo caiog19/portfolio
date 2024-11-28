@@ -25,6 +25,7 @@
                     <li><a href="#contact" id="nav-contact">Contato</a></li>
                     <!-- Botão de Alternância de Idioma -->
                     <li><button id="language-toggle">EN</button></li>
+                    <li><button id="dark-mode-toggle" aria-label="Alternar Modo Escuro"><i class="fas fa-moon"></i></button></li>
                 </ul>
             </nav>
         </div>
@@ -43,11 +44,9 @@
             </div>
             <!-- Ícones Sociais -->
             <div class="social-icons">
-                <a href="https://www.linkedin.com/in/seu-perfil" target="_blank" rel="noopener noreferrer"
+                <a href="https://www.linkedin.com/in/caio-gullo-inacio/" target="_blank" rel="noopener noreferrer"
                     aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                <a href="https://www.instagram.com/seu-perfil" target="_blank" rel="noopener noreferrer"
-                    aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                <a href="https://github.com/seu-perfil" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i
+                <a href="https://github.com/caiog19/portfolio" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i
                         class="fab fa-github"></i></a>
             </div>
 
@@ -93,7 +92,7 @@
                     <span>Node.js</span>
                 </div>
                 <div class="skill-card">
-                    <img src="icons/html5.svg" alt="HTML5">
+                    <img src="icons/html5.svg" alt="Node.js">
                     <span>HTML5</span>
                 </div>
                 <div class="skill-card">
@@ -144,6 +143,35 @@
         </div>
     </div>
 </section>
+
+<!-- Modal de Projeto -->
+<div id="projeto-modal" class="modal">
+    <div class="modal-content">
+        <span class="close-button">&times;</span>
+        <div class="modal-body">
+            <div class="carousel-container">
+                <div class="carousel">
+                    <!-- Slides serão adicionados dinamicamente via JavaScript -->
+                </div>
+                <!-- Controles do Carrossel -->
+                <button class="prev-button"><i class="fas fa-chevron-left"></i></button>
+                <button class="next-button"><i class="fas fa-chevron-right"></i></button>
+            </div>
+            <div class="modal-info">
+                <h2 id="modal-titulo">Título do Projeto</h2>
+                <p id="modal-descricao">Descrição do projeto.</p>
+                <ul id="modal-tecnologias">
+                    <!-- Lista de tecnologias será preenchida via JavaScript -->
+                </ul>
+                <div class="modal-buttons">
+                    <a href="#" id="modal-acessar-site" class="btn" target="_blank" rel="noopener noreferrer">Acessar Site</a>
+                    <a href="#" id="modal-acessar-repo" class="btn" target="_blank" rel="noopener noreferrer">Acessar Repositório</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 <!-- Seção Contato -->
 <section class="contato-section" id="contact">

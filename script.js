@@ -1,4 +1,6 @@
-// script.js
+// =========================
+// Funções de Alternância de Idioma
+// =========================
 
 // Seleção de elementos de idioma
 const languageToggle = document.getElementById('language-toggle');
@@ -93,6 +95,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     heroSection.classList.add('active');
 });
+
+// =========================
+// Funções de Navegação entre Seções
+// =========================
 
 // Seleção de elementos de navegação e seções
 const navHome = document.getElementById('nav-home');
@@ -205,31 +211,32 @@ function showHeroSection() {
     });
 }
 
-// Adicionar evento de clique ao link Habilidades
+// Adicionar evento de clique aos links de navegação
 navSkills.addEventListener('click', (e) => {
     e.preventDefault(); // Prevenir comportamento padrão do link
     showSkillsSection();
 });
 
-// Adicionar evento de clique ao link Projetos
 navProjetos.addEventListener('click', (e) => {
     e.preventDefault(); // Prevenir comportamento padrão do link
     showProjetosSection();
 });
 
-// Adicionar evento de clique ao link Início
 navHome.addEventListener('click', (e) => {
     e.preventDefault(); // Prevenir comportamento padrão do link
     showHeroSection();
 });
 
-// Adicionar evento de clique ao link Contato
 navContact.addEventListener('click', (e) => {
     e.preventDefault(); // Prevenir comportamento padrão do link
     showContactSection();
 });
 
+// =========================
 // Configuração do EmailJS
+// =========================
+
+// Inicializar o EmailJS com seu User ID
 (function() {
     emailjs.init("K2tkb-9FAioyrKLsx"); // Substitua com o seu User ID do EmailJS
 })();
@@ -262,4 +269,198 @@ contactForm.addEventListener('submit', function(event) {
             formStatus.style.color = 'red';
             formStatus.textContent = 'Ocorreu um erro. Por favor, tente novamente.';
         });
+});
+
+// =========================
+// Funcionalidade de Modal para Projetos
+// =========================
+
+// Dados dos Projetos
+const projetosDados = {
+    'Ecofoto': {
+        imagens: [
+            'assets/ecofoto.png',
+            'assets/ecofoto1.png',
+            'assets/ecofoto2.png'
+        ],
+        descricao: 'Ecofoto é um projeto de extensão universitária sobre fotografia contemporânea, realizado pela Escola de Comunicação da UFRJ. Faço parte do time de tecnologia, atuando como desenvolvedor fullstack no site. Iniciei no projeto resolvendo bugs na versão desktop, implementei uma galeria de fotos, desenvolvi a versão responsiva para mobile e, atualmente, trabalho junto à equipe para transformá-lo em um sistema completo.',
+        tecnologias: ['React.js', 'Node.js', 'Scss'],
+        site: 'https://ecofoto.com',
+        repositorio: 'https://github.com/caiog19/ecofoto'
+    },
+    'Dashboard Interativo Disney+': {
+        imagens: [
+            'assets/disney.png',
+            'assets/disney1.png',
+            'assets/disney2.png'
+        ],
+        descricao: 'Um dashboard interativo para Disney+, desenvolvido com Streamlit, proporcionando uma visualização detalhada dos dados da plataforma.',
+        tecnologias: ['Streamlit'],
+        site: 'https://dashboard-disney.com',
+        repositorio: 'https://github.com/caiog19/dashboard-disney'
+    },
+    'Dashboard Interativo Spotify': {
+        imagens: [
+            'assets/spotify.png',
+            'assets/spotify1.png',
+            'assets/spotify2.png'
+        ],
+        descricao: 'Dashboard interativo para Spotify, criado com Streamlit, oferecendo insights sobre padrões de escuta e tendências musicais.',
+        tecnologias: ['Streamlit'],
+        site: 'https://dashboard-spotify.com',
+        repositorio: 'https://github.com/caiog19/dashboard-spotify'
+    },
+    'DeiaMandalas(Em Construção)': {
+        imagens: [
+            'assets/deiamandalas.png',
+            'assets/deiamandalas.png'
+        ],
+        descricao: 'DeiaMandalas é uma plataforma em construção focada em criar mandalas personalizadas utilizando Vue.js e Node.js.',
+        tecnologias: ['Vue.js', 'Node.js'],
+        site: '#', // Atualize com o link real quando disponível
+        repositorio: 'https://github.com/caiog19/deiamandalas'
+    }
+};
+
+// Seleção de elementos da modal
+const modal = document.getElementById('projeto-modal');
+const closeButton = document.querySelector('.close-button');
+const modalTitulo = document.getElementById('modal-titulo');
+const modalDescricao = document.getElementById('modal-descricao');
+const modalTecnologias = document.getElementById('modal-tecnologias');
+const modalAcessarSite = document.getElementById('modal-acessar-site');
+const modalAcessarRepo = document.getElementById('modal-acessar-repo');
+const carousel = document.querySelector('.carousel');
+const prevButton = document.querySelector('.prev-button');
+const nextButton = document.querySelector('.next-button');
+
+let currentSlide = 0;
+
+// Função para abrir a modal com os dados do projeto
+function abrirModal(projetoNome) {
+    const projeto = projetosDados[projetoNome];
+    if (!projeto) return;
+
+    // Atualizar o título e descrição
+    modalTitulo.textContent = projetoNome;
+    modalDescricao.textContent = projeto.descricao;
+
+    // Atualizar a lista de tecnologias
+    modalTecnologias.innerHTML = '';
+    projeto.tecnologias.forEach(tech => {
+        const li = document.createElement('li');
+        li.textContent = tech;
+        modalTecnologias.appendChild(li);
+    });
+
+    // Atualizar os links dos botões
+    modalAcessarSite.href = projeto.site;
+    modalAcessarRepo.href = projeto.repositorio;
+
+    // Atualizar o carrossel de imagens
+    carousel.innerHTML = '';
+    projeto.imagens.forEach(imgSrc => {
+        const img = document.createElement('img');
+        img.src = imgSrc;
+        img.alt = projetoNome;
+        carousel.appendChild(img);
+    });
+
+    // Resetar a posição do carrossel
+    currentSlide = 0;
+    atualizarCarrossel();
+
+    // Exibir a modal
+    modal.style.display = 'flex';
+}
+
+// Função para fechar a modal
+function fecharModal() {
+    modal.style.display = 'none';
+}
+
+// Função para atualizar a posição do carrossel
+function atualizarCarrossel() {
+    const totalSlides = carousel.children.length;
+    if (totalSlides === 0) return;
+    if (currentSlide >= totalSlides) currentSlide = 0;
+    if (currentSlide < 0) currentSlide = totalSlides - 1;
+    const offset = -currentSlide * 100;
+    carousel.style.transform = `translateX(${offset}%)`;
+}
+
+// Eventos de clique nos botões de navegação do carrossel
+prevButton.addEventListener('click', () => {
+    currentSlide--;
+    atualizarCarrossel();
+});
+
+nextButton.addEventListener('click', () => {
+    currentSlide++;
+    atualizarCarrossel();
+});
+
+// Evento de clique no botão de fechar
+closeButton.addEventListener('click', fecharModal);
+
+// Fechar a modal ao clicar fora do conteúdo da modal
+window.addEventListener('click', (event) => {
+    if (event.target === modal) {
+        fecharModal();
+    }
+});
+
+// Adicionar eventos de clique aos cards de projetos
+projetoCards.forEach(card => {
+    card.addEventListener('click', () => {
+        const projetoNome = card.querySelector('h3').textContent;
+        abrirModal(projetoNome);
+    });
+});
+
+// =========================
+// Funcionalidade de Dark Mode
+// =========================
+// Seleção do botão de Dark Mode
+const darkModeToggle = document.getElementById('dark-mode-toggle');
+
+// Função para atualizar o ícone do Dark Mode baseado no estado
+function updateDarkModeIcon(isDarkMode) {
+    const icon = darkModeToggle.querySelector('i');
+    if (isDarkMode) {
+        icon.classList.remove('fa-moon');
+        icon.classList.add('fa-sun');
+    } else {
+        icon.classList.remove('fa-sun');
+        icon.classList.add('fa-moon');
+    }
+}
+
+// Função para alternar o Dark Mode
+function toggleDarkMode() {
+    const isDarkMode = document.body.classList.toggle('dark-mode');
+    updateDarkModeIcon(isDarkMode);
+    localStorage.setItem('darkMode', isDarkMode ? 'enabled' : 'disabled');
+}
+
+// Função para carregar o estado do Dark Mode ao iniciar a página
+function loadDarkModePreference() {
+    const darkMode = localStorage.getItem('darkMode');
+    if (darkMode === 'enabled') {
+        document.body.classList.add('dark-mode');
+        updateDarkModeIcon(true);
+    } else {
+        document.body.classList.remove('dark-mode');
+        updateDarkModeIcon(false);
+    }
+}
+
+// Adicionar evento de clique ao botão de Dark Mode
+darkModeToggle.addEventListener('click', toggleDarkMode);
+
+// Carregar a preferência do Dark Mode ao inicializar a página
+document.addEventListener('DOMContentLoaded', () => {
+    // ... (Seu código existente para o idioma e seções) ...
+    
+    loadDarkModePreference();
 });

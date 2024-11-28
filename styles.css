@@ -284,8 +284,6 @@ header nav ul li a:hover {
     object-fit: cover;
 }
 
-/* ...código existente... */
-
 /* Seção Habilidades */
 .skills-section {
     display: none; /* Inicialmente escondida */
@@ -453,6 +451,195 @@ header nav ul li a:hover {
         grid-template-columns: 1fr;
     }
 }
+/* Modal */
+.modal {
+    display: none; /* Inicialmente escondida */
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background: rgba(0, 0, 0, 0.7); /* Sombra de fundo */
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: auto;
+    padding: 20px;
+    border-radius: 8px;
+    width: 80%; /* Aumentado de 60% para 80% */
+    max-width: 1000px; /* Aumentado de 800px para 1000px */
+    /* Mantém a altura automática */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    position: relative;
+    display: flex;
+    flex-direction: column; /* Mantém orientação vertical */
+    max-height: 95vh; /* Aumentado de 90vh para 95vh */
+    overflow-y: auto; /* Mantém a rolagem se necessário */
+}
+
+.close-button {
+    color: #aaa;
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: #000;
+    text-decoration: none;
+}
+
+.modal-body {
+    display: flex;
+    flex-direction: column; /* Mantém column */
+    gap: 20px;
+    margin-top: 40px;
+}
+
+/* Carousel Container */
+.carousel-container {
+    position: relative;
+    width: 100%; /* Mantém 100% para ocupar toda a largura do modal */
+    overflow: hidden;
+    border-radius: 8px;
+    /* Adicionado para aumentar a altura do carousel */
+    height: 500px; /* Ajuste conforme necessário */
+}
+
+.carousel {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    height: 100%; /* Garante que o carousel ocupe toda a altura do container */
+}
+
+.carousel img {
+    width: 100%;
+    height: 100%; /* Adicionado para que as imagens ocupem toda a altura do carousel */
+    object-fit: cover; /* Garante que a imagem cubra todo o espaço sem distorção */
+    border-radius: 8px;
+}
+
+/* Controles do Carrossel */
+.prev-button,
+.next-button {
+    background: rgba(123, 78, 255, 0.8);
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    /* Estilos atualizados para formato circular */
+    width: 50px; /* Aumentado de 40px para 50px */
+    height: 50px; /* Aumentado de 40px para 50px */
+    border-radius: 50%; /* Mantém o botão circular */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px; /* Aumentado de 16px para 20px para melhor visibilidade */
+}
+
+.prev-button:hover,
+.next-button:hover {
+    background: #7b4eff;
+}
+
+.prev-button {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.next-button {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* Modal Info */
+.modal-info {
+    width: 100%; /* Mantém 100% */
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-info h2 {
+    margin-top: 0;
+    color: #7b4eff;
+    font-size: 28px; /* Opcional: aumentar o tamanho da fonte */
+}
+
+.modal-info p {
+    flex-grow: 1;
+    color: #555;
+    font-size: 18px; /* Opcional: aumentar o tamanho da fonte */
+}
+
+.modal-info ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.modal-info ul li {
+    background: #f0f0f0;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+/* Modal Buttons */
+.modal-buttons {
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+    justify-content: center; /* Centraliza os botões */
+}
+
+.modal-buttons .btn {
+    /* Mantém os ajustes anteriores */
+    padding: 10px 20px; /* Mantém menor padding */
+    font-size: 16px; /* Mantém menor font-size */
+    flex: 0 1 auto; /* Mantém flex para não ocupar todo o espaço */
+    width: auto; /* Mantém largura automática */
+    text-decoration: none;
+}
+
+/* Responsividade para o Modal */
+@media (max-width: 768px) {
+    .modal-content {
+        width: 95%; /* Aumentado de 90% para 95% */
+    }
+
+    .modal-buttons {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .prev-button,
+    .next-button {
+        width: 40px; /* Ajuste adicional para telas menores */
+        height: 40px;
+        font-size: 16px; /* Ajuste da fonte */
+    }
+
+    .carousel-controls button {
+        width: 100px;
+    }
+}
+
 
 /* Seção Contato */
 .contato-section {
@@ -584,4 +771,184 @@ footer {
     :root {
         --offset: 20px; /* Reduz o afastamento em dispositivos móveis */
     }
+}
+
+/* Botões de Alternância */
+#language-toggle,
+#dark-mode-toggle {
+    background: transparent;
+    border: 2px solid #7b4eff;
+    color: #7b4eff;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background 0.3s ease, color 0.3s ease;
+    margin-left: 10px; /* Espaçamento entre os botões */
+}
+
+#language-toggle:hover,
+#dark-mode-toggle:hover {
+    background: #7b4eff;
+    color: #fff;
+}
+
+#dark-mode-toggle i {
+    font-size: 15.5px; /* Tamanho do ícone */
+}
+
+#html-text {
+    color: #000000; /* Preto */
+    transition: color 0.3s ease; /* Transição suave para a mudança de cor */
+}
+
+/* Estilo para o path "HTML" no Dark Mode */
+body.dark-mode #html-text {
+    color: #ffffff; /* Branco */
+}
+
+/* Dark Mode Styles */
+body.dark-mode {
+    background-color: #1f1f1f;
+    color: #e0e0e0;
+}
+
+body.dark-mode header {
+    background: #1f1f1f;
+    box-shadow: 0 4px 6px rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .logo {
+    color: #e0e0e0;
+}
+
+body.dark-mode nav ul li a {
+    color: #e0e0e0;
+}
+
+body.dark-mode nav ul li a:hover {
+    color: #bb86fc;
+}
+
+body.dark-mode .social-icons a {
+    color: #e0e0e0;
+}
+
+body.dark-mode .social-icons a[href*="linkedin.com"] {
+    color: #0077B5;
+}
+
+body.dark-mode .social-icons a[href*="instagram.com"] {
+    color: #E4405F;
+}
+
+body.dark-mode .social-icons a[href*="github.com"] {
+    color: #fff;
+}
+
+body.dark-mode .hero {
+    background: #1e1e1e;
+}
+body.dark-mode .hero .info h2 {
+    color: #ffffff;
+}
+
+body.dark-mode .hero .info .job-title {
+    color: #bb86fc;
+}
+
+body.dark-mode .hero .info .description {
+    color: #cfcfcf;
+}
+
+body.dark-mode .hero .btn {
+    background: #bb86fc;
+}
+
+body.dark-mode .hero .btn:hover {
+    background: #9c6dfc;
+}
+
+body.dark-mode .skills-section {
+    background-color: #1f1f1f;
+}
+
+body.dark-mode .skills-section h2 {
+    color: #e0e0e0;
+}
+
+body.dark-mode .skill-card {
+    background-color: #f1f1f1;
+}
+
+body.dark-mode .skill-card span {
+    color: #1f1f1f;
+}
+
+body.dark-mode .projetos-section {
+    background-color: #1f1f1f;
+}
+
+body.dark-mode .projetos-section h2 {
+    color: #ffffff;
+}
+
+
+body.dark-mode .projeto-overlay {
+    background: rgba(187, 134, 252, 0.8);
+}
+
+body.dark-mode .modal {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+body.dark-mode .modal p {
+    color: #ffffffcc;
+}
+
+body.dark-mode .modal-content {
+    background-color: #2c2c2c;
+    color: #e0e0e0;
+}
+
+body.dark-mode .modal-info ul li {
+    background: #3a3a3a;
+}
+
+body.dark-mode .btn:hover {
+    background: #9c6dfc;
+}
+
+/* Ajustes Específicos para Dark Mode */
+body.dark-mode .form-group label {
+    color: #1f1f1f;
+}
+
+body.dark-mode .contato-section {
+    background-color: #1f1f1f;
+}
+body.dark-mode .contato-section h2 {
+    color: #ffffff;
+}
+
+body.dark-mode .contato-section label {
+    color: #ffffff;
+}
+
+
+body.dark-mode .form-group input,
+body.dark-mode .form-group textarea {
+    background-color: #3a3a3a;
+    color: #e0e0e0;
+    border: 1px solid #555555;
+}
+
+body.dark-mode footer {
+    background-color: #1f1f1f;
+    color: #e0e0e0;
+}
+
+/* Icone Alterado para Dark Mode */
+body.dark-mode #dark-mode-toggle i {
+    color: #ffa500; /* Exemplo: mudar a cor do ícone no Dark Mode */
 }
