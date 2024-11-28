@@ -5,6 +5,7 @@
 // Seleção de elementos de idioma
 const languageToggle = document.getElementById('language-toggle');
 const elementsToTranslate = {
+    // Seção Hero
     'greeting': {
         'pt-BR': 'Olá, eu sou Caio',
         'en': 'Hello, I\'m Caio'
@@ -21,35 +22,73 @@ const elementsToTranslate = {
         'pt-BR': 'Baixar Currículo',
         'en': 'Download CV'
     },
+    // Navegação
     'nav-home': {
         'pt-BR': 'Início',
         'en': 'Home'
-    },
-    'nav-about': {
-        'pt-BR': 'Sobre',
-        'en': 'About'
     },
     'nav-skills': {
         'pt-BR': 'Habilidades',
         'en': 'Skills'
     },
-    'nav-services': {
-        'pt-BR': 'Serviços',
-        'en': 'Services'
-    },
-    'nav-portfolio': {
-        'pt-BR': 'Portfólio',
-        'en': 'Portfolio'
+    'nav-projetos': {
+        'pt-BR': 'Projetos',
+        'en': 'Projects'
     },
     'nav-contact': {
         'pt-BR': 'Contato',
         'en': 'Contact'
     },
+    // Footer
     'footer-rights': {
         'pt-BR': 'Todos os Direitos Reservados',
         'en': 'All Rights Reserved'
+    },
+    // Seção Habilidades
+    'skills-section-title': {
+        'pt-BR': 'Habilidades',
+        'en': 'Skills'
+    },
+    // Seção Projetos
+    'projetos-section-title': {
+        'pt-BR': 'Projetos',
+        'en': 'Projects'
+    },
+    // Seção Contato
+    'contact-section-title': {
+        'pt-BR': 'Contato',
+        'en': 'Contact'
+    },
+    'label-name': {
+        'pt-BR': 'Nome',
+        'en': 'Name'
+    },
+    'label-email': {
+        'pt-BR': 'E-mail',
+        'en': 'Email'
+    },
+    'label-subject': {
+        'pt-BR': 'Assunto',
+        'en': 'Subject'
+    },
+    'label-message': {
+        'pt-BR': 'Mensagem',
+        'en': 'Message'
+    },
+    'send-button': {
+        'pt-BR': 'Enviar',
+        'en': 'Send'
+    },
+    'form-status-success': {
+        'pt-BR': 'Mensagem enviada com sucesso!',
+        'en': 'Message sent successfully!'
+    },
+    'form-status-error': {
+        'pt-BR': 'Ocorreu um erro. Por favor, tente novamente.',
+        'en': 'An error occurred. Please try again.'
     }
 };
+
 
 let currentLanguage = localStorage.getItem('language') || 'pt-BR';
 
@@ -58,16 +97,30 @@ function updateLanguage() {
     for (const [id, texts] of Object.entries(elementsToTranslate)) {
         const element = document.getElementById(id);
         if (element) {
-            element.textContent = texts[currentLanguage];
+            // Tratamento especial para o botão do formulário
+            if (id === 'send-button' && element.tagName === 'BUTTON') {
+                element.textContent = texts[currentLanguage];
+            } else {
+                element.textContent = texts[currentLanguage];
+            }
         }
     }
 
-    // Atualizar o texto do rodapé
+    // Atualizar texto de mensagens de status do formulário
+    const formStatus = document.getElementById('form-status');
+    if (formStatus && formStatus.textContent.includes(elementsToTranslate['form-status-success']['pt-BR'])) {
+        formStatus.textContent = elementsToTranslate['form-status-success'][currentLanguage];
+    } else if (formStatus && formStatus.textContent.includes(elementsToTranslate['form-status-error']['pt-BR'])) {
+        formStatus.textContent = elementsToTranslate['form-status-error'][currentLanguage];
+    }
+
+    // Atualizar texto do rodapé
     const footerText = document.getElementById('footer-rights');
     if (footerText) {
         footerText.innerHTML = `&copy; 2024 Caio - ${elementsToTranslate['footer-rights'][currentLanguage]}`;
     }
 }
+
 
 // Função para alternar o idioma e atualizar os textos
 function toggleLanguage() {
