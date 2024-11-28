@@ -20,9 +20,8 @@
             <nav>
                 <ul>
                     <li><a href="#" id="nav-home">Início</a></li>
-                    <li><a href="#about" id="nav-about">Sobre</a></li>
                     <li><a href="#" id="nav-skills">Habilidades</a></li>
-                    <li><a href="#services" id="nav-services">Projetos</a></li>
+                    <li><a href="#projetos" id="nav-projetos">Projetos</a></li>
                     <li><a href="#contact" id="nav-contact">Contato</a></li>
                     <!-- Botão de Alternância de Idioma -->
                     <li><button id="language-toggle">EN</button></li>
@@ -71,6 +70,8 @@
         </div>
     </section>
 
+    <!-- Seção Habilidades -->
+
     <section class="skills-section" id="skills">
         <div class="container">
             <h2>Habilidades</h2>
@@ -103,12 +104,90 @@
         </div>
     </section>
 
+    <!-- Seção Projetos -->
+<section class="projetos-section" id="projetos">
+    <div class="container">
+        <h2>Projetos</h2>
+        <div class="projetos-grid">
+            <!-- Projeto 1 -->
+            <div class="projeto-card">
+                <img src="assets/ecofoto.png" alt="Projeto 1">
+                <div class="projeto-overlay">
+                    <h3>Ecofoto</h3>
+                    <p>Tecnologias: React.js, Node.js, Scss</p>
+                </div>
+            </div>
+            <!-- Projeto 2 -->
+            <div class="projeto-card">
+                <img src="assets/disney.png" alt="Projeto 2">
+                <div class="projeto-overlay">
+                    <h3>Dashboard Interativo Disney+</h3>
+                    <p>Tecnologias: Streamlit</p>
+                </div>
+            </div>
+            <!-- Projeto 3 -->
+            <div class="projeto-card">
+                <img src="assets/spotify.png" alt="Projeto 3">
+                <div class="projeto-overlay">
+                    <h3>Dashboard Interativo Spotify</h3>
+                    <p>Tecnologias: Streamlit</p>
+                </div>
+            </div>
+            <!-- Projeto 4 -->
+            <div class="projeto-card">
+                <img src="assets/deiamandalas.png" alt="Projeto 4">
+                <div class="projeto-overlay">
+                    <h3>DeiaMandalas(Em Construção)</h3>
+                    <p>Tecnologias: Vue.js, Node.js</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Seção Contato -->
+<section class="contato-section" id="contact">
+    <div class="container">
+        <h2>Contato</h2>
+        <form class="contato-form" id="contact-form">
+            <div class="form-group">
+                <label for="name" id="label-name">Nome</label>
+                <input type="text" id="name" name="name" placeholder="Seu nome" required>
+            </div>
+            <div class="form-group">
+                <label for="email" id="label-email">E-mail</label>
+                <input type="email" id="email" name="email" placeholder="Seu e-mail" required>
+            </div>
+            <div class="form-group">
+                <label for="subject" id="label-subject">Assunto</label>
+                <input type="text" id="subject" name="subject" placeholder="Assunto" required>
+            </div>
+            <div class="form-group">
+                <label for="message" id="label-message">Mensagem</label>
+                <textarea id="message" name="message" rows="5" placeholder="Sua mensagem" required></textarea>
+            </div>
+
+            <div class="form-group">
+                <div class="g-recaptcha" data-sitekey="6LdEQIwqAAAAAMuiWq65aUQPXIES1uvSFU-pk07P"></div>
+            </div>
+
+            <button type="submit" class="btn" id="send-button">Enviar</button>
+            <p class="form-status" id="form-status"></p>
+        </form>
+    </div>
+</section>
+
+
     <!-- Rodapé -->
     <footer>
         <div class="container">
             <p id="footer-rights">&copy; 2024 Caio - Todos os Direitos Reservados</p>
         </div>
     </footer>
+
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
 
     <!-- Inclusão do Arquivo JavaScript Externo -->
     <script src="script.js"></script>
