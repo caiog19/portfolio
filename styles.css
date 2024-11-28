@@ -14,7 +14,6 @@ body {
     margin: 0 auto;
 }
 
-/* Definir .hero-content como posição relativa */
 .hero-content {
     position: relative;
 }
@@ -26,8 +25,8 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    pointer-events: none; /* Para não interferir na interação */
-    z-index: 2; /* Acima do conteúdo, mas abaixo de elementos interativos */
+    pointer-events: none; 
+    z-index: 2; 
 }
 
 .hero-content .rotating-icons img {
@@ -40,7 +39,7 @@ body {
 /* Definir a duração total da animação e o afastamento */
 :root {
     --animation-duration: 14s;
-    --offset: 40px; /* Valor do afastamento dos ícones */
+    --offset: 40px; 
 }
 
 /* Atrasos para cada ícone */
@@ -75,53 +74,51 @@ body {
 /* Animação moveAround atualizada */
 @keyframes moveAround {
     0% {
-        top: calc(-25px - var(--offset)); /* Posição inicial acima do contêiner */
+        top: calc(-25px - var(--offset));
         left: 50%;
         transform: translateX(-50%);
     }
     12.5% {
-        top: calc(-25px - var(--offset)); /* Movimento ao longo do topo */
+        top: calc(-25px - var(--offset)); 
         left: calc(100% + var(--offset) - 25px);
         transform: none;
     }
     25% {
-        top: 50%; /* Desce pela borda direita */
+        top: 50%; 
         left: calc(100% + var(--offset) - 25px);
         transform: translateY(-50%);
     }
     37.5% {
-        top: calc(100% + var(--offset) - 25px); /* Canto inferior direito */
+        top: calc(100% + var(--offset) - 25px); 
         left: calc(100% + var(--offset) - 25px);
         transform: none;
     }
     50% {
-        top: calc(100% + var(--offset) - 25px); /* Movimento ao longo da base */
+        top: calc(100% + var(--offset) - 25px); 
         left: 50%;
         transform: translateX(-50%);
     }
     62.5% {
-        top: calc(100% + var(--offset) - 25px); /* Canto inferior esquerdo */
+        top: calc(100% + var(--offset) - 25px); 
         left: calc(-25px - var(--offset));
         transform: none;
     }
     75% {
-        top: 50%; /* Sobe pela borda esquerda */
+        top: 50%; 
         left: calc(-25px - var(--offset));
         transform: translateY(-50%);
     }
     87.5% {
-        top: calc(-25px - var(--offset)); /* Canto superior esquerdo */
+        top: calc(-25px - var(--offset)); 
         left: calc(-25px - var(--offset));
         transform: none;
     }
     100% {
-        top: calc(-25px - var(--offset)); /* Retorna ao topo central */
+        top: calc(-25px - var(--offset)); 
         left: 50%;
         transform: translateX(-50%);
     }
 }
-
-/* Resto do seu CSS existente... */
 
 /* Header */
 header {
@@ -133,7 +130,6 @@ header {
     z-index: 1000;
 }
 
-/* Flex container para alinhar logo e menu */
 header .container {
     display: flex;
     justify-content: space-between;
@@ -197,7 +193,6 @@ header nav ul li a:hover {
     transform: translateY(-100px);
 }
 
-/* Hero Content */
 .hero-content {
     display: flex;
     align-items: center;
@@ -206,7 +201,6 @@ header nav ul li a:hover {
     margin: 0;
 }
 
-/* Ícones Sociais */
 .social-icons {
     display: flex;
     flex-direction: column;
@@ -260,7 +254,6 @@ header nav ul li a:hover {
     max-width: 550px;
 }
 
-/* Botão */
 .hero .btn {
     background: #7b4eff;
     color: #fff;
@@ -286,7 +279,7 @@ header nav ul li a:hover {
 
 /* Seção Habilidades */
 .skills-section {
-    display: none; /* Inicialmente escondida */
+    display: none; 
     padding: 100px 0;
     background-color: #f7f7f7;
 }
@@ -316,9 +309,9 @@ header nav ul li a:hover {
     padding: 20px;
     opacity: 0;
     transform: translateY(20px);
-    transition: all 0.3s ease; /* Transição suave */
-    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1); /* Sombra inicial */
-    cursor: pointer; /* Indica interatividade */
+    transition: all 0.3s ease; 
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1); 
+    cursor: pointer; 
 }
 
 
@@ -339,13 +332,13 @@ header nav ul li a:hover {
     color: #ffffff;
 }
 
-/* Animação ao exibir os cards */
+
 .skill-card.show {
     opacity: 1;
     transform: translateY(0);
 }
 
-/* Animação para alinhar os ícones */
+
 .align-icons {
     animation: alignIcons 1s forwards;
 }
@@ -367,7 +360,7 @@ header nav ul li a:hover {
 
 /* Seção Projetos */
 .projetos-section {
-    display: none; /* Inicialmente escondida */
+    display: none; 
     padding: 100px 0;
     background-color: #fff;
 }
@@ -445,7 +438,7 @@ header nav ul li a:hover {
     font-size: 18px;
 }
 
-/* Responsividade para Projetos */
+
 @media (max-width: 768px) {
     .projetos-grid {
         grid-template-columns: 1fr;
@@ -453,7 +446,7 @@ header nav ul li a:hover {
 }
 /* Modal */
 .modal {
-    display: none; /* Inicialmente escondida */
+    display: none; 
     position: fixed;
     z-index: 2000;
     left: 0;
@@ -461,7 +454,7 @@ header nav ul li a:hover {
     width: 100%;
     height: 100%;
     overflow: auto;
-    background: rgba(0, 0, 0, 0.7); /* Sombra de fundo */
+    background: rgba(0, 0, 0, 0.7); 
     justify-content: center;
     align-items: center;
 }
@@ -471,15 +464,14 @@ header nav ul li a:hover {
     margin: auto;
     padding: 20px;
     border-radius: 8px;
-    width: 80%; /* Aumentado de 60% para 80% */
-    max-width: 1000px; /* Aumentado de 800px para 1000px */
-    /* Mantém a altura automática */
+    width: 80%; 
+    max-width: 1000px; 
     box-shadow: 0 5px 15px rgba(0,0,0,0.3);
     position: relative;
     display: flex;
-    flex-direction: column; /* Mantém orientação vertical */
-    max-height: 95vh; /* Aumentado de 90vh para 95vh */
-    overflow-y: auto; /* Mantém a rolagem se necessário */
+    flex-direction: column; 
+    max-height: 95vh; 
+    overflow-y: auto; 
 }
 
 .close-button {
@@ -501,31 +493,30 @@ header nav ul li a:hover {
 
 .modal-body {
     display: flex;
-    flex-direction: column; /* Mantém column */
+    flex-direction: column; 
     gap: 20px;
     margin-top: 40px;
 }
 
-/* Carousel Container */
+
 .carousel-container {
     position: relative;
-    width: 100%; /* Mantém 100% para ocupar toda a largura do modal */
+    width: 100%; 
     overflow: hidden;
     border-radius: 8px;
-    /* Adicionado para aumentar a altura do carousel */
-    height: 500px; /* Ajuste conforme necessário */
+    height: 500px; 
 }
 
 .carousel {
     display: flex;
     transition: transform 0.5s ease-in-out;
-    height: 100%; /* Garante que o carousel ocupe toda a altura do container */
+    height: 100%; 
 }
 
 .carousel img {
     width: 100%;
-    height: 100%; /* Adicionado para que as imagens ocupem toda a altura do carousel */
-    object-fit: cover; /* Garante que a imagem cubra todo o espaço sem distorção */
+    height: 100%; 
+    object-fit: cover; 
     border-radius: 8px;
 }
 
@@ -537,14 +528,13 @@ header nav ul li a:hover {
     color: #fff;
     cursor: pointer;
     transition: background 0.3s ease;
-    /* Estilos atualizados para formato circular */
-    width: 50px; /* Aumentado de 40px para 50px */
-    height: 50px; /* Aumentado de 40px para 50px */
-    border-radius: 50%; /* Mantém o botão circular */
+    width: 50px; 
+    height: 50px;
+    border-radius: 50%; 
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 20px; /* Aumentado de 16px para 20px para melhor visibilidade */
+    font-size: 20px; 
 }
 
 .prev-button:hover,
@@ -568,7 +558,7 @@ header nav ul li a:hover {
 
 /* Modal Info */
 .modal-info {
-    width: 100%; /* Mantém 100% */
+    width: 100%; 
     display: flex;
     flex-direction: column;
 }
@@ -576,13 +566,13 @@ header nav ul li a:hover {
 .modal-info h2 {
     margin-top: 0;
     color: #7b4eff;
-    font-size: 28px; /* Opcional: aumentar o tamanho da fonte */
+    font-size: 28px; 
 }
 
 .modal-info p {
     flex-grow: 1;
     color: #555;
-    font-size: 18px; /* Opcional: aumentar o tamanho da fonte */
+    font-size: 18px; 
 }
 
 .modal-info ul {
@@ -605,22 +595,21 @@ header nav ul li a:hover {
     display: flex;
     gap: 20px;
     margin-top: 20px;
-    justify-content: center; /* Centraliza os botões */
+    justify-content: center; 
 }
 
 .modal-buttons .btn {
-    /* Mantém os ajustes anteriores */
-    padding: 10px 20px; /* Mantém menor padding */
-    font-size: 16px; /* Mantém menor font-size */
-    flex: 0 1 auto; /* Mantém flex para não ocupar todo o espaço */
-    width: auto; /* Mantém largura automática */
+    padding: 10px 20px; 
+    font-size: 16px; 
+    flex: 0 1 auto; 
+    width: auto; 
     text-decoration: none;
 }
 
 /* Responsividade para o Modal */
 @media (max-width: 768px) {
     .modal-content {
-        width: 95%; /* Aumentado de 90% para 95% */
+        width: 95%; 
     }
 
     .modal-buttons {
@@ -630,9 +619,9 @@ header nav ul li a:hover {
 
     .prev-button,
     .next-button {
-        width: 40px; /* Ajuste adicional para telas menores */
+        width: 40px; 
         height: 40px;
-        font-size: 16px; /* Ajuste da fonte */
+        font-size: 16px; 
     }
 
     .carousel-controls button {
@@ -767,9 +756,9 @@ footer {
         height: 30px;
     }
 
-    /* Ajuste do afastamento em telas menores */
+   
     :root {
-        --offset: 20px; /* Reduz o afastamento em dispositivos móveis */
+        --offset: 20px; 
     }
 }
 
@@ -784,7 +773,7 @@ footer {
     cursor: pointer;
     font-weight: 500;
     transition: background 0.3s ease, color 0.3s ease;
-    margin-left: 10px; /* Espaçamento entre os botões */
+    margin-left: 10px; 
 }
 
 #language-toggle:hover,
@@ -794,17 +783,17 @@ footer {
 }
 
 #dark-mode-toggle i {
-    font-size: 15.5px; /* Tamanho do ícone */
+    font-size: 15.5px; 
 }
 
 #html-text {
-    color: #000000; /* Preto */
-    transition: color 0.3s ease; /* Transição suave para a mudança de cor */
+    color: #000000; 
+    transition: color 0.3s ease; 
 }
 
-/* Estilo para o path "HTML" no Dark Mode */
+
 body.dark-mode #html-text {
-    color: #ffffff; /* Branco */
+    color: #ffffff; 
 }
 
 /* Dark Mode Styles */
@@ -919,7 +908,7 @@ body.dark-mode .btn:hover {
     background: #9c6dfc;
 }
 
-/* Ajustes Específicos para Dark Mode */
+
 body.dark-mode .form-group label {
     color: #1f1f1f;
 }
@@ -948,7 +937,7 @@ body.dark-mode footer {
     color: #e0e0e0;
 }
 
-/* Icone Alterado para Dark Mode */
+
 body.dark-mode #dark-mode-toggle i {
-    color: #ffa500; /* Exemplo: mudar a cor do ícone no Dark Mode */
+    color: #ffa500; 
 }
