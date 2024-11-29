@@ -89,7 +89,6 @@ const elementsToTranslate = {
     }
 };
 
-
 let currentLanguage = localStorage.getItem('language') || 'pt-BR';
 
 // Função para atualizar os textos de acordo com o idioma selecionado
@@ -149,6 +148,9 @@ const rotatingIcons = document.querySelector('.rotating-icons');
 const skillCards = document.querySelectorAll('.skill-card');
 const projetoCards = document.querySelectorAll('.projeto-card');
 
+// Variável para rastrear a seção atual
+let currentSection = 'home'; // Valor inicial é 'home'
+
 // Função para definir o item ativo no menu de navegação
 function setActiveNav(linkId) {
     const navLinks = document.querySelectorAll('.nav-menu ul li a');
@@ -164,21 +166,40 @@ function setActiveNav(linkId) {
 
 // Função para exibir a seção Habilidades
 function showSkillsSection() {
-    // Atualizar o item ativo no menu
     setActiveNav('nav-skills');
     
-    // Adicionar classe para animar os ícones
-    rotatingIcons.classList.add('align-icons');
+    if (currentSection === 'home') {
+        // Aplicar animação e atraso ao sair da seção "Início"
+        rotatingIcons.classList.add('align-icons');
 
-    // Aguardar a animação terminar
-    setTimeout(() => {
-        // Esconder a seção Hero
+        setTimeout(() => {
+            // Esconder a seção Hero
+            heroSection.style.display = 'none';
+
+            // Exibir a seção Habilidades
+            skillsSection.style.display = 'block';
+
+            // Esconder as seções Projetos e Contato
+            projetosSection.style.display = 'none';
+            contactSection.style.display = 'none';
+
+            // Animar os cards das habilidades
+            skillCards.forEach((card, index) => {
+                setTimeout(() => {
+                    card.classList.add('show');
+                }, index * 200); // Delay entre os cards
+            });
+
+            // Atualizar a seção atual
+            currentSection = 'skills';
+
+            // Remover a animação dos ícones
+            rotatingIcons.classList.remove('align-icons');
+        }, 1000); // Duração da animação dos ícones
+    } else {
+        // Navegação sem atraso
         heroSection.style.display = 'none';
-
-        // Exibir a seção Habilidades
         skillsSection.style.display = 'block';
-
-        // Esconder as seções Projetos e Contato, se estiverem visíveis
         projetosSection.style.display = 'none';
         contactSection.style.display = 'none';
 
@@ -188,62 +209,111 @@ function showSkillsSection() {
                 card.classList.add('show');
             }, index * 200); // Delay entre os cards
         });
-    }, 1000); // Duração da animação dos ícones
+
+        // Atualizar a seção atual
+        currentSection = 'skills';
+    }
 }
 
 // Função para exibir a seção Projetos
 function showProjetosSection() {
-    // Atualizar o item ativo no menu
     setActiveNav('nav-projetos');
+    
+    if (currentSection === 'home') {
+        // Aplicar animação e atraso ao sair da seção "Início"
+        rotatingIcons.classList.add('align-icons');
 
-    // Adicionar classe para animar os ícones
-    rotatingIcons.classList.add('align-icons');
+        setTimeout(() => {
+            // Esconder a seção Hero
+            heroSection.style.display = 'none';
 
-    // Aguardar a animação terminar
-    setTimeout(() => {
-        // Esconder as seções Hero e Habilidades
+            // Exibir a seção Projetos
+            projetosSection.style.display = 'block';
+
+            // Esconder as seções Habilidades e Contato
+            skillsSection.style.display = 'none';
+            contactSection.style.display = 'none';
+
+            // Animar os cards dos projetos
+            projetoCards.forEach((card, index) => {
+                setTimeout(() => {
+                    card.classList.add('show');
+                }, index * 200); // Delay entre os cards
+            });
+
+            // Atualizar a seção atual
+            currentSection = 'projetos';
+
+            // Remover a animação dos ícones
+            rotatingIcons.classList.remove('align-icons');
+        }, 1000); // Duração da animação dos ícones
+    } else {
+        // Navegação sem atraso
         heroSection.style.display = 'none';
+        projetosSection.style.display = 'block';
         skillsSection.style.display = 'none';
         contactSection.style.display = 'none';
 
-        // Exibir a seção Projetos
-        projetosSection.style.display = 'block';
-
-        // Opcional: adicionar animações aos projetos
+        // Animar os cards dos projetos
         projetoCards.forEach((card, index) => {
             setTimeout(() => {
                 card.classList.add('show');
             }, index * 200); // Delay entre os cards
         });
-    }, 1000); // Duração da animação dos ícones
+
+        // Atualizar a seção atual
+        currentSection = 'projetos';
+    }
 }
 
 // Função para exibir a seção Contato
 function showContactSection() {
-    // Atualizar o item ativo no menu
     setActiveNav('nav-contact');
+    
+    if (currentSection === 'home') {
+        // Aplicar animação e atraso ao sair da seção "Início"
+        rotatingIcons.classList.add('align-icons');
 
-    // Adicionar classe para animar os ícones rotativos
-    rotatingIcons.classList.add('align-icons');
+        setTimeout(() => {
+            // Esconder a seção Hero
+            heroSection.style.display = 'none';
 
-    // Aguardar a animação terminar
-    setTimeout(() => {
-        // Esconder as seções Hero, Habilidades e Projetos
+            // Exibir a seção Contato
+            contactSection.style.display = 'block';
+
+            // Esconder as seções Habilidades e Projetos
+            skillsSection.style.display = 'none';
+            projetosSection.style.display = 'none';
+
+            // Atualizar a seção atual
+            currentSection = 'contact';
+
+            // Remover a animação dos ícones
+            rotatingIcons.classList.remove('align-icons');
+        }, 1000); // Duração da animação dos ícones
+    } else {
+        // Navegação sem atraso
         heroSection.style.display = 'none';
+        contactSection.style.display = 'block';
         skillsSection.style.display = 'none';
         projetosSection.style.display = 'none';
 
-        // Exibir a seção Contato
-        contactSection.style.display = 'block';
-    }, 1000); // Tempo da animação dos ícones
+        // Atualizar a seção atual
+        currentSection = 'contact';
+    }
 }
 
 // Função para exibir a seção Hero
 function showHeroSection() {
-    // Atualizar o item ativo no menu
     setActiveNav('nav-home');
+    
+    // Verificar se estamos saindo da seção "Início"
+    if (currentSection === 'home') {
+        // Já estamos na seção "Início", não fazer nada
+        return;
+    }
 
-    // Esconder as seções Habilidades, Projetos e Contato
+    // Navegação sem atraso
     skillsSection.style.display = 'none';
     projetosSection.style.display = 'none';
     contactSection.style.display = 'none';
@@ -270,6 +340,9 @@ function showHeroSection() {
     projetoCards.forEach((card) => {
         card.classList.remove('show');
     });
+
+    // Atualizar a seção atual
+    currentSection = 'home';
 }
 
 // Adicionar evento de clique aos links de navegação
