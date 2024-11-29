@@ -121,7 +121,6 @@ function updateLanguage() {
     }
 }
 
-
 // Função para alternar o idioma e atualizar os textos
 function toggleLanguage() {
     currentLanguage = currentLanguage === 'pt-BR' ? 'en' : 'pt-BR';
@@ -132,22 +131,6 @@ function toggleLanguage() {
 
 // Adicionar evento de clique ao botão de alternância de idioma
 languageToggle.addEventListener('click', toggleLanguage);
-
-// Carregar o idioma preferido do usuário ao inicializar a página
-document.addEventListener('DOMContentLoaded', () => {
-    if (currentLanguage === 'pt-BR') {
-        languageToggle.textContent = 'EN';
-    } else {
-        languageToggle.textContent = 'PT';
-    }
-    updateLanguage();
-
-    // Inicializar a seção ativa
-    document.querySelectorAll('.section').forEach(section => {
-        section.classList.remove('active');
-    });
-    heroSection.classList.add('active');
-});
 
 // =========================
 // Funções de Navegação entre Seções
@@ -166,8 +149,24 @@ const rotatingIcons = document.querySelector('.rotating-icons');
 const skillCards = document.querySelectorAll('.skill-card');
 const projetoCards = document.querySelectorAll('.projeto-card');
 
+// Função para definir o item ativo no menu de navegação
+function setActiveNav(linkId) {
+    const navLinks = document.querySelectorAll('.nav-menu ul li a');
+    
+    navLinks.forEach(link => {
+        if (link.id === linkId) {
+            link.classList.add('active');
+        } else {
+            link.classList.remove('active');
+        }
+    });
+}
+
 // Função para exibir a seção Habilidades
 function showSkillsSection() {
+    // Atualizar o item ativo no menu
+    setActiveNav('nav-skills');
+    
     // Adicionar classe para animar os ícones
     rotatingIcons.classList.add('align-icons');
 
@@ -194,6 +193,9 @@ function showSkillsSection() {
 
 // Função para exibir a seção Projetos
 function showProjetosSection() {
+    // Atualizar o item ativo no menu
+    setActiveNav('nav-projetos');
+
     // Adicionar classe para animar os ícones
     rotatingIcons.classList.add('align-icons');
 
@@ -218,6 +220,9 @@ function showProjetosSection() {
 
 // Função para exibir a seção Contato
 function showContactSection() {
+    // Atualizar o item ativo no menu
+    setActiveNav('nav-contact');
+
     // Adicionar classe para animar os ícones rotativos
     rotatingIcons.classList.add('align-icons');
 
@@ -235,6 +240,9 @@ function showContactSection() {
 
 // Função para exibir a seção Hero
 function showHeroSection() {
+    // Atualizar o item ativo no menu
+    setActiveNav('nav-home');
+
     // Esconder as seções Habilidades, Projetos e Contato
     skillsSection.style.display = 'none';
     projetosSection.style.display = 'none';
@@ -315,12 +323,12 @@ contactForm.addEventListener('submit', function(event) {
         .then(function(response) {
             console.log('SUCCESS!', response.status, response.text);
             formStatus.style.color = 'green';
-            formStatus.textContent = 'Mensagem enviada com sucesso!';
+            formStatus.textContent = elementsToTranslate['form-status-success'][currentLanguage];
             contactForm.reset(); // Resetar o formulário
         }, function(error) {
             console.log('FAILED...', error);
             formStatus.style.color = 'red';
-            formStatus.textContent = 'Ocorreu um erro. Por favor, tente novamente.';
+            formStatus.textContent = elementsToTranslate['form-status-error'][currentLanguage];
         });
 });
 
@@ -511,9 +519,40 @@ function loadDarkModePreference() {
 // Adicionar evento de clique ao botão de Dark Mode
 darkModeToggle.addEventListener('click', toggleDarkMode);
 
-// Carregar a preferência do Dark Mode ao inicializar a página
+// =========================
+// Inicialização da Página
+// =========================
 document.addEventListener('DOMContentLoaded', () => {
-    // ... (Seu código existente para o idioma e seções) ...
-    
+    if (currentLanguage === 'pt-BR') {
+        languageToggle.textContent = 'EN';
+    } else {
+        languageToggle.textContent = 'PT';
+    }
+    updateLanguage();
+
+    // Inicializar a seção ativa
+    showHeroSection();
+
+    // Carregar a preferência do Dark Mode
     loadDarkModePreference();
+});
+
+// =========================
+// Responsividade do Menu Hamburger
+// =========================
+document.addEventListener('DOMContentLoaded', () => {
+    const hamburgerMenu = document.querySelector('.hamburger-menu');
+    const navMenu = document.querySelector('.nav-menu');
+
+    // Alternar visibilidade do menu
+    hamburgerMenu.addEventListener('click', () => {
+        navMenu.classList.toggle('active');
+    });
+
+    // Fechar menu ao clicar em qualquer item
+    document.querySelectorAll('.nav-menu a').forEach(item => {
+        item.addEventListener('click', () => {
+            navMenu.classList.remove('active');
+        });
+    });
 });

@@ -17,19 +17,23 @@
     <header>
         <div class="container">
             <h1 class="logo">Caio Gullo</h1>
-            <nav>
+            <button class="hamburger-menu" aria-label="Abrir Menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav class="nav-menu">
                 <ul>
-                    <li><a href="#" id="nav-home">Início</a></li>
+                    <li><a href="#" id="nav-home" class="active">Início</a></li>
                     <li><a href="#" id="nav-skills">Habilidades</a></li>
                     <li><a href="#projetos" id="nav-projetos">Projetos</a></li>
                     <li><a href="#contact" id="nav-contact">Contato</a></li>
-                    <!-- Botão de Alternância de Idioma -->
                     <li><button id="language-toggle">EN</button></li>
-                    <li><button id="dark-mode-toggle" aria-label="Alternar Modo Escuro"><i class="fas fa-moon"></i></button></li>
+                    <li><button id="dark-mode-toggle" aria-label="Alternar Modo Escuro">
+                        <i class="fas fa-moon"></i></button></li>
                 </ul>
             </nav>
         </div>
     </header>
+    
 
     <!-- Seção Hero -->
     <section class="hero">

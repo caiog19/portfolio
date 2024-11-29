@@ -151,7 +151,7 @@ header nav ul {
     margin: 0;
 }
 
-header nav ul li a {
+header nav ul li a{
     text-decoration: none;
     color: #252222;
     font-size: 20px;
@@ -159,7 +159,8 @@ header nav ul li a {
     transition: color 0.3s ease;
 }
 
-header nav ul li a:hover {
+header nav ul li a:hover,
+header nav ul li a.active {
     color: #7b4eff;
 }
 
@@ -940,4 +941,56 @@ body.dark-mode footer {
 
 body.dark-mode #dark-mode-toggle i {
     color: #ffa500; 
+}
+
+
+.nav-menu {
+    display: flex; 
+    gap: 20px;
+    position: static;
+    background: none;
+    box-shadow: none;
+    padding: 0;
+    flex-direction: row;
+}
+
+.nav-menu.active {
+    display: flex;
+}
+
+
+.hamburger-menu {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 24px;
+    display: none;
+}
+
+.hamburger-menu i {
+    color: #252222;
+}
+
+@media (max-width: 768px) {
+    .nav-menu {
+        display: none; 
+        position: absolute;
+        top: 60px;
+        right: 10px;
+        background: #fff;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        border-radius: 8px;
+        flex-direction: column;
+        gap: 15px;
+        z-index: 1000;
+    }
+
+    .nav-menu.active {
+        display: flex; 
+    }
+
+    .hamburger-menu {
+        display: block; 
+    }
 }
