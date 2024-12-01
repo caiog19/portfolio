@@ -121,9 +121,11 @@ body {
 }
 
 /* Header */
+
+
 header {
     background: #fff;
-    padding: 20px 0;
+    padding: 10px 0;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     position: sticky;
     top: 0;
@@ -907,10 +909,7 @@ body.dark-mode #dark-mode-toggle i {
     .carousel-controls button {
         width: 100px;
     }
-}
 
-/* Responsividade */
-@media (max-width: 768px) {
     .hero {
         flex-direction: column;
         text-align: center;
@@ -955,9 +954,7 @@ body.dark-mode #dark-mode-toggle i {
     :root {
         --offset: 20px;
     }
-}
 
-@media (max-width: 768px) {
     .nav-menu {
         display: none;
         position: absolute;
@@ -978,5 +975,9 @@ body.dark-mode #dark-mode-toggle i {
 
     .hamburger-menu {
         display: block;
+    }
+
+    .rotating-icons{
+        display: none;
     }
 }

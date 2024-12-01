@@ -419,8 +419,8 @@ const projetosDados = {
         ],
         descricao: 'Ecofoto é um projeto de extensão universitária sobre fotografia contemporânea, realizado pela Escola de Comunicação da UFRJ. Faço parte do time de tecnologia, atuando como desenvolvedor fullstack no site. Iniciei no projeto resolvendo bugs na versão desktop, implementei uma galeria de fotos, desenvolvi a versão responsiva para mobile e, atualmente, trabalho junto à equipe para transformá-lo em um sistema completo.',
         tecnologias: ['React.js', 'Node.js', 'Scss'],
-        site: 'https://ecofoto.com',
-        repositorio: 'https://github.com/caiog19/ecofoto'
+        site: 'https://www.ecofoto.eco.ufrj.br/',
+        repositorio: 'https://github.com/caiog19/'
     },
     'Dashboard Interativo Disney+': {
         imagens: [
@@ -430,8 +430,8 @@ const projetosDados = {
         ],
         descricao: 'Um dashboard interativo para Disney+, desenvolvido com Streamlit, proporcionando uma visualização detalhada dos dados da plataforma.',
         tecnologias: ['Streamlit'],
-        site: 'https://dashboard-disney.com',
-        repositorio: 'https://github.com/caiog19/dashboard-disney'
+        site: 'https://orgdados-disneyplus.streamlit.app/',
+        repositorio: 'https://github.com/caiog19/org_dados'
     },
     'Dashboard Interativo Spotify': {
         imagens: [
@@ -441,8 +441,8 @@ const projetosDados = {
         ],
         descricao: 'Dashboard interativo para Spotify, criado com Streamlit, oferecendo insights sobre padrões de escuta e tendências musicais.',
         tecnologias: ['Streamlit'],
-        site: 'https://dashboard-spotify.com',
-        repositorio: 'https://github.com/caiog19/dashboard-spotify'
+        site: 'https://spotifysongs-caiog19.streamlit.app/',
+        repositorio: 'https://github.com/caiog19/spotify_streamlit'
     },
     'DeiaMandalas(Em Construção)': {
         imagens: [
@@ -451,7 +451,7 @@ const projetosDados = {
         ],
         descricao: 'DeiaMandalas é uma plataforma em construção focada em criar mandalas personalizadas utilizando Vue.js e Node.js.',
         tecnologias: ['Vue.js', 'Node.js'],
-        site: '#', // Atualize com o link real quando disponível
+        site: '#', 
         repositorio: 'https://github.com/caiog19/deiamandalas'
     }
 };
