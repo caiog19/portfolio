@@ -1,6 +1,11 @@
-/* styles.css */
-
-/* Geral */
+/* -------------------------- */
+/* Variáveis e Reset          */
+/* -------------------------- */
+:root {
+    --animation-duration: 14s;
+    --offset: 40px;
+}
+  
 body {
     margin: 0;
     font-family: 'Roboto', sans-serif;
@@ -14,11 +19,13 @@ body {
     margin: 0 auto;
 }
 
+/* -------------------------- */
+/* Ícones Rotativos (Hero)    */
+/* -------------------------- */
 .hero-content {
     position: relative;
 }
 
-/* Rotating Icons */
 .hero-content .rotating-icons {
     position: absolute;
     top: 0;
@@ -36,42 +43,28 @@ body {
     animation: moveAround var(--animation-duration) linear infinite;
 }
 
-/* Definir a duração total da animação e o afastamento */
-:root {
-    --animation-duration: 14s;
-    --offset: 40px;
-}
-
-/* Atrasos para cada ícone */
 .hero-content .rotating-icons img:nth-child(1) {
     animation-delay: 0s;
 }
-
 .hero-content .rotating-icons img:nth-child(2) {
     animation-delay: calc(var(--animation-duration) * -1/7);
 }
-
 .hero-content .rotating-icons img:nth-child(3) {
     animation-delay: calc(var(--animation-duration) * -2/7);
 }
-
 .hero-content .rotating-icons img:nth-child(4) {
     animation-delay: calc(var(--animation-duration) * -3/7);
 }
-
 .hero-content .rotating-icons img:nth-child(5) {
     animation-delay: calc(var(--animation-duration) * -4/7);
 }
-
 .hero-content .rotating-icons img:nth-child(6) {
     animation-delay: calc(var(--animation-duration) * -5/7);
 }
-
 .hero-content .rotating-icons img:nth-child(7) {
     animation-delay: calc(var(--animation-duration) * -6/7);
 }
 
-/* Animação moveAround atualizada */
 @keyframes moveAround {
     0% {
         top: calc(-25px - var(--offset));
@@ -120,9 +113,9 @@ body {
     }
 }
 
-/* Header */
-
-
+/* -------------------------- */
+/* Header                     */
+/* -------------------------- */
 header {
     background: #fff;
     padding: 10px 0;
@@ -183,7 +176,58 @@ header nav ul li a.active {
     color: #fff;
 }
 
-/* Hero Section */
+/* Menu Mobile */
+.hamburger-menu {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 24px;
+    display: none;
+}
+
+.hamburger-menu i {
+    color: #252222;
+}
+
+.nav-menu {
+    display: flex;
+    gap: 20px;
+    position: static;
+    background: none;
+    box-shadow: none;
+    padding: 0;
+    flex-direction: row;
+}
+
+.nav-menu.active {
+    display: flex;
+}
+
+/* Menu Mobile Slide-in */
+.nav-menu {
+    display: none;
+    position: absolute;
+    top: 60px;
+    right: 0; 
+    background: #fff;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    border-radius: 8px;
+    flex-direction: column;
+    gap: 15px;
+    z-index: 1000;
+    transform: translateX(100%); 
+    transition: transform 0.3s ease; 
+}
+
+.nav-menu.active {
+    display: flex;
+    transform: translateX(0); 
+}
+
+/* -------------------------- */
+/* Hero                       */
+/* -------------------------- */
 .hero {
     display: flex;
     align-items: center;
@@ -193,7 +237,9 @@ header nav ul li a.active {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    transform: translateY(-100px);
+    /* Removendo transform inicial e ajustando padding-top */
+    transform: none; 
+    padding-top: 80px; 
 }
 
 .hero-content {
@@ -280,7 +326,9 @@ header nav ul li a.active {
     object-fit: cover;
 }
 
-/* Seção Habilidades */
+/* -------------------------- */
+/* Seção Habilidades          */
+/* -------------------------- */
 .skills-section {
     display: none;
     padding: 100px 0;
@@ -349,7 +397,9 @@ header nav ul li a.active {
     }
 }
 
-/* Seção Projetos */
+/* -------------------------- */
+/* Seção Projetos             */
+/* -------------------------- */
 .projetos-section {
     display: none;
     padding: 100px 0;
@@ -382,10 +432,19 @@ header nav ul li a.active {
 
 .projeto-card img {
     width: 100%;
-    height: 100%;
+    height: auto; 
     object-fit: cover;
     display: block;
     transition: transform 0.3s ease;
+}
+
+.projeto-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 16px rgba(0, 0, 0, 0.2);
+}
+
+.projeto-card:hover img {
+    transform: scale(1.1);
 }
 
 .projeto-overlay {
@@ -407,15 +466,6 @@ header nav ul li a.active {
     box-sizing: border-box;
 }
 
-.projeto-card:hover {
-    transform: scale(1.05);
-    box-shadow: 0 12px 16px rgba(0, 0, 0, 0.2);
-}
-
-.projeto-card:hover img {
-    transform: scale(1.1);
-}
-
 .projeto-card:hover .projeto-overlay {
     opacity: 1;
 }
@@ -429,7 +479,9 @@ header nav ul li a.active {
     font-size: 18px;
 }
 
-/* Modal */
+/* -------------------------- */
+/* Modal de Projetos          */
+/* -------------------------- */
 .modal {
     display: none;
     position: fixed;
@@ -483,6 +535,7 @@ header nav ul li a.active {
     margin-top: 40px;
 }
 
+/* Carrossel no Modal */
 .carousel-container {
     position: relative;
     width: 100%;
@@ -585,12 +638,13 @@ header nav ul li a.active {
 .modal-buttons .btn {
     padding: 10px 20px;
     font-size: 16px;
-    flex: 0 1 auto;
-    width: auto;
     text-decoration: none;
+    width: auto;
 }
 
-/* Seção Contato */
+/* -------------------------- */
+/* Seção Contato              */
+/* -------------------------- */
 .contato-section {
     display: none;
     padding: 100px 0;
@@ -663,7 +717,9 @@ header nav ul li a.active {
     margin-top: 10px;
 }
 
-/* Footer */
+/* -------------------------- */
+/* Footer                     */
+/* -------------------------- */
 footer {
     text-align: center;
     padding: 20px 0;
@@ -701,11 +757,9 @@ footer {
     transition: color 0.3s ease;
 }
 
-body.dark-mode #html-text {
-    color: #ffffff;
-}
-
-/* Dark Mode Styles */
+/* -------------------------- */
+/* Dark Mode                  */
+/* -------------------------- */
 body.dark-mode {
     background-color: #1f1f1f;
     color: #e0e0e0;
@@ -723,7 +777,6 @@ body.dark-mode .logo {
 body.dark-mode nav ul li a {
     color: #e0e0e0;
 }
-
 body.dark-mode nav ul li a:hover {
     color: #bb86fc;
 }
@@ -735,11 +788,9 @@ body.dark-mode .social-icons a {
 body.dark-mode .social-icons a[href*="linkedin.com"] {
     color: #0077B5;
 }
-
 body.dark-mode .social-icons a[href*="instagram.com"] {
     color: #E4405F;
 }
-
 body.dark-mode .social-icons a[href*="github.com"] {
     color: #fff;
 }
@@ -751,19 +802,15 @@ body.dark-mode .hero {
 body.dark-mode .hero .info h2 {
     color: #ffffff;
 }
-
 body.dark-mode .hero .info .job-title {
     color: #bb86fc;
 }
-
 body.dark-mode .hero .info .description {
     color: #cfcfcf;
 }
-
 body.dark-mode .hero .btn {
     background: #bb86fc;
 }
-
 body.dark-mode .hero .btn:hover {
     background: #9c6dfc;
 }
@@ -771,15 +818,12 @@ body.dark-mode .hero .btn:hover {
 body.dark-mode .skills-section {
     background-color: #1f1f1f;
 }
-
 body.dark-mode .skills-section h2 {
     color: #e0e0e0;
 }
-
 body.dark-mode .skill-card {
     background-color: #f1f1f1;
 }
-
 body.dark-mode .skill-card span {
     color: #1f1f1f;
 }
@@ -787,11 +831,9 @@ body.dark-mode .skill-card span {
 body.dark-mode .projetos-section {
     background-color: #1f1f1f;
 }
-
 body.dark-mode .projetos-section h2 {
     color: #ffffff;
 }
-
 body.dark-mode .projeto-overlay {
     background: rgba(187, 134, 252, 0.8);
 }
@@ -799,16 +841,13 @@ body.dark-mode .projeto-overlay {
 body.dark-mode .modal {
     background: rgba(0, 0, 0, 0.8);
 }
-
 body.dark-mode .modal p {
     color: #ffffffcc;
 }
-
 body.dark-mode .modal-content {
     background-color: #2c2c2c;
     color: #e0e0e0;
 }
-
 body.dark-mode .modal-info ul li {
     background: #3a3a3a;
 }
@@ -824,15 +863,12 @@ body.dark-mode .form-group label {
 body.dark-mode .contato-section {
     background-color: #1f1f1f;
 }
-
 body.dark-mode .contato-section h2 {
     color: #ffffff;
 }
-
 body.dark-mode .contato-section label {
     color: #ffffff;
 }
-
 body.dark-mode .form-group input,
 body.dark-mode .form-group textarea {
     background-color: #3a3a3a;
@@ -849,47 +885,23 @@ body.dark-mode #dark-mode-toggle i {
     color: #ffa500;
 }
 
-.nav-menu {
-    display: flex;
-    gap: 20px;
-    position: static;
-    background: none;
-    box-shadow: none;
-    padding: 0;
-    flex-direction: row;
+body.dark-mode #html-text {
+    color: #ffffff;
 }
 
-.nav-menu.active {
-    display: flex;
-}
-
-.hamburger-menu {
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-size: 24px;
-    display: none;
-}
-
-.hamburger-menu i {
-    color: #252222;
-}
-
-/* Responsividade para telas menores */
+/* -------------------------- */
+/* Media Queries              */
+/* -------------------------- */
 @media (max-width: 768px) {
     .skill-card {
         width: 90%;
     }
-}
 
-@media (max-width: 768px) {
     .projetos-grid {
         grid-template-columns: 1fr;
+        gap: 20px;
     }
-}
 
-/* Responsividade para o Modal */
-@media (max-width: 768px) {
     .modal-content {
         width: 95%;
     }
@@ -913,6 +925,7 @@ body.dark-mode #dark-mode-toggle i {
     .hero {
         flex-direction: column;
         text-align: center;
+        padding-top: 30px; 
     }
 
     .hero-content {
@@ -924,7 +937,6 @@ body.dark-mode #dark-mode-toggle i {
         flex-direction: row;
         gap: 15px;
     }
-
     .social-icons a {
         font-size: 20px;
     }
@@ -977,7 +989,15 @@ body.dark-mode #dark-mode-toggle i {
         display: block;
     }
 
-    .rotating-icons{
+    .rotating-icons {
         display: none;
+    }
+
+    header {
+        padding: 10px 0;
+    }
+
+    .skills-section, .projetos-section, .contato-section {
+        padding: 30px 0; 
     }
 }
