@@ -418,7 +418,7 @@ const projetosDados = {
             'assets/ecofoto2.png'
         ],
         descricao: 'Ecofoto é um projeto de extensão universitária sobre fotografia contemporânea, realizado pela Escola de Comunicação da UFRJ. Faço parte do time de tecnologia, atuando como desenvolvedor fullstack no site. Iniciei no projeto resolvendo bugs na versão desktop, implementei uma galeria de fotos, desenvolvi a versão responsiva para mobile e, atualmente, trabalho junto à equipe para transformá-lo em um sistema completo.',
-        tecnologias: ['React.js', 'Node.js', 'Scss'],
+        tecnologias: ['React.js', 'Node.js', 'SCSS', 'Sequelize', 'SQLite'],
         site: 'https://www.ecofoto.eco.ufrj.br/',
         repositorio: 'https://github.com/caiog19/'
     },
@@ -449,10 +449,32 @@ const projetosDados = {
             'assets/deiamandalas.png',
             'assets/deiamandalas.png'
         ],
-        descricao: 'DeiaMandalas é uma plataforma em construção focada em criar mandalas personalizadas utilizando Vue.js e Node.js.',
+        descricao: 'DeiaMandalas é um projeto em desenvolvimento, está sendo criado para se tornar uma loja especializada em venda de mandalas e produtos relacionados.',
         tecnologias: ['Vue.js', 'Node.js'],
         site: '#', 
         repositorio: 'https://github.com/caiog19/deiamandalas'
+    },
+    'DevConnected(Em Construção)': {
+        imagens: [
+            'assets/dev.png',
+            'assets/dev1.png',
+            'assets/dev2.png'
+        ],
+        descricao: 'DevConnected é uma plataforma em construção inspirada no StackOverflow, em que usuários podem criar posts, comentar e se ajudar em relação as últimas tecnologias do mercado de desenvolvimento de software.',
+        tecnologias: ['Next.js', 'Tailwind', 'Nest.js', 'PostgreSQL', 'Prisma'],
+        site: 'https://dev-connected.vercel.app/', 
+        repositorio: 'https://github.com/caiog19/DevConnected'
+    },
+    'Meu Portfólio': {
+        imagens: [
+            'assets/port.png',
+            'assets/port1.png',
+            'assets/port2.png'
+        ],
+        descricao: 'A ideia do meu portfólio é ser um projeto simples, utilizando apenas HTML, CSS e JavaScript para poder expor o meu trabalho ao longo do tempo.',
+        tecnologias: ['HTML', 'CSS', "JavaScript"],
+        site: 'https://caiog19.github.io/portfolio/', 
+        repositorio: 'https://github.com/caiog19/portfolio'
     }
 };
 
