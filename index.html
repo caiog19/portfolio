@@ -13,26 +13,30 @@
 </head>
 
 <body>
-    <!-- Cabeçalho -->
-    <header>
-        <div class="container">
-            <h1 class="logo">Caio Gullo</h1>
-            <button class="hamburger-menu" aria-label="Abrir Menu">
-                <i class="fas fa-bars"></i>
-            </button>
-            <nav class="nav-menu">
-                <ul>
-                    <li><a href="#" id="nav-home" class="active">Início</a></li>
-                    <li><a href="#" id="nav-skills">Habilidades</a></li>
-                    <li><a href="#projetos" id="nav-projetos">Projetos</a></li>
-                    <li><a href="#contact" id="nav-contact">Contato</a></li>
-                    <li><button id="language-toggle">EN</button></li>
-                    <li><button id="dark-mode-toggle" aria-label="Alternar Modo Escuro">
-                        <i class="fas fa-moon"></i></button></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+<!-- Cabeçalho -->
+<header>
+    <div class="container">
+        <h1 class="logo">Caio Gullo</h1>
+        <button class="hamburger-menu" aria-label="Abrir Menu">
+            <i class="fas fa-bars"></i>
+        </button>
+        <nav class="nav-menu">
+            <ul>
+                <li><a href="#" id="nav-home" class="active">Início</a></li>
+                <li><a href="#" id="nav-skills">Habilidades</a></li>
+                <li><a href="#projetos" id="nav-projetos">Projetos</a></li>
+                <li><a href="#contact" id="nav-contact">Contato</a></li>
+                <li><button id="language-toggle">EN</button></li>
+                <li><button id="dark-mode-toggle" aria-label="Alternar Modo Escuro">
+                    <i class="fas fa-moon"></i></button></li>
+            </ul>
+        </nav>
+        <!-- Overlay para fechar o menu ao clicar fora -->
+
+    </div>
+</header>
+
+
     
 
     <!-- Seção Hero -->
@@ -45,6 +49,11 @@
                 <img src="icons/nodejs.svg" alt="Node.js">
                 <img src="icons/html5.svg" alt="HTML5">
                 <img src="icons/css3.svg" alt="CSS3">
+                <img src="icons/nest.svg" alt="CSS3">
+                <img src="icons/next.svg" alt="CSS3">
+                <img src="icons/scss.svg" alt="CSS3">
+                <img src="icons/sequelize.svg" alt="CSS3">
+                <img src="icons/tailwind.svg" alt="CSS3">
             </div>
             <!-- Ícones Sociais -->
             <div class="social-icons">
@@ -57,10 +66,10 @@
             <!-- Informações -->
             <div class="info">
                 <h2 id="greeting">Olá, eu sou Caio</h2>
-                <p class="job-title" id="job-title">Desenvolvedor Frontend</p>
+                <p class="job-title" id="job-title">Desenvolvedor FullStack</p>
                 <p class="description" id="description"> Tenho experiência em desenvolvimento web, produzindo trabalho
                     de qualidade com as tecnologias mais recentes do mercado.</p>
-                    <a href="assets/CaioGulloInacio.pdf" class="btn" data-i18n="hero.downloadCV" id="download-cv" target="_blank" rel="noopener noreferrer" aria-label="Baixar Currículo">
+                    <a href="assets/CaioGullo.pdf" class="btn" data-i18n="hero.downloadCV" id="download-cv" target="_blank" rel="noopener noreferrer" aria-label="Baixar Currículo">
                         <i class="fas fa-download"></i> <span data-i18n="hero.downloadCV">Baixar Currículo</span>
                     </a>
                     
@@ -102,6 +111,26 @@
                 <div class="skill-card">
                     <img src="icons/css3.svg" alt="CSS3">
                     <span>CSS3</span>
+                </div>
+                <div class="skill-card">
+                    <img src="icons/nest.svg" alt="CSS3">
+                    <span>Nest.js</span>
+                </div>
+                <div class="skill-card">
+                    <img src="icons/next.svg" alt="CSS3">
+                    <span>Next.js</span>
+                </div>
+                <div class="skill-card">
+                    <img src="icons/SCSS.svg" alt="CSS3">
+                    <span>SCSS</span>
+                </div>
+                <div class="skill-card">
+                    <img src="icons/sequelize.svg" alt="CSS3">
+                    <span>Sequelize</span>
+                </div>
+                <div class="skill-card">
+                    <img src="icons/tailwind.svg" alt="CSS3">
+                    <span>Tailwind</span>
                 </div>
             </div>
         </div>
@@ -224,14 +253,6 @@
         </form>
     </div>
 </section>
-
-
-    <!-- Rodapé -->
-    <footer>
-        <div class="container">
-            <p id="footer-rights">&copy; 2024 Caio - Todos os Direitos Reservados</p>
-        </div>
-    </footer>
 
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 

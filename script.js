@@ -11,8 +11,8 @@ const elementsToTranslate = {
         'en': 'Hello, I\'m Caio'
     },
     'job-title': {
-        'pt-BR': 'Desenvolvedor Frontend',
-        'en': 'Frontend Developer'
+        'pt-BR': 'Desenvolvedor FullStack',
+        'en': 'FullStack Developer'
     },
     'description': {
         'pt-BR': 'Tenho experiência em desenvolvimento web, produzindo trabalho de qualidade com as tecnologias mais recentes do mercado.',
@@ -96,7 +96,6 @@ function updateLanguage() {
     for (const [id, texts] of Object.entries(elementsToTranslate)) {
         const element = document.getElementById(id);
         if (element) {
-            // Tratamento especial para o botão do formulário
             if (id === 'send-button' && element.tagName === 'BUTTON') {
                 element.textContent = texts[currentLanguage];
             } else {
@@ -105,7 +104,6 @@ function updateLanguage() {
         }
     }
 
-    // Atualizar texto de mensagens de status do formulário
     const formStatus = document.getElementById('form-status');
     if (formStatus && formStatus.textContent.includes(elementsToTranslate['form-status-success']['pt-BR'])) {
         formStatus.textContent = elementsToTranslate['form-status-success'][currentLanguage];
@@ -113,14 +111,12 @@ function updateLanguage() {
         formStatus.textContent = elementsToTranslate['form-status-error'][currentLanguage];
     }
 
-    // Atualizar texto do rodapé
     const footerText = document.getElementById('footer-rights');
     if (footerText) {
         footerText.innerHTML = `&copy; 2024 Caio - ${elementsToTranslate['footer-rights'][currentLanguage]}`;
     }
 }
 
-// Função para alternar o idioma e atualizar os textos
 function toggleLanguage() {
     currentLanguage = currentLanguage === 'pt-BR' ? 'en' : 'pt-BR';
     updateLanguage();
@@ -128,7 +124,6 @@ function toggleLanguage() {
     localStorage.setItem('language', currentLanguage);
 }
 
-// Adicionar evento de clique ao botão de alternância de idioma
 languageToggle.addEventListener('click', toggleLanguage);
 
 // =========================
@@ -148,10 +143,7 @@ const rotatingIcons = document.querySelector('.rotating-icons');
 const skillCards = document.querySelectorAll('.skill-card');
 const projetoCards = document.querySelectorAll('.projeto-card');
 
-// Variável para rastrear a seção atual
-let currentSection = 'home'; // Valor inicial é 'home'
-
-// Função para definir o item ativo no menu de navegação
+let currentSection = 'home'; 
 function setActiveNav(linkId) {
     const navLinks = document.querySelectorAll('.nav-menu ul li a');
     
@@ -169,147 +161,118 @@ function showSkillsSection() {
     setActiveNav('nav-skills');
     
     if (currentSection === 'home') {
-        // Aplicar animação e atraso ao sair da seção "Início"
         rotatingIcons.classList.add('align-icons');
 
         setTimeout(() => {
-            // Esconder a seção Hero
             heroSection.style.display = 'none';
 
-            // Exibir a seção Habilidades
             skillsSection.style.display = 'block';
 
-            // Esconder as seções Projetos e Contato
             projetosSection.style.display = 'none';
             contactSection.style.display = 'none';
 
-            // Animar os cards das habilidades
             skillCards.forEach((card, index) => {
                 setTimeout(() => {
                     card.classList.add('show');
-                }, index * 200); // Delay entre os cards
+                }, index * 200); 
             });
 
-            // Atualizar a seção atual
+            
             currentSection = 'skills';
 
-            // Remover a animação dos ícones
+            
             rotatingIcons.classList.remove('align-icons');
-        }, 1000); // Duração da animação dos ícones
+        }, 1000); 
     } else {
-        // Navegação sem atraso
+        
         heroSection.style.display = 'none';
         skillsSection.style.display = 'block';
         projetosSection.style.display = 'none';
         contactSection.style.display = 'none';
 
-        // Animar os cards das habilidades
+        
         skillCards.forEach((card, index) => {
             setTimeout(() => {
                 card.classList.add('show');
-            }, index * 200); // Delay entre os cards
+            }, index * 200); 
         });
 
-        // Atualizar a seção atual
         currentSection = 'skills';
     }
 }
 
-// Função para exibir a seção Projetos
 function showProjetosSection() {
     setActiveNav('nav-projetos');
     
     if (currentSection === 'home') {
-        // Aplicar animação e atraso ao sair da seção "Início"
         rotatingIcons.classList.add('align-icons');
 
         setTimeout(() => {
-            // Esconder a seção Hero
             heroSection.style.display = 'none';
 
-            // Exibir a seção Projetos
             projetosSection.style.display = 'block';
 
-            // Esconder as seções Habilidades e Contato
             skillsSection.style.display = 'none';
             contactSection.style.display = 'none';
 
-            // Animar os cards dos projetos
             projetoCards.forEach((card, index) => {
                 setTimeout(() => {
                     card.classList.add('show');
-                }, index * 200); // Delay entre os cards
+                }, index * 200); 
             });
 
-            // Atualizar a seção atual
             currentSection = 'projetos';
 
-            // Remover a animação dos ícones
             rotatingIcons.classList.remove('align-icons');
-        }, 1000); // Duração da animação dos ícones
+        }, 1000); 
     } else {
-        // Navegação sem atraso
         heroSection.style.display = 'none';
         projetosSection.style.display = 'block';
         skillsSection.style.display = 'none';
         contactSection.style.display = 'none';
 
-        // Animar os cards dos projetos
         projetoCards.forEach((card, index) => {
             setTimeout(() => {
                 card.classList.add('show');
-            }, index * 200); // Delay entre os cards
+            }, index * 200); 
         });
 
-        // Atualizar a seção atual
         currentSection = 'projetos';
     }
 }
 
-// Função para exibir a seção Contato
 function showContactSection() {
     setActiveNav('nav-contact');
     
     if (currentSection === 'home') {
-        // Aplicar animação e atraso ao sair da seção "Início"
         rotatingIcons.classList.add('align-icons');
 
         setTimeout(() => {
-            // Esconder a seção Hero
             heroSection.style.display = 'none';
 
-            // Exibir a seção Contato
             contactSection.style.display = 'block';
 
-            // Esconder as seções Habilidades e Projetos
             skillsSection.style.display = 'none';
             projetosSection.style.display = 'none';
 
-            // Atualizar a seção atual
             currentSection = 'contact';
 
-            // Remover a animação dos ícones
             rotatingIcons.classList.remove('align-icons');
-        }, 1000); // Duração da animação dos ícones
+        }, 1000); 
     } else {
-        // Navegação sem atraso
         heroSection.style.display = 'none';
         contactSection.style.display = 'block';
         skillsSection.style.display = 'none';
         projetosSection.style.display = 'none';
 
-        // Atualizar a seção atual
         currentSection = 'contact';
     }
 }
 
-// Função para exibir a seção Hero
 function showHeroSection() {
     setActiveNav('nav-home');
     
-    // Verificar se estamos saindo da seção "Início"
     if (currentSection === 'home') {
-        // Já estamos na seção "Início", não fazer nada
         return;
     }
 
@@ -317,52 +280,43 @@ function showHeroSection() {
     skillsSection.style.display = 'none';
     projetosSection.style.display = 'none';
     contactSection.style.display = 'none';
+    heroSection.style.display = 'flex'; 
 
-    // Mostrar a seção Hero
-    heroSection.style.display = 'flex'; // Use 'flex' em vez de 'block'
-
-    // Remover a classe de alinhamento dos ícones para reiniciar a animação
     rotatingIcons.classList.remove('align-icons');
 
-    // Redefinir transformações e opacidade dos ícones rotativos
     rotatingIcons.style.transform = '';
     rotatingIcons.style.opacity = '';
 
-    // Reiniciar a animação dos ícones rotativos
-    void rotatingIcons.offsetWidth; // Forçar reflow
+    void rotatingIcons.offsetWidth; 
 
-    // Remover a classe 'show' dos skill cards
     skillCards.forEach((card) => {
         card.classList.remove('show');
     });
 
-    // Remover a classe 'show' dos projeto cards
     projetoCards.forEach((card) => {
         card.classList.remove('show');
     });
 
-    // Atualizar a seção atual
     currentSection = 'home';
 }
 
-// Adicionar evento de clique aos links de navegação
 navSkills.addEventListener('click', (e) => {
-    e.preventDefault(); // Prevenir comportamento padrão do link
+    e.preventDefault(); 
     showSkillsSection();
 });
 
 navProjetos.addEventListener('click', (e) => {
-    e.preventDefault(); // Prevenir comportamento padrão do link
+    e.preventDefault(); 
     showProjetosSection();
 });
 
 navHome.addEventListener('click', (e) => {
-    e.preventDefault(); // Prevenir comportamento padrão do link
+    e.preventDefault(); 
     showHeroSection();
 });
 
 navContact.addEventListener('click', (e) => {
-    e.preventDefault(); // Prevenir comportamento padrão do link
+    e.preventDefault(); 
     showContactSection();
 });
 
@@ -370,12 +324,10 @@ navContact.addEventListener('click', (e) => {
 // Configuração do EmailJS
 // =========================
 
-// Inicializar o EmailJS com seu User ID
 (function() {
-    emailjs.init("K2tkb-9FAioyrKLsx"); // Substitua com o seu User ID do EmailJS
+    emailjs.init("K2tkb-9FAioyrKLsx"); // 
 })();
 
-// Selecionar o formulário e o elemento de status
 const contactForm = document.getElementById('contact-form');
 const formStatus = document.getElementById('form-status');
 
@@ -383,7 +335,6 @@ const formStatus = document.getElementById('form-status');
 contactForm.addEventListener('submit', function(event) {
     event.preventDefault(); // Prevenir comportamento padrão
 
-    // Coletar os dados do formulário
     const formData = {
         name: document.getElementById('name').value,
         email: document.getElementById('email').value,
@@ -391,7 +342,6 @@ contactForm.addEventListener('submit', function(event) {
         message: document.getElementById('message').value
     };
 
-    // Enviar o formulário usando EmailJS
     emailjs.send('service_vgb1h7i', 'template_agci0zr', formData)
         .then(function(response) {
             console.log('SUCCESS!', response.status, response.text);
@@ -497,11 +447,9 @@ function abrirModal(projetoNome) {
     const projeto = projetosDados[projetoNome];
     if (!projeto) return;
 
-    // Atualizar o título e descrição
     modalTitulo.textContent = projetoNome;
     modalDescricao.textContent = projeto.descricao;
 
-    // Atualizar a lista de tecnologias
     modalTecnologias.innerHTML = '';
     projeto.tecnologias.forEach(tech => {
         const li = document.createElement('li');
@@ -509,11 +457,9 @@ function abrirModal(projetoNome) {
         modalTecnologias.appendChild(li);
     });
 
-    // Atualizar os links dos botões
     modalAcessarSite.href = projeto.site;
     modalAcessarRepo.href = projeto.repositorio;
 
-    // Atualizar o carrossel de imagens
     carousel.innerHTML = '';
     projeto.imagens.forEach(imgSrc => {
         const img = document.createElement('img');
@@ -556,7 +502,6 @@ nextButton.addEventListener('click', () => {
     atualizarCarrossel();
 });
 
-// Evento de clique no botão de fechar
 closeButton.addEventListener('click', fecharModal);
 
 // Fechar a modal ao clicar fora do conteúdo da modal
@@ -611,7 +556,6 @@ function loadDarkModePreference() {
     }
 }
 
-// Adicionar evento de clique ao botão de Dark Mode
 darkModeToggle.addEventListener('click', toggleDarkMode);
 
 // =========================
@@ -624,11 +568,7 @@ document.addEventListener('DOMContentLoaded', () => {
         languageToggle.textContent = 'PT';
     }
     updateLanguage();
-
-    // Inicializar a seção ativa
     showHeroSection();
-
-    // Carregar a preferência do Dark Mode
     loadDarkModePreference();
 });
 
@@ -639,15 +579,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const hamburgerMenu = document.querySelector('.hamburger-menu');
     const navMenu = document.querySelector('.nav-menu');
 
-    // Alternar visibilidade do menu
     hamburgerMenu.addEventListener('click', () => {
         navMenu.classList.toggle('active');
     });
 
-    // Fechar menu ao clicar em qualquer item
     document.querySelectorAll('.nav-menu a').forEach(item => {
         item.addEventListener('click', () => {
             navMenu.classList.remove('active');
         });
     });
 });
+
