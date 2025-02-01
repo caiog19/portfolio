@@ -1,592 +1,240 @@
-// =========================
-// Funções de Alternância de Idioma
-// =========================
+window.addEventListener('scroll', function() {
+  const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+  const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  const scrollPercent = (scrollTop / docHeight) * 100;
+  const timelineFill = document.getElementById('timeline-fill');
+  if (timelineFill) {
+    timelineFill.style.height = scrollPercent + '%';
+  }
+  const backToTop = document.getElementById('back-to-top');
+  if (backToTop) {
+    backToTop.style.display = scrollTop > 100 ? 'block' : 'none';
+  }
+});
 
-// Seleção de elementos de idioma
+document.getElementById('back-to-top')?.addEventListener('click', function() {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
 const languageToggle = document.getElementById('language-toggle');
-const elementsToTranslate = {
-    // Seção Hero
-    'greeting': {
-        'pt-BR': 'Olá, eu sou Caio',
-        'en': 'Hello, I\'m Caio'
-    },
-    'job-title': {
-        'pt-BR': 'Desenvolvedor FullStack',
-        'en': 'FullStack Developer'
-    },
-    'description': {
-        'pt-BR': 'Tenho experiência em desenvolvimento web, produzindo trabalho de qualidade com as tecnologias mais recentes do mercado.',
-        'en': 'I have experience in web development, producing quality work with the latest technologies on the market.'
-    },
-    'download-cv': {
-        'pt-BR': 'Baixar Currículo',
-        'en': 'Download CV'
-    },
-    // Navegação
-    'nav-home': {
-        'pt-BR': 'Início',
-        'en': 'Home'
-    },
-    'nav-skills': {
-        'pt-BR': 'Habilidades',
-        'en': 'Skills'
-    },
-    'nav-projetos': {
-        'pt-BR': 'Projetos',
-        'en': 'Projects'
-    },
-    'nav-contact': {
-        'pt-BR': 'Contato',
-        'en': 'Contact'
-    },
-    // Footer
-    'footer-rights': {
-        'pt-BR': 'Todos os Direitos Reservados',
-        'en': 'All Rights Reserved'
-    },
-    // Seção Habilidades
-    'skills-section-title': {
-        'pt-BR': 'Habilidades',
-        'en': 'Skills'
-    },
-    // Seção Projetos
-    'projetos-section-title': {
-        'pt-BR': 'Projetos',
-        'en': 'Projects'
-    },
-    // Seção Contato
-    'contact-section-title': {
-        'pt-BR': 'Contato',
-        'en': 'Contact'
-    },
-    'label-name': {
-        'pt-BR': 'Nome',
-        'en': 'Name'
-    },
-    'label-email': {
-        'pt-BR': 'E-mail',
-        'en': 'Email'
-    },
-    'label-subject': {
-        'pt-BR': 'Assunto',
-        'en': 'Subject'
-    },
-    'label-message': {
-        'pt-BR': 'Mensagem',
-        'en': 'Message'
-    },
-    'send-button': {
-        'pt-BR': 'Enviar',
-        'en': 'Send'
-    },
-    'form-status-success': {
-        'pt-BR': 'Mensagem enviada com sucesso!',
-        'en': 'Message sent successfully!'
-    },
-    'form-status-error': {
-        'pt-BR': 'Ocorreu um erro. Por favor, tente novamente.',
-        'en': 'An error occurred. Please try again.'
-    }
+
+const textsToTranslate = {
+  'hello-text': { 'pt-BR': 'Olá', en: 'Hello' },
+  'i-am-text': { 'pt-BR': 'Eu sou', en: "I’m" },
+  'name-text': { 'pt-BR': 'Caio', en: 'Caio' },
+  'role-text': { 'pt-BR': 'Desenvolvedor FullStack', en: 'Software Developer' },
+  'btn-project-text': { 'pt-BR': 'Tem um projeto?', en: 'Got a project?' },
+  'btn-resume-text': { 'pt-BR': 'Meu currículo', en: 'My resume' },
+  'about-title': { 'pt-BR': 'Sobre mim', en: 'About me' },
+  'stat-projects-text': { 'pt-BR': 'Projetos Concluídos', en: 'Completed Projects' },
+  'about-description': { 
+  'pt-BR': 'Logo após ingressar na UFRJ, encontrei na Empresa Júnior EJCM um ambiente inspirador para iniciar minha trajetória como desenvolvedor front-end. Foi nesse espaço que aprendi a programar e comecei a desenvolver meus primeiros websites, despertando minha paixão pelo desenvolvimento e pela inovação digital. Posteriormente, migrei de curso para Ciência da Computação, reafirmando meu compromisso com o universo da tecnologia. Durante minha jornada acadêmica, tive a oportunidade de integrar um projeto de extensão no time de tecnologia, experiência que ampliou meus conhecimentos e fortaleceu minha prática profissional, motivando-me a me tornar um desenvolvedor fullstack. Além disso, desenvolvi projetos pessoais relevantes que ilustram minha evolução e criatividade – trabalhos que você poderá conferir nas próximas seções.',
+  en: 'Shortly after enrolling at UFRJ, I joined the Junior Enterprise EJCM at the university, which offered an inspiring environment to kick-start my journey as a front-end developer. It was there that I learned how to program and began developing my first websites, igniting my passion for digital innovation and development. Later, I switched my major to Computer Science, reaffirming my commitment to the technology field. During my academic journey, I had the opportunity to participate in an extension project with the technology team—a valuable experience that broadened my knowledge and strengthened my practical skills, motivating me to become a fullstack developer. Additionally, I developed several personal projects that showcase my growth and creativity, projects that you will have the chance to explore in the upcoming sections.'
+},
+  'stat-clients-text': { 'pt-BR': 'Satisfação de Clientes', en: 'Client Satisfaction' },
+  'stat-years-text': { 'pt-BR': 'Anos de Experiência', en: 'Years of Experience' },
+  'projects-title': { 'pt-BR': 'Projetos', en: 'Projects' },
+  'contact-title': { 'pt-BR': 'Contato', en: 'Contact' },
+  'contact-instructions': { 'pt-BR': 'Se você tem alguma proposta...', en: 'If you have any proposal...' },
+  'project-text': { 'pt-BR': 'Alguns projetos que criei ou participei...', en: 'If you have any proposal...' },
+  'label-name': { 'pt-BR': 'Nome', en: 'Name' },
+  'label-email': { 'pt-BR': 'E-mail', en: 'Email' },
+  'label-subject': { 'pt-BR': 'Assunto', en: 'Subject' },
+  'label-message': { 'pt-BR': 'Mensagem', en: 'Message' },
+  'send-button': { 'pt-BR': 'Envie sua mensagem', en: 'Send your message' },
+  'form-status-success': { 'pt-BR': 'Mensagem enviada com sucesso!', en: 'Message sent successfully!' },
+  'form-status-error': { 'pt-BR': 'Ocorreu um erro...', en: 'An error occurred...' },
+  'footer-text': { 'pt-BR': '© 2025 Caio Gullo. Todos os direitos reservados.', en: '© 2025 Caio Gullo. All rights reserved.' },
+  'placeholder-name': { 'pt-BR': 'Seu nome', en: 'Your name' },
+  'placeholder-email': { 'pt-BR': 'Seu e-mail', en: 'Your email' },
+  'placeholder-subject': { 'pt-BR': 'Assunto', en: 'Subject' },
+  'placeholder-message': { 'pt-BR': 'Sua mensagem', en: 'Your message' }
 };
 
 let currentLanguage = localStorage.getItem('language') || 'pt-BR';
 
-// Função para atualizar os textos de acordo com o idioma selecionado
 function updateLanguage() {
-    for (const [id, texts] of Object.entries(elementsToTranslate)) {
-        const element = document.getElementById(id);
-        if (element) {
-            if (id === 'send-button' && element.tagName === 'BUTTON') {
-                element.textContent = texts[currentLanguage];
-            } else {
-                element.textContent = texts[currentLanguage];
-            }
-        }
+  for (let id in textsToTranslate) {
+    const element = document.getElementById(id);
+    if (element) {
+      element.textContent = textsToTranslate[id][currentLanguage];
     }
+  }
+  const nameField = document.getElementById('name');
+  const emailField = document.getElementById('email');
+  const subjectField = document.getElementById('subject');
+  const messageField = document.getElementById('message');
+  
+  if (nameField) nameField.placeholder = textsToTranslate['placeholder-name'][currentLanguage];
+  if (emailField) emailField.placeholder = textsToTranslate['placeholder-email'][currentLanguage];
+  if (subjectField) subjectField.placeholder = textsToTranslate['placeholder-subject'][currentLanguage];
+  if (messageField) messageField.placeholder = textsToTranslate['placeholder-message'][currentLanguage];
 
-    const formStatus = document.getElementById('form-status');
-    if (formStatus && formStatus.textContent.includes(elementsToTranslate['form-status-success']['pt-BR'])) {
-        formStatus.textContent = elementsToTranslate['form-status-success'][currentLanguage];
-    } else if (formStatus && formStatus.textContent.includes(elementsToTranslate['form-status-error']['pt-BR'])) {
-        formStatus.textContent = elementsToTranslate['form-status-error'][currentLanguage];
-    }
-
-    const footerText = document.getElementById('footer-rights');
-    if (footerText) {
-        footerText.innerHTML = `&copy; 2024 Caio - ${elementsToTranslate['footer-rights'][currentLanguage]}`;
-    }
+  if (languageToggle) {
+    languageToggle.textContent = currentLanguage === 'pt-BR' ? 'EN' : 'PT';
+  }
 }
 
 function toggleLanguage() {
-    currentLanguage = currentLanguage === 'pt-BR' ? 'en' : 'pt-BR';
-    updateLanguage();
-    languageToggle.textContent = currentLanguage === 'pt-BR' ? 'EN' : 'PT';
-    localStorage.setItem('language', currentLanguage);
+  currentLanguage = currentLanguage === 'pt-BR' ? 'en' : 'pt-BR';
+  localStorage.setItem('language', currentLanguage);
+  updateLanguage();
 }
 
-languageToggle.addEventListener('click', toggleLanguage);
+languageToggle?.addEventListener('click', toggleLanguage);
 
-// =========================
-// Funções de Navegação entre Seções
-// =========================
-
-// Seleção de elementos de navegação e seções
-const navHome = document.getElementById('nav-home');
-const navSkills = document.getElementById('nav-skills');
-const navProjetos = document.getElementById('nav-projetos');
-const navContact = document.getElementById('nav-contact');
-const heroSection = document.querySelector('.hero');
-const skillsSection = document.querySelector('.skills-section');
-const projetosSection = document.querySelector('.projetos-section');
-const contactSection = document.querySelector('.contato-section');
-const rotatingIcons = document.querySelector('.rotating-icons');
-const skillCards = document.querySelectorAll('.skill-card');
-const projetoCards = document.querySelectorAll('.projeto-card');
-
-let currentSection = 'home'; 
-function setActiveNav(linkId) {
-    const navLinks = document.querySelectorAll('.nav-menu ul li a');
-    
-    navLinks.forEach(link => {
-        if (link.id === linkId) {
-            link.classList.add('active');
-        } else {
-            link.classList.remove('active');
-        }
-    });
-}
-
-// Função para exibir a seção Habilidades
-function showSkillsSection() {
-    setActiveNav('nav-skills');
-    
-    if (currentSection === 'home') {
-        rotatingIcons.classList.add('align-icons');
-
-        setTimeout(() => {
-            heroSection.style.display = 'none';
-
-            skillsSection.style.display = 'block';
-
-            projetosSection.style.display = 'none';
-            contactSection.style.display = 'none';
-
-            skillCards.forEach((card, index) => {
-                setTimeout(() => {
-                    card.classList.add('show');
-                }, index * 200); 
-            });
-
-            
-            currentSection = 'skills';
-
-            
-            rotatingIcons.classList.remove('align-icons');
-        }, 1000); 
-    } else {
-        
-        heroSection.style.display = 'none';
-        skillsSection.style.display = 'block';
-        projetosSection.style.display = 'none';
-        contactSection.style.display = 'none';
-
-        
-        skillCards.forEach((card, index) => {
-            setTimeout(() => {
-                card.classList.add('show');
-            }, index * 200); 
-        });
-
-        currentSection = 'skills';
-    }
-}
-
-function showProjetosSection() {
-    setActiveNav('nav-projetos');
-    
-    if (currentSection === 'home') {
-        rotatingIcons.classList.add('align-icons');
-
-        setTimeout(() => {
-            heroSection.style.display = 'none';
-
-            projetosSection.style.display = 'block';
-
-            skillsSection.style.display = 'none';
-            contactSection.style.display = 'none';
-
-            projetoCards.forEach((card, index) => {
-                setTimeout(() => {
-                    card.classList.add('show');
-                }, index * 200); 
-            });
-
-            currentSection = 'projetos';
-
-            rotatingIcons.classList.remove('align-icons');
-        }, 1000); 
-    } else {
-        heroSection.style.display = 'none';
-        projetosSection.style.display = 'block';
-        skillsSection.style.display = 'none';
-        contactSection.style.display = 'none';
-
-        projetoCards.forEach((card, index) => {
-            setTimeout(() => {
-                card.classList.add('show');
-            }, index * 200); 
-        });
-
-        currentSection = 'projetos';
-    }
-}
-
-function showContactSection() {
-    setActiveNav('nav-contact');
-    
-    if (currentSection === 'home') {
-        rotatingIcons.classList.add('align-icons');
-
-        setTimeout(() => {
-            heroSection.style.display = 'none';
-
-            contactSection.style.display = 'block';
-
-            skillsSection.style.display = 'none';
-            projetosSection.style.display = 'none';
-
-            currentSection = 'contact';
-
-            rotatingIcons.classList.remove('align-icons');
-        }, 1000); 
-    } else {
-        heroSection.style.display = 'none';
-        contactSection.style.display = 'block';
-        skillsSection.style.display = 'none';
-        projetosSection.style.display = 'none';
-
-        currentSection = 'contact';
-    }
-}
-
-function showHeroSection() {
-    setActiveNav('nav-home');
-    
-    if (currentSection === 'home') {
-        return;
-    }
-
-    // Navegação sem atraso
-    skillsSection.style.display = 'none';
-    projetosSection.style.display = 'none';
-    contactSection.style.display = 'none';
-    heroSection.style.display = 'flex'; 
-
-    rotatingIcons.classList.remove('align-icons');
-
-    rotatingIcons.style.transform = '';
-    rotatingIcons.style.opacity = '';
-
-    void rotatingIcons.offsetWidth; 
-
-    skillCards.forEach((card) => {
-        card.classList.remove('show');
-    });
-
-    projetoCards.forEach((card) => {
-        card.classList.remove('show');
-    });
-
-    currentSection = 'home';
-}
-
-navSkills.addEventListener('click', (e) => {
-    e.preventDefault(); 
-    showSkillsSection();
+document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+  anchor.addEventListener('click', function(e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) target.scrollIntoView({ behavior: 'smooth' });
+  });
 });
 
-navProjetos.addEventListener('click', (e) => {
-    e.preventDefault(); 
-    showProjetosSection();
+const hamburgerMenu = document.querySelector('.hamburger-menu');
+const navMenu = document.querySelector('.nav-menu');
+hamburgerMenu?.addEventListener('click', () => {
+  navMenu?.classList.toggle('active');
 });
-
-navHome.addEventListener('click', (e) => {
-    e.preventDefault(); 
-    showHeroSection();
+document.querySelectorAll('.nav-menu a').forEach((item) => {
+  item.addEventListener('click', () => {
+    navMenu?.classList.remove('active');
+  });
 });
-
-navContact.addEventListener('click', (e) => {
-    e.preventDefault(); 
-    showContactSection();
-});
-
-// =========================
-// Configuração do EmailJS
-// =========================
 
 (function() {
-    emailjs.init("K2tkb-9FAioyrKLsx"); // 
+  if (window.emailjs) {
+    emailjs.init("K2tkb-9FAioyrKLsx");
+  }
 })();
 
 const contactForm = document.getElementById('contact-form');
 const formStatus = document.getElementById('form-status');
 
-// Função para lidar com o envio do formulário
-contactForm.addEventListener('submit', function(event) {
-    event.preventDefault(); // Prevenir comportamento padrão
-
-    const formData = {
-        name: document.getElementById('name').value,
-        email: document.getElementById('email').value,
-        subject: document.getElementById('subject').value,
-        message: document.getElementById('message').value
-    };
-
+contactForm?.addEventListener('submit', function(e) {
+  e.preventDefault();
+  const formData = {
+    name: document.getElementById('name').value,
+    email: document.getElementById('email').value,
+    subject: document.getElementById('subject').value,
+    message: document.getElementById('message').value,
+  };
+  if (window.emailjs) {
     emailjs.send('service_vgb1h7i', 'template_agci0zr', formData)
-        .then(function(response) {
-            console.log('SUCCESS!', response.status, response.text);
-            formStatus.style.color = 'green';
-            formStatus.textContent = elementsToTranslate['form-status-success'][currentLanguage];
-            contactForm.reset(); // Resetar o formulário
-        }, function(error) {
-            console.log('FAILED...', error);
-            formStatus.style.color = 'red';
-            formStatus.textContent = elementsToTranslate['form-status-error'][currentLanguage];
-        });
+      .then(function() {
+        if (formStatus) {
+          formStatus.style.color = 'green';
+          formStatus.textContent = textsToTranslate['form-status-success'][currentLanguage];
+        }
+        contactForm.reset();
+      }, function() {
+        if (formStatus) {
+          formStatus.style.color = 'red';
+          formStatus.textContent = textsToTranslate['form-status-error'][currentLanguage];
+        }
+      });
+  }
 });
 
-// =========================
-// Funcionalidade de Modal para Projetos
-// =========================
-
-// Dados dos Projetos
-const projetosDados = {
-    'Ecofoto': {
-        imagens: [
-            'assets/ecofoto.png',
-            'assets/ecofoto1.png',
-            'assets/ecofoto2.png'
-        ],
-        descricao: 'Ecofoto é um projeto de extensão universitária sobre fotografia contemporânea, realizado pela Escola de Comunicação da UFRJ. Faço parte do time de tecnologia, atuando como desenvolvedor fullstack no site. Iniciei no projeto resolvendo bugs na versão desktop, implementei uma galeria de fotos, desenvolvi a versão responsiva para mobile e, atualmente, trabalho junto à equipe para transformá-lo em um sistema completo.',
-        tecnologias: ['React.js', 'Node.js', 'SCSS', 'Sequelize', 'SQLite'],
-        site: 'https://www.ecofoto.eco.ufrj.br/',
-        repositorio: 'https://github.com/caiog19/'
-    },
-    'Dashboard Interativo Disney+': {
-        imagens: [
-            'assets/disney.png',
-            'assets/disney1.png',
-            'assets/disney2.png'
-        ],
-        descricao: 'Um dashboard interativo para Disney+, desenvolvido com Streamlit, proporcionando uma visualização detalhada dos dados da plataforma.',
-        tecnologias: ['Streamlit'],
-        site: 'https://orgdados-disneyplus.streamlit.app/',
-        repositorio: 'https://github.com/caiog19/org_dados'
-    },
-    'Dashboard Interativo Spotify': {
-        imagens: [
-            'assets/spotify.png',
-            'assets/spotify1.png',
-            'assets/spotify2.png'
-        ],
-        descricao: 'Dashboard interativo para Spotify, criado com Streamlit, oferecendo insights sobre padrões de escuta e tendências musicais.',
-        tecnologias: ['Streamlit'],
-        site: 'https://spotifysongs-caiog19.streamlit.app/',
-        repositorio: 'https://github.com/caiog19/spotify_streamlit'
-    },
-    'DeiaMandalas(Em Construção)': {
-        imagens: [
-            'assets/deiamandalas.png',
-            'assets/deiamandalas.png'
-        ],
-        descricao: 'DeiaMandalas é um projeto em desenvolvimento, está sendo criado para se tornar uma loja especializada em venda de mandalas e produtos relacionados.',
-        tecnologias: ['Vue.js', 'Node.js'],
-        site: '#', 
-        repositorio: 'https://github.com/caiog19/deiamandalas'
-    },
-    'DevConnected(Em Construção)': {
-        imagens: [
-            'assets/dev.png',
-            'assets/dev1.png',
-            'assets/dev2.png'
-        ],
-        descricao: 'DevConnected é uma plataforma em construção inspirada no StackOverflow, em que usuários podem criar posts, comentar e se ajudar em relação as últimas tecnologias do mercado de desenvolvimento de software.',
-        tecnologias: ['Next.js', 'Tailwind', 'Nest.js', 'PostgreSQL', 'Prisma'],
-        site: 'https://dev-connected.vercel.app/', 
-        repositorio: 'https://github.com/caiog19/DevConnected'
-    },
-    'Meu Portfólio': {
-        imagens: [
-            'assets/port.png',
-            'assets/port1.png',
-            'assets/port2.png'
-        ],
-        descricao: 'A ideia do meu portfólio é ser um projeto simples, utilizando apenas HTML, CSS e JavaScript para poder expor o meu trabalho ao longo do tempo.',
-        tecnologias: ['HTML', 'CSS', "JavaScript"],
-        site: 'https://caiog19.github.io/portfolio/', 
-        repositorio: 'https://github.com/caiog19/portfolio'
-    }
-};
-
-// Seleção de elementos da modal
-const modal = document.getElementById('projeto-modal');
-const closeButton = document.querySelector('.close-button');
-const modalTitulo = document.getElementById('modal-titulo');
-const modalDescricao = document.getElementById('modal-descricao');
-const modalTecnologias = document.getElementById('modal-tecnologias');
-const modalAcessarSite = document.getElementById('modal-acessar-site');
-const modalAcessarRepo = document.getElementById('modal-acessar-repo');
-const carousel = document.querySelector('.carousel');
-const prevButton = document.querySelector('.prev-button');
-const nextButton = document.querySelector('.next-button');
-
-let currentSlide = 0;
-
-// Função para abrir a modal com os dados do projeto
-function abrirModal(projetoNome) {
-    const projeto = projetosDados[projetoNome];
-    if (!projeto) return;
-
-    modalTitulo.textContent = projetoNome;
-    modalDescricao.textContent = projeto.descricao;
-
-    modalTecnologias.innerHTML = '';
-    projeto.tecnologias.forEach(tech => {
-        const li = document.createElement('li');
-        li.textContent = tech;
-        modalTecnologias.appendChild(li);
-    });
-
-    modalAcessarSite.href = projeto.site;
-    modalAcessarRepo.href = projeto.repositorio;
-
-    carousel.innerHTML = '';
-    projeto.imagens.forEach(imgSrc => {
-        const img = document.createElement('img');
-        img.src = imgSrc;
-        img.alt = projetoNome;
-        carousel.appendChild(img);
-    });
-
-    // Resetar a posição do carrossel
-    currentSlide = 0;
-    atualizarCarrossel();
-
-    // Exibir a modal
-    modal.style.display = 'flex';
-}
-
-// Função para fechar a modal
-function fecharModal() {
-    modal.style.display = 'none';
-}
-
-// Função para atualizar a posição do carrossel
-function atualizarCarrossel() {
-    const totalSlides = carousel.children.length;
-    if (totalSlides === 0) return;
-    if (currentSlide >= totalSlides) currentSlide = 0;
-    if (currentSlide < 0) currentSlide = totalSlides - 1;
-    const offset = -currentSlide * 100;
-    carousel.style.transform = `translateX(${offset}%)`;
-}
-
-// Eventos de clique nos botões de navegação do carrossel
-prevButton.addEventListener('click', () => {
-    currentSlide--;
-    atualizarCarrossel();
-});
-
-nextButton.addEventListener('click', () => {
-    currentSlide++;
-    atualizarCarrossel();
-});
-
-closeButton.addEventListener('click', fecharModal);
-
-// Fechar a modal ao clicar fora do conteúdo da modal
-window.addEventListener('click', (event) => {
-    if (event.target === modal) {
-        fecharModal();
-    }
-});
-
-// Adicionar eventos de clique aos cards de projetos
-projetoCards.forEach(card => {
-    card.addEventListener('click', () => {
-        const projetoNome = card.querySelector('h3').textContent;
-        abrirModal(projetoNome);
-    });
-});
-
-// =========================
-// Funcionalidade de Dark Mode
-// =========================
-// Seleção do botão de Dark Mode
-const darkModeToggle = document.getElementById('dark-mode-toggle');
-
-// Função para atualizar o ícone do Dark Mode baseado no estado
-function updateDarkModeIcon(isDarkMode) {
-    const icon = darkModeToggle.querySelector('i');
-    if (isDarkMode) {
-        icon.classList.remove('fa-moon');
-        icon.classList.add('fa-sun');
-    } else {
-        icon.classList.remove('fa-sun');
-        icon.classList.add('fa-moon');
-    }
-}
-
-// Função para alternar o Dark Mode
-function toggleDarkMode() {
-    const isDarkMode = document.body.classList.toggle('dark-mode');
-    updateDarkModeIcon(isDarkMode);
-    localStorage.setItem('darkMode', isDarkMode ? 'enabled' : 'disabled');
-}
-
-// Função para carregar o estado do Dark Mode ao iniciar a página
-function loadDarkModePreference() {
-    const darkMode = localStorage.getItem('darkMode');
-    if (darkMode === 'enabled') {
-        document.body.classList.add('dark-mode');
-        updateDarkModeIcon(true);
-    } else {
-        document.body.classList.remove('dark-mode');
-        updateDarkModeIcon(false);
-    }
-}
-
-darkModeToggle.addEventListener('click', toggleDarkMode);
-
-// =========================
-// Inicialização da Página
-// =========================
 document.addEventListener('DOMContentLoaded', () => {
-    if (currentLanguage === 'pt-BR') {
-        languageToggle.textContent = 'EN';
+  updateLanguage();
+});
+
+function createBgSymbols() {
+  const container = document.getElementById("bg-symbols");
+  if (!container) return;
+  const symbols = ["</>", "{}", "[]", "<!>", "#", "/* */"];
+  const count = 50;
+  for (let i = 0; i < count; i++) {
+    const span = document.createElement("span");
+    span.className = "bg-symbol";
+    span.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+    span.style.left = Math.random() * 100 + "vw";
+    span.style.top = Math.random() * 100 + "vh";
+    span.style.fontSize = 16 + Math.random() * 20 + "px";
+    span.style.animationDuration = 8 + Math.random() * 5 + "s";
+    container.appendChild(span);
+  }
+}
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", createBgSymbols);
+} else {
+  createBgSymbols();
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+  const carousel = document.querySelector(".project-carousel");
+  const inner = carousel.querySelector(".carousel-inner");
+  const items = carousel.querySelectorAll(".carousel-item");
+  let currentIndex = 0;
+
+  function showSlide(index) {
+    if (index < 0) {
+      currentIndex = items.length - 1;
+    } else if (index >= items.length) {
+      currentIndex = 0;
     } else {
-        languageToggle.textContent = 'PT';
+      currentIndex = index;
     }
-    updateLanguage();
-    showHeroSection();
-    loadDarkModePreference();
+    items.forEach((item, i) => {
+      item.classList.toggle("active", i === currentIndex);
+    });
+    inner.style.transform = `translateX(-${currentIndex * 100}%)`;
+  }
+
+  carousel.querySelector(".carousel-control.prev").addEventListener("click", function() {
+    showSlide(currentIndex - 1);
+  });
+  carousel.querySelector(".carousel-control.next").addEventListener("click", function() {
+    showSlide(currentIndex + 1);
+  });
 });
 
-// =========================
-// Responsividade do Menu Hamburger
-// =========================
-document.addEventListener('DOMContentLoaded', () => {
-    const hamburgerMenu = document.querySelector('.hamburger-menu');
-    const navMenu = document.querySelector('.nav-menu');
-
-    hamburgerMenu.addEventListener('click', () => {
-        navMenu.classList.toggle('active');
-    });
-
-    document.querySelectorAll('.nav-menu a').forEach(item => {
-        item.addEventListener('click', () => {
-            navMenu.classList.remove('active');
-        });
-    });
+document.addEventListener("DOMContentLoaded", function() {
+  const carouselContainer = document.querySelector('.carousel-container');
+  const slides = document.querySelectorAll('.carousel-slide');
+  const totalSlides = slides.length;
+  const visibleSlides = 2; 
+  let currentIndex = 0;
+  const intervalTime = 5000; 
+  
+  function updateCarousel() {
+    const slideWidthPercent = 100 / visibleSlides;
+    carouselContainer.style.transform = 'translateX(-' + (currentIndex * slideWidthPercent) + '%)';
+  }
+  
+  function nextSlide() {
+    if (currentIndex < totalSlides - visibleSlides) {
+      currentIndex++;
+    } else {
+      currentIndex = 0;
+    }
+    updateCarousel();
+  }
+  
+  function prevSlide() {
+    if (currentIndex > 0) {
+      currentIndex--;
+    } else {
+      currentIndex = totalSlides - visibleSlides;
+    }
+    updateCarousel();
+  }
+  
+  let autoSlide = setInterval(nextSlide, intervalTime);
+  
+  document.querySelector('.carousel-control.next').addEventListener('click', function() {
+    clearInterval(autoSlide);
+    nextSlide();
+    autoSlide = setInterval(nextSlide, intervalTime);
+  });
+  
+  document.querySelector('.carousel-control.prev').addEventListener('click', function() {
+    clearInterval(autoSlide);
+    prevSlide();
+    autoSlide = setInterval(nextSlide, intervalTime);
+  });
 });
+
 

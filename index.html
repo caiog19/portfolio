@@ -1,268 +1,214 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfólio - Caio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <!-- Importação do Font Awesome sem hash SRI -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Portfólio - Caio Gullo</title>
+  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="style.css" />
 </head>
-
 <body>
-    <!-- Cabeçalho -->
-    <header>
-        <div class="container">
-            <h1 class="logo">Caio Gullo</h1>
-            <button class="hamburger-menu" aria-label="Abrir Menu">
-                <i class="fas fa-bars"></i>
-            </button>
-            <nav class="nav-menu">
-                <ul>
-                    <li><a href="#" id="nav-home" class="active">Início</a></li>
-                    <li><a href="#" id="nav-skills">Habilidades</a></li>
-                    <li><a href="#projetos" id="nav-projetos">Projetos</a></li>
-                    <li><a href="#contact" id="nav-contact">Contato</a></li>
-                    <li><button id="language-toggle">EN</button></li>
-                    <li><button id="dark-mode-toggle" aria-label="Alternar Modo Escuro">
-                            <i class="fas fa-moon"></i></button></li>
-                </ul>
-            </nav>
-            <!-- Overlay para fechar o menu ao clicar fora -->
+  <div id="bg-symbols"></div>
+  <div id="timeline">
+    <div id="timeline-fill"></div>
+  </div>
+  <button id="back-to-top">Subir</button>
 
-        </div>
-    </header>
-
-
-
-
-    <!-- Seção Hero -->
-    <section class="hero">
-        <div class="container hero-content">
-            <div class="rotating-icons">
-                <img src="icons/javascript.svg" alt="JavaScript">
-                <img src="icons/react.svg" alt="React.js">
-                <img src="icons/vue.svg" alt="Vue.js">
-                <img src="icons/nodejs.svg" alt="Node.js">
-                <img src="icons/html5.svg" alt="HTML5">
-                <img src="icons/css3.svg" alt="CSS3">
-                <img src="icons/nest.svg" alt="Nest.js">
-                <img src="icons/next.svg" alt="Next.js">
-                <img src="icons/scss.svg" alt="SCSS">
-                <img src="icons/sequelize.svg" alt="sequelize">
-                <img src="icons/tailwind.svg" alt="tailwind">
-            </div>
-
-            <!-- Informações -->
-            <div class="info">
-                <h2 id="greeting">Olá, eu sou Caio</h2>
-                <p class="job-title" id="job-title">Desenvolvedor FullStack</p>
-                <p class="description" id="description"> Tenho experiência em desenvolvimento web, produzindo trabalho
-                    de qualidade com as tecnologias mais recentes do mercado.</p>
-                <a href="assets/CaioGullo.pdf" class="btn" data-i18n="hero.downloadCV" id="download-cv" target="_blank"
-                    rel="noopener noreferrer" aria-label="Baixar Currículo">
-                    <i class="fas fa-download"></i> <span data-i18n="hero.downloadCV">Baixar Currículo</span>
-                </a>
-
-            </div>
-
-            <!-- Imagem -->
-            <div class="image">
-                <img src="assets/me.png" alt="Caio">
-            </div>
-        </div>
-    </section>
-
-    <!-- Seção Habilidades -->
-
-    <section class="skills-section" id="skills">
-        <div class="container">
-            <h2 id="skills-section-title">Habilidades</h2>
-            <div class="skills-grid">
-                <div class="skill-card">
-                    <img src="icons/javascript.svg" alt="JavaScript">
-                    <span>JavaScript</span>
-                </div>
-                <div class="skill-card">
-                    <img src="icons/react.svg" alt="React.js">
-                    <span>React.js</span>
-                </div>
-                <div class="skill-card">
-                    <img src="icons/vue.svg" alt="Vue.js">
-                    <span>Vue.js</span>
-                </div>
-                <div class="skill-card">
-                    <img src="icons/nodejs.svg" alt="Node.js">
-                    <span>Node.js</span>
-                </div>
-                <div class="skill-card">
-                    <img src="icons/html5.svg" alt="Node.js">
-                    <span>HTML5</span>
-                </div>
-                <div class="skill-card">
-                    <img src="icons/css3.svg" alt="CSS3">
-                    <span>CSS3</span>
-                </div>
-                <div class="skill-card">
-                    <img src="icons/nest.svg" alt="CSS3">
-                    <span>Nest.js</span>
-                </div>
-                <div class="skill-card">
-                    <img src="icons/next.svg" alt="CSS3">
-                    <span>Next.js</span>
-                </div>
-                <div class="skill-card">
-                    <img src="icons/SCSS.svg" alt="CSS3">
-                    <span>SCSS</span>
-                </div>
-                <div class="skill-card">
-                    <img src="icons/sequelize.svg" alt="CSS3">
-                    <span>Sequelize</span>
-                </div>
-                <div class="skill-card">
-                    <img src="icons/tailwind.svg" alt="CSS3">
-                    <span>Tailwind</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Seção Projetos -->
-    <section class="projetos-section" id="projetos">
-        <div class="container">
-            <h2 id="projetos-section-title">Projetos</h2>
-            <div class="projetos-grid">
-                <!-- Projeto 1 -->
-                <div class="projeto-card">
-                    <img src="assets/ecofoto.png" alt="Projeto 1">
-                    <div class="projeto-overlay">
-                        <h3>Ecofoto</h3>
-                        <p>Tecnologias: React.js, Node.js, SCSS, Sequelize, SQLite</p>
-                    </div>
-                </div>
-                <!-- Projeto 2 -->
-                <div class="projeto-card">
-                    <img src="assets/disney.png" alt="Projeto 2">
-                    <div class="projeto-overlay">
-                        <h3>Dashboard Interativo Disney+</h3>
-                        <p>Tecnologias: Streamlit</p>
-                    </div>
-                </div>
-                <!-- Projeto 3 -->
-                <div class="projeto-card">
-                    <img src="assets/spotify.png" alt="Projeto 3">
-                    <div class="projeto-overlay">
-                        <h3>Dashboard Interativo Spotify</h3>
-                        <p>Tecnologias: Streamlit</p>
-                    </div>
-                </div>
-                <!-- Projeto 4 -->
-                <div class="projeto-card">
-                    <img src="assets/deiamandalas.png" alt="Projeto 4">
-                    <div class="projeto-overlay">
-                        <h3>DeiaMandalas(Em Construção)</h3>
-                        <p>Tecnologias: Vue.js, Node.js</p>
-                    </div>
-                </div>
-                <!-- Projeto 5 -->
-                <div class="projeto-card">
-                    <img src="assets/dev.png" alt="Projeto 4">
-                    <div class="projeto-overlay">
-                        <h3>DevConnected(Em Construção)</h3>
-                        <p>Tecnologias: Next.js, Tailwind, Nest.Js, PostgreSQL, Prisma</p>
-                    </div>
-                </div>
-                <!-- Projeto 6 -->
-                <div class="projeto-card">
-                    <img src="assets/port.png" alt="Projeto 4">
-                    <div class="projeto-overlay">
-                        <h3>Meu Portfólio</h3>
-                        <p>Tecnologias: HTML, CSS, JavaScript</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Modal de Projeto -->
-    <div id="projeto-modal" class="modal">
-        <div class="modal-content">
-            <span class="close-button">&times;</span>
-            <div class="modal-body">
-                <div class="carousel-container">
-                    <div class="carousel">
-                        <!-- Slides serão adicionados dinamicamente via JavaScript -->
-                    </div>
-                    <!-- Controles do Carrossel -->
-                    <button class="prev-button"><i class="fas fa-chevron-left"></i></button>
-                    <button class="next-button"><i class="fas fa-chevron-right"></i></button>
-                </div>
-                <div class="modal-info">
-                    <h2 id="modal-titulo">Título do Projeto</h2>
-                    <p id="modal-descricao">Descrição do projeto.</p>
-                    <ul id="modal-tecnologias">
-                        <!-- Lista de tecnologias será preenchida via JavaScript -->
-                    </ul>
-                    <div class="modal-buttons">
-                        <a href="#" id="modal-acessar-site" class="btn" target="_blank"
-                            rel="noopener noreferrer">Acessar Site</a>
-                        <a href="#" id="modal-acessar-repo" class="btn" target="_blank"
-                            rel="noopener noreferrer">Acessar Repositório</a>
-                    </div>
-                </div>
-            </div>
-        </div>
+  <header>
+    <div class="container header-container">
+      <div class="logo">Caio Gullo</div>
+      <button class="hamburger-menu" aria-label="Abrir Menu"><i class="fas fa-bars"></i></button>
+      <nav class="nav-menu">
+        <ul>
+          <li><a href="#home" id="nav-home" class="active">Início</a></li>
+          <li><a href="#about" id="nav-about">Sobre</a></li>
+          <li><a href="#projects-carousel" id="nav-projects">Projetos</a></li>
+          <li><a href="#contact" id="nav-contact">Contato</a></li>
+          <li><button id="language-toggle">EN</button></li>
+        </ul>
+      </nav>
     </div>
+  </header>
 
-
-    <!-- Seção Contato -->
-    <section class="contato-section" id="contact">
-        <div class="container">
-            <h2 id="contact-section-title">Contato</h2>
-            <form class="contato-form" id="contact-form">
-                <div class="form-group">
-                    <label for="name" id="label-name">Nome</label>
-                    <input type="text" id="name" name="name" placeholder="Seu nome" required>
-                </div>
-                <div class="form-group">
-                    <label for="email" id="label-email">E-mail</label>
-                    <input type="email" id="email" name="email" placeholder="Seu e-mail" required>
-                </div>
-                <div class="form-group">
-                    <label for="subject" id="label-subject">Assunto</label>
-                    <input type="text" id="subject" name="subject" placeholder="Assunto" required>
-                </div>
-                <div class="form-group">
-                    <label for="message" id="label-message">Mensagem</label>
-                    <textarea id="message" name="message" rows="5" placeholder="Sua mensagem" required></textarea>
-                </div>
-
-                <div class="form-group">
-                    <div class="g-recaptcha" data-sitekey="6LdEQIwqAAAAAMuiWq65aUQPXIES1uvSFU-pk07P"></div>
-                </div>
-
-                <button type="submit" class="btn" id="send-button">Enviar</button>
-                <p class="form-status" id="form-status"></p>
-            </form>
+  <section id="home" class="hero">
+    <div class="container hero-container">
+      <div class="hero-text">
+        <h1><span id="hello-text">Hello</span><span class="accent-dot">.</span></h1>
+        <h2><span id="i-am-text">I’m</span> <span class="highlight" id="name-text">Caio</span></h2>
+        <h3 id="role-text">Software Developer</h3>
+        <div class="hero-buttons">
+          <a href="#contact" class="btn primary-btn" id="btn-project">
+            <span id="btn-project-text">Got a project?</span>
+          </a>
+          <a href="assets/CaioGullo.pdf" class="btn secondary-btn" target="_blank" rel="noopener noreferrer">
+            <span id="btn-resume-text">My resume</span>
+          </a>
         </div>
-    </section>
+        <div class="tech-stack" id="tech-stack-bar">
+          <span>JavaScript</span>
+          <span>React.js</span>
+          <span>Node.js</span>
+          <span>Rails</span>
+          <span>Next</span>
+          <span>Nest...</span>
+        </div>
+      </div>
+      <div class="hero-image">
+        <div class="circle-bg"></div>
+        <img src="assets/me_new.jpg" alt="Foto Caio" />
+      </div>
+    </div>
+    <a href="#about" class="scroll-down"><i class="fas fa-chevron-down"></i></a>
+  </section>
 
-    <footer class="social-icons">
-        <a href="https://www.linkedin.com/in/caio-gullo-inacio/" target="_blank" rel="noopener noreferrer"
-            aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-        <a href="https://github.com/caiog19/" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i
-                class="fab fa-github"></i></a>
-    </footer>
+  <section id="about" class="about">
+    <div class="container about-content">
+      <div class="about-text">
+        <h2 id="about-title">Sobre mim</h2>
+        <p id="about-description">Logo após ingressar na UFRJ, encontrei na Empresa Júnior um ambiente inspirador para iniciar minha trajetória como desenvolvedor front-end. Foi nesse espaço que aprendi a programar e comecei a desenvolver meus primeiros websites, despertando minha paixão pelo desenvolvimento e pela inovação digital. Posteriormente, migrei de curso para Ciência da Computação, reafirmando meu compromisso com o universo da tecnologia. Durante minha jornada acadêmica, tive a oportunidade de integrar um projeto de extensão no time de tecnologia, experiência que ampliou meus conhecimentos e fortaleceu minha prática profissional. Além disso, desenvolvi projetos pessoais relevantes que ilustram minha evolução e criatividade – trabalhos que você poderá conferir nas próximas seções.</p>
+        <div class="stats">
+          <div class="stat">
+            <h3>6<span>+</span></h3>
+            <p id="stat-projects-text">Projetos Concluídos</p>
+          </div>
+          <div class="stat">
+            <h3>95<span>%</span></h3>
+            <p id="stat-clients-text">Satisfação de Clientes</p>
+          </div>
+          <div class="stat">
+            <h3>1<span>+</span></h3>
+            <p id="stat-years-text">Ano de Experiência</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <a href="#projects-carousel" class="scroll-down"><i class="fas fa-chevron-down"></i></a>
+  </section>
 
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<section id="projects-carousel" class="projects-carousel">
+  <div class="container">
+    <h2 id="projects-title" class="section-title">Projetos</h2>
+    <p id="projects-text">Alguns projetos que criei ou participei...</p>
+    <div class="carousel-wrapper">
+      <div class="carousel-container">
+        <div class="carousel-slide">
+          <img src="assets/ecofoto.png" alt="Projeto 1 - Ecofoto">
+          <div class="info-overlay">
+            <h3>Ecofoto</h3>
+            <p>Tecnologias: React.js, Node.js, SCSS, Sequelize, SQLite</p>
+            <a href="project-ecofoto.html" class="btn more-info">More Info</a>
+          </div>
+        </div>
+        <div class="carousel-slide">
+          <img src="assets/disney.png" alt="Projeto 2 - Dashboard Interativo Disney+">
+          <div class="info-overlay">
+            <h3>Dashboard Interativo Disney+</h3>
+            <p>Tecnologias: Streamlit</p>
+            <a href="project-disney.html" class="btn more-info">More Info</a>
+          </div>
+        </div>
+        <div class="carousel-slide">
+          <img src="assets/spotify.png" alt="Projeto 3 - Dashboard Interativo Spotify">
+          <div class="info-overlay">
+            <h3>Dashboard Interativo Spotify</h3>
+            <p>Tecnologias: Streamlit</p>
+            <a href="project-spotify.html" class="btn more-info">More Info</a>
+          </div>
+        </div>
+        <div class="carousel-slide">
+          <img src="assets/deiamandalas.png" alt="Projeto 4 - DeiaMandalas">
+          <div class="info-overlay">
+            <h3>DeiaMandalas (Em Construção)</h3>
+            <p>Tecnologias: Vue.js, Node.js</p>
+            <a href="project-deiamandalas.html" class="btn more-info">More Info</a>
+          </div>
+        </div>
+        <div class="carousel-slide">
+          <img src="assets/dev.png" alt="Projeto 5 - DevConnected">
+          <div class="info-overlay">
+            <h3>DevConnected (Em Construção)</h3>
+            <p>Tecnologias: Next.js, Tailwind, Nest.Js, PostgreSQL, Prisma</p>
+            <a href="project-devconnected.html" class="btn more-info">More Info</a>
+          </div>
+        </div>
+        <div class="carousel-slide">
+          <img src="assets/port.png" alt="Projeto 6 - Meu Portfólio">
+          <div class="info-overlay">
+            <h3>Meu Portfólio</h3>
+            <p>Tecnologias: HTML, CSS, JavaScript</p>
+            <a href="project-portfolio.html" class="btn more-info">More Info</a>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-control prev" aria-label="Anterior">
+        <i class="fas fa-chevron-left"></i>
+      </button>
+      <button class="carousel-control next" aria-label="Próximo">
+        <i class="fas fa-chevron-right"></i>
+      </button>
+    </div>
+    <a href="#contact" class="scroll-down"><i class="fas fa-chevron-down"></i></a>
+  </div>
+</section>
 
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+  <section id="contact" class="contact">
+    <div class="container contact-container">
+      <h2 id="contact-title">Contato</h2>
+      <p id="contact-instructions">Se você tem alguma proposta ou dúvida, entre em contato:</p>
+      <div class="contact-content">
+        <div class="contact-info">
+          <div class="info-item">
+            <i class="fas fa-envelope"></i>
+            <a href="mailto:caioinacio19@gmail.com">caioinacio19@gmail.com</a>
+          </div>
+          <div class="info-item">
+            <i class="fas fa-phone"></i>
+            <a href="http://wa.me/5521993228410" target="_blank">+55 21 99322-8410</a>
+          </div>
+          <div class="info-item">
+            <i class="fab fa-linkedin"></i>
+            <a href="https://linkedin.com/in/caio-gullo-inacio" target="_blank">/in/caio-gullo-inacio</a>
+          </div>
+          <div class="info-item">
+            <i class="fab fa-github"></i>
+            <a href="https://github.com/caiog19" target="_blank">github.com/caiog19</a>
+          </div>
+        </div>
+        <form class="contact-form" id="contact-form">
+          <div class="form-group">
+            <label for="name" id="label-name">Nome</label>
+            <input type="text" id="name" name="name" placeholder="Seu nome" required />
+          </div>
+          <div class="form-group">
+            <label for="email" id="label-email">E-mail</label>
+            <input type="email" id="email" name="email" placeholder="Seu e-mail" required />
+          </div>
+          <div class="form-group">
+            <label for="subject" id="label-subject">Assunto</label>
+            <input type="text" id="subject" name="subject" placeholder="Assunto" required />
+          </div>
+          <div class="form-group">
+            <label for="message" id="label-message">Mensagem</label>
+            <textarea id="message" name="message" rows="5" placeholder="Sua mensagem" required></textarea>
+          </div>
+          <div class="form-group">
+            <div class="g-recaptcha" data-sitekey="6LdEQIwqAAAAAMuiWq65aUQPXIES1uvSFU-pk07P"></div>
+          </div>
+          <button type="submit" class="btn" id="send-button">Enviar</button>
+          <p class="form-status" id="form-status"></p>
+        </form>
+      </div>
+    </div>
+    <a href="#footer-text" class="scroll-down"><i class="fas fa-chevron-down"></i></a>
+  </section>
 
-    <!-- Inclusão do Arquivo JavaScript Externo -->
-    <script src="script.js"></script>
+  <footer>
+    <p id="footer-text">© 2025 Caio Gullo. Todos os direitos reservados.</p>
+  </footer>
+
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js" type="text/javascript"></script>
+  <script src="script.js"></script>
 </body>
-
 </html>
