@@ -48,7 +48,67 @@ const textsToTranslate = {
   'placeholder-name': { 'pt-BR': 'Seu nome', en: 'Your name' },
   'placeholder-email': { 'pt-BR': 'Seu e-mail', en: 'Your email' },
   'placeholder-subject': { 'pt-BR': 'Assunto', en: 'Subject' },
-  'placeholder-message': { 'pt-BR': 'Sua mensagem', en: 'Your message' }
+  'placeholder-message': { 'pt-BR': 'Sua mensagem', en: 'Your message' },
+  'nav-home': { 'pt-BR': 'Início', en: 'Home' },
+  'nav-about': { 'pt-BR': 'Sobre', en: 'About' },
+  'nav-projects': { 'pt-BR': 'Projetos', en: 'Projects' },
+  'nav-contact': { 'pt-BR': 'Contato', en: 'Contact' },
+  'project-prev': { 'pt-BR': 'Projeto Anterior', en: 'Previous Project' },
+  'project-back': { 'pt-BR': 'Voltar para Projetos', en: 'Back to Projects' },
+  'project-next': { 'pt-BR': 'Próximo Projeto', en: 'Next Project' },
+  'project-technologies-title': { 'pt-BR': 'Tecnologias Utilizadas', en: 'Technologies Used' },
+  'project-disney-title': { 
+    'pt-BR': 'Dashboard Interativo Disney+',
+    en: 'Interactive Dashboard Disney+'
+  },
+  'project-disney-description': {
+    'pt-BR': 'Projeto de dashboard interativo para o Disney+ desenvolvido utilizando Streamlit, que permite a visualização dinâmica de dados e insights sobre o serviço.',
+    en: 'Interactive dashboard project for Disney+ developed using Streamlit, which allows dynamic visualization of data and insights about the service.'
+  },
+
+  'project-spotify-title': {
+    'pt-BR': 'Dashboard Interativo Spotify',
+    en: 'Interactive Dashboard Spotify'
+  },
+  'project-spotify-description': {
+    'pt-BR': 'Projeto de dashboard interativo para o Spotify desenvolvido com Streamlit, que exibe estatísticas e insights relevantes sobre a plataforma.',
+    en: 'Interactive dashboard project for Spotify developed with Streamlit, displaying relevant statistics and insights about the platform.'
+  },
+
+  'project-deiamandalas-title': {
+    'pt-BR': 'DeiaMandalas (Em Construção)',
+    en: 'DeiaMandalas (Under Construction)'
+  },
+  'project-deiamandalas-description': {
+    'pt-BR': 'Projeto em desenvolvimento utilizando Vue.js e Node.js, voltado para a criação de uma experiência digital inovadora.',
+    en: 'Project under development using Vue.js and Node.js, aimed at creating an innovative digital experience.'
+  },
+
+  'project-dev-title': {
+    'pt-BR': 'DevConnected (Em Construção)',
+    en: 'DevConnected (Under Construction)'
+  },
+  'project-dev-description': {
+    'pt-BR': 'Projeto em desenvolvimento utilizando Next.js, Tailwind, Nest.js, PostgreSQL e Prisma, que tem como objetivo conectar desenvolvedores e promover a colaboração.',
+    en: 'Project under development using Next.js, Tailwind, Nest.js, PostgreSQL, and Prisma, aimed at connecting developers and promoting collaboration.'
+  },
+
+  'project-port-title': {
+    'pt-BR': 'Meu Portfólio',
+    en: 'My Portfolio'
+  },
+  'project-port-description': {
+    'pt-BR': 'Projeto do meu portfólio pessoal desenvolvido com HTML, CSS e JavaScript. Esta página demonstra minhas habilidades e apresenta meus projetos de forma dinâmica e interativa.',
+    en: 'My personal portfolio project developed with HTML, CSS, and JavaScript. This page showcases my skills and presents my projects in a dynamic and interactive way.'
+  },
+  'project-ecofoto-title': {
+    'pt-BR': 'Ecofoto',
+    en: 'Ecofoto'
+  },
+  'project-ecofoto-description': {
+    'pt-BR': 'Projeto de extensão universitária sobre fotografia contemporânea. Este projeto foi desenvolvido utilizando React.js no front-end, Node.js no back-end e SCSS para a estilização.',
+    en: 'University extension project on contemporary photography. This project was developed using React.js on the front-end, Node.js on the back-end, and SCSS for styling.'
+  }
 };
 
 let currentLanguage = localStorage.getItem('language') || 'pt-BR';
@@ -164,11 +224,119 @@ if (document.readyState === "loading") {
 }
 
 document.addEventListener("DOMContentLoaded", function() {
-  const carousel = document.querySelector(".project-carousel");
-  const inner = carousel.querySelector(".carousel-inner");
-  const items = carousel.querySelectorAll(".carousel-item");
+  const carouselWrapper = document.querySelector('.carousel-wrapper');
+  const inner = carouselWrapper.querySelector('.carousel-container');
+  const items = inner.querySelectorAll('.carousel-slide');
+  const dotsContainer = carouselWrapper.querySelector('.carousel-dots');
+  
   let currentIndex = 0;
+  const visibleSlides = 2; 
+  const dotCount = Math.ceil(items.length / visibleSlides);
 
+  function createDots() {
+    for (let i = 0; i < dotCount; i++) {
+      const dot = document.createElement('div');
+      dot.classList.add('dot');
+      if (i === 0) dot.classList.add('active');
+      dot.addEventListener('click', function() {
+        showPage(i);
+      });
+      dotsContainer.appendChild(dot);
+      console.log('Dot criado', dot);
+    }
+    console.log('Total de dots:', dotsContainer.children.length);
+  }
+
+  function updateDots(pageIndex) {
+    const dots = dotsContainer.querySelectorAll('.dot');
+    dots.forEach((dot, index) => {
+      dot.classList.toggle('active', index === pageIndex);
+    });
+  }
+
+  function showPage(pageIndex) {
+    currentIndex = pageIndex * visibleSlides;
+    items.forEach((item, i) => {
+      if (i >= currentIndex && i < currentIndex + visibleSlides) {
+        item.classList.add("active");
+      } else {
+        item.classList.remove("active");
+      }
+    });
+    inner.style.transform = `translateX(-${pageIndex * 100}%)`;
+    updateDots(pageIndex);
+  }
+
+  const prevBtn = carouselWrapper.querySelector(".carousel-control.prev");
+  const nextBtn = carouselWrapper.querySelector(".carousel-control.next");
+
+  if (prevBtn) {
+    prevBtn.addEventListener("click", function() {
+      let pageIndex = Math.floor(currentIndex / visibleSlides) - 1;
+      if (pageIndex < 0) {
+        pageIndex = dotCount - 1;
+      }
+      showPage(pageIndex);
+    });
+  }
+
+  if (nextBtn) {
+    nextBtn.addEventListener("click", function() {
+      let pageIndex = Math.floor(currentIndex / visibleSlides) + 1;
+      if (pageIndex >= dotCount) {
+        pageIndex = 0;
+      }
+      showPage(pageIndex);
+    });
+  }
+
+  createDots();
+
+  let autoSlide = setInterval(() => {
+    let pageIndex = Math.floor(currentIndex / visibleSlides) + 1;
+    if (pageIndex >= dotCount) {
+      pageIndex = 0;
+    }
+    showPage(pageIndex);
+  }, 5000);
+
+  if (prevBtn) {
+    prevBtn.addEventListener("click", function() {
+      clearInterval(autoSlide);
+      autoSlide = setInterval(() => {
+        let pageIndex = Math.floor(currentIndex / visibleSlides) + 1;
+        if (pageIndex >= dotCount) {
+          pageIndex = 0;
+        }
+        showPage(pageIndex);
+      }, 5000);
+    });
+  }
+  if (nextBtn) {
+    nextBtn.addEventListener("click", function() {
+      clearInterval(autoSlide);
+      autoSlide = setInterval(() => {
+        let pageIndex = Math.floor(currentIndex / visibleSlides) + 1;
+        if (pageIndex >= dotCount) {
+          pageIndex = 0;
+        }
+        showPage(pageIndex);
+      }, 5000);
+    });
+  }
+});
+
+
+document.addEventListener("DOMContentLoaded", function() {
+  const carouselWrapper = document.querySelector('.project-carousel');
+  if (!carouselWrapper) return;
+  
+  const inner = carouselWrapper.querySelector('.carousel-inner');
+  if (!inner) return; 
+  const items = inner.querySelectorAll('.carousel-item');
+  
+  let currentIndex = 0;
+  
   function showSlide(index) {
     if (index < 0) {
       currentIndex = items.length - 1;
@@ -177,64 +345,43 @@ document.addEventListener("DOMContentLoaded", function() {
     } else {
       currentIndex = index;
     }
+    
     items.forEach((item, i) => {
       item.classList.toggle("active", i === currentIndex);
     });
+    
     inner.style.transform = `translateX(-${currentIndex * 100}%)`;
   }
-
-  carousel.querySelector(".carousel-control.prev").addEventListener("click", function() {
-    showSlide(currentIndex - 1);
-  });
-  carousel.querySelector(".carousel-control.next").addEventListener("click", function() {
+  
+  const prevBtn = carouselWrapper.querySelector('.carousel-control.prev');
+  const nextBtn = carouselWrapper.querySelector('.carousel-control.next');
+  
+  if (prevBtn) {
+    prevBtn.addEventListener('click', function() {
+      showSlide(currentIndex - 1);
+    });
+  }
+  
+  if (nextBtn) {
+    nextBtn.addEventListener('click', function() {
+      showSlide(currentIndex + 1);
+    });
+  }
+  
+  let autoSlide = setInterval(() => {
     showSlide(currentIndex + 1);
-  });
+  }, 5000);
+  
+  if (prevBtn) {
+    prevBtn.addEventListener('click', function() {
+      clearInterval(autoSlide);
+      autoSlide = setInterval(() => { showSlide(currentIndex + 1); }, 5000);
+    });
+  }
+  if (nextBtn) {
+    nextBtn.addEventListener('click', function() {
+      clearInterval(autoSlide);
+      autoSlide = setInterval(() => { showSlide(currentIndex + 1); }, 5000);
+    });
+  }
 });
-
-document.addEventListener("DOMContentLoaded", function() {
-  const carouselContainer = document.querySelector('.carousel-container');
-  const slides = document.querySelectorAll('.carousel-slide');
-  const totalSlides = slides.length;
-  const visibleSlides = 2; 
-  let currentIndex = 0;
-  const intervalTime = 5000; 
-  
-  function updateCarousel() {
-    const slideWidthPercent = 100 / visibleSlides;
-    carouselContainer.style.transform = 'translateX(-' + (currentIndex * slideWidthPercent) + '%)';
-  }
-  
-  function nextSlide() {
-    if (currentIndex < totalSlides - visibleSlides) {
-      currentIndex++;
-    } else {
-      currentIndex = 0;
-    }
-    updateCarousel();
-  }
-  
-  function prevSlide() {
-    if (currentIndex > 0) {
-      currentIndex--;
-    } else {
-      currentIndex = totalSlides - visibleSlides;
-    }
-    updateCarousel();
-  }
-  
-  let autoSlide = setInterval(nextSlide, intervalTime);
-  
-  document.querySelector('.carousel-control.next').addEventListener('click', function() {
-    clearInterval(autoSlide);
-    nextSlide();
-    autoSlide = setInterval(nextSlide, intervalTime);
-  });
-  
-  document.querySelector('.carousel-control.prev').addEventListener('click', function() {
-    clearInterval(autoSlide);
-    prevSlide();
-    autoSlide = setInterval(nextSlide, intervalTime);
-  });
-});
-
-

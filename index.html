@@ -13,7 +13,10 @@
   <div id="timeline">
     <div id="timeline-fill"></div>
   </div>
-  <button id="back-to-top">Subir</button>
+  <button id="back-to-top" aria-label="Subir">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+  
 
   <header>
     <div class="container header-container">
@@ -129,7 +132,7 @@
           <div class="info-overlay">
             <h3>DevConnected (Em Construção)</h3>
             <p>Tecnologias: Next.js, Tailwind, Nest.Js, PostgreSQL, Prisma</p>
-            <a href="project-devconnected.html" class="btn more-info">More Info</a>
+            <a href="project-dev.html" class="btn more-info">More Info</a>
           </div>
         </div>
         <div class="carousel-slide">
@@ -137,7 +140,7 @@
           <div class="info-overlay">
             <h3>Meu Portfólio</h3>
             <p>Tecnologias: HTML, CSS, JavaScript</p>
-            <a href="project-portfolio.html" class="btn more-info">More Info</a>
+            <a href="project-port.html" class="btn more-info">More Info</a>
           </div>
         </div>
       </div>
@@ -147,6 +150,7 @@
       <button class="carousel-control next" aria-label="Próximo">
         <i class="fas fa-chevron-right"></i>
       </button>
+      <div class="carousel-dots"></div>
     </div>
     <a href="#contact" class="scroll-down"><i class="fas fa-chevron-down"></i></a>
   </div>
@@ -158,19 +162,19 @@
       <p id="contact-instructions">Se você tem alguma proposta ou dúvida, entre em contato:</p>
       <div class="contact-content">
         <div class="contact-info">
-          <div class="info-item">
+          <div class="info-item" data-tooltip="Enviar e-mail">
             <i class="fas fa-envelope"></i>
             <a href="mailto:caioinacio19@gmail.com">caioinacio19@gmail.com</a>
           </div>
-          <div class="info-item">
+          <div class="info-item" data-tooltip="Abrir WhatsApp">
             <i class="fas fa-phone"></i>
             <a href="http://wa.me/5521993228410" target="_blank">+55 21 99322-8410</a>
           </div>
-          <div class="info-item">
+          <div class="info-item" data-tooltip="Perfil no LinkedIn">
             <i class="fab fa-linkedin"></i>
             <a href="https://linkedin.com/in/caio-gullo-inacio" target="_blank">/in/caio-gullo-inacio</a>
           </div>
-          <div class="info-item">
+          <div class="info-item" data-tooltip="Ver perfil no GitHub">
             <i class="fab fa-github"></i>
             <a href="https://github.com/caiog19" target="_blank">github.com/caiog19</a>
           </div>
