@@ -829,3 +829,47 @@ footer {
     transform: translateY(-5px);
   }
 }
+
+/* Responsividade para telas com largura máxima de 600px */
+@media (max-width: 600px) {
+  .project-detail {
+    padding: 40px 10px;
+  }
+  .project-detail h1 {
+    font-size: 2rem;
+  }
+  .project-description {
+    font-size: 1rem;
+    max-width: 100%;
+    padding: 0 10px;
+  }
+  .project-technologies h3 {
+    font-size: 1.5rem;
+  }
+  .project-technologies ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+  .project-technologies li {
+    padding: 4px 8px;
+    font-size: 0.8rem;
+  }
+  .project-carousel {
+    max-width: 100%;
+    margin: 20px auto;
+  }
+  .project-carousel .carousel-control {
+    padding: 8px;
+    font-size: 1.2rem;
+  }
+  .project-navigation {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .project-nav-btn {
+    padding: 8px 16px;
+    font-size: 0.9rem;
+  }
+}
