@@ -233,7 +233,6 @@ if (document.readyState === "loading") {
   createBgSymbols();
 }
 
-// Projects carousel (multiple slides per page)
 document.addEventListener("DOMContentLoaded", function () {
   const carouselWrapper = document.querySelector('.carousel-wrapper');
   const inner = carouselWrapper.querySelector('.carousel-container');
@@ -241,7 +240,9 @@ document.addEventListener("DOMContentLoaded", function () {
   const dotsContainer = carouselWrapper.querySelector('.carousel-dots');
 
   let currentIndex = 0;
-  const visibleSlides = 2;
+  const isMobile = window.innerWidth <= 768;
+  // On mobile show one slide per page; on desktop show two slides.
+  const visibleSlides = isMobile ? 1 : 2;
   const dotCount = Math.ceil(items.length / visibleSlides);
 
   function createDots() {
@@ -279,27 +280,33 @@ document.addEventListener("DOMContentLoaded", function () {
   const prevBtn = carouselWrapper.querySelector(".carousel-control.prev");
   const nextBtn = carouselWrapper.querySelector(".carousel-control.next");
 
-  if (prevBtn) {
-    prevBtn.addEventListener("click", function () {
-      let pageIndex = Math.floor(currentIndex / visibleSlides) - 1;
-      if (pageIndex < 0) {
-        pageIndex = dotCount - 1;
-      }
-      showPage(pageIndex);
-    });
-  }
-
-  if (nextBtn) {
-    nextBtn.addEventListener("click", function () {
-      let pageIndex = Math.floor(currentIndex / visibleSlides) + 1;
-      if (pageIndex >= dotCount) {
-        pageIndex = 0;
-      }
-      showPage(pageIndex);
-    });
+  if (!isMobile) {
+    if (prevBtn) {
+      prevBtn.addEventListener("click", function () {
+        let pageIndex = Math.floor(currentIndex / visibleSlides) - 1;
+        if (pageIndex < 0) {
+          pageIndex = dotCount - 1;
+        }
+        showPage(pageIndex);
+      });
+    }
+    if (nextBtn) {
+      nextBtn.addEventListener("click", function () {
+        let pageIndex = Math.floor(currentIndex / visibleSlides) + 1;
+        if (pageIndex >= dotCount) {
+          pageIndex = 0;
+        }
+        showPage(pageIndex);
+      });
+    }
+  } else {
+    // Remove navigation buttons on mobile
+    if (prevBtn) prevBtn.remove();
+    if (nextBtn) nextBtn.remove();
   }
 
   createDots();
+  showPage(0);
 
   let autoSlide = setInterval(() => {
     let pageIndex = Math.floor(currentIndex / visibleSlides) + 1;
@@ -309,30 +316,36 @@ document.addEventListener("DOMContentLoaded", function () {
     showPage(pageIndex);
   }, 5000);
 
-  if (prevBtn) {
-    prevBtn.addEventListener("click", function () {
-      clearInterval(autoSlide);
-      autoSlide = setInterval(() => {
-        let pageIndex = Math.floor(currentIndex / visibleSlides) + 1;
-        if (pageIndex >= dotCount) {
-          pageIndex = 0;
-        }
-        showPage(pageIndex);
-      }, 5000);
-    });
-  }
-  if (nextBtn) {
-    nextBtn.addEventListener("click", function () {
-      clearInterval(autoSlide);
-      autoSlide = setInterval(() => {
-        let pageIndex = Math.floor(currentIndex / visibleSlides) + 1;
-        if (pageIndex >= dotCount) {
-          pageIndex = 0;
-        }
-        showPage(pageIndex);
-      }, 5000);
-    });
-  }
+  // ----- Add swipe (touch) functionality (works on mobile and touch devices) -----
+  let touchStartX = 0;
+  let touchEndX = 0;
+
+  inner.addEventListener('touchstart', function(event) {
+    touchStartX = event.changedTouches[0].screenX;
+  });
+
+  inner.addEventListener('touchmove', function(event) {
+    touchEndX = event.changedTouches[0].screenX;
+  });
+
+  inner.addEventListener('touchend', function() {
+    // If swipe left (next)
+    if (touchEndX < touchStartX - 50) {
+      let pageIndex = Math.floor(currentIndex / visibleSlides) + 1;
+      if (pageIndex >= dotCount) {
+        pageIndex = 0;
+      }
+      showPage(pageIndex);
+    }
+    // If swipe right (previous)
+    if (touchEndX > touchStartX + 50) {
+      let pageIndex = Math.floor(currentIndex / visibleSlides) - 1;
+      if (pageIndex < 0) {
+        pageIndex = dotCount - 1;
+      }
+      showPage(pageIndex);
+    }
+  });
 });
 
 // Secondary carousel (project carousel) functionality
