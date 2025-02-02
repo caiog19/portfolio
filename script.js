@@ -75,12 +75,12 @@ const textsToTranslate = {
     en: 'Interactive dashboard project for Spotify developed with Streamlit, displaying relevant statistics and insights about the platform.'
   },
 
-  'project-deiamandalas-title': {
-    'pt-BR': 'DeiaMandalas (Em Construção)',
-    en: 'DeiaMandalas (Under Construction)'
+  'project-navegadev-title': {
+    'pt-BR': 'Navega dev',
+    en: 'Navega dev'
   },
-  'project-deiamandalas-description': {
-    'pt-BR': 'Projeto em desenvolvimento utilizando Vue.js e Node.js, voltado para a criação de uma experiência digital inovadora.',
+  'project-navegadev-description': {
+    'pt-BR': 'Projeto em que foquei no desenvolvimento backend utilizando Ruby on rails, voltado para a criação da lógicas que um blog necessita.',
     en: 'Project under development using Vue.js and Node.js, aimed at creating an innovative digital experience.'
   },
 
