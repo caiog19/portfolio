@@ -284,23 +284,19 @@ document.addEventListener("DOMContentLoaded", function () {
     if (prevBtn) {
       prevBtn.addEventListener("click", function () {
         let pageIndex = Math.floor(currentIndex / visibleSlides) - 1;
-        if (pageIndex < 0) {
-          pageIndex = dotCount - 1;
-        }
+        if (pageIndex < 0) { pageIndex = dotCount - 1; }
         showPage(pageIndex);
       });
     }
     if (nextBtn) {
       nextBtn.addEventListener("click", function () {
         let pageIndex = Math.floor(currentIndex / visibleSlides) + 1;
-        if (pageIndex >= dotCount) {
-          pageIndex = 0;
-        }
+        if (pageIndex >= dotCount) { pageIndex = 0; }
         showPage(pageIndex);
       });
     }
   } else {
-    // Remove navigation buttons on mobile
+    // On mobile, remove navigation buttons (they’re hidden via CSS, too)
     if (prevBtn) prevBtn.remove();
     if (nextBtn) nextBtn.remove();
   }
@@ -310,39 +306,24 @@ document.addEventListener("DOMContentLoaded", function () {
 
   let autoSlide = setInterval(() => {
     let pageIndex = Math.floor(currentIndex / visibleSlides) + 1;
-    if (pageIndex >= dotCount) {
-      pageIndex = 0;
-    }
+    if (pageIndex >= dotCount) { pageIndex = 0; }
     showPage(pageIndex);
   }, 5000);
 
-  // ----- Add swipe (touch) functionality (works on mobile and touch devices) -----
+  // ----- Add simple swipe functionality (only touchstart and touchend) -----
   let touchStartX = 0;
-  let touchEndX = 0;
-
   inner.addEventListener('touchstart', function(event) {
     touchStartX = event.changedTouches[0].screenX;
   });
-
-  inner.addEventListener('touchmove', function(event) {
-    touchEndX = event.changedTouches[0].screenX;
-  });
-
-  inner.addEventListener('touchend', function() {
-    // If swipe left (next)
-    if (touchEndX < touchStartX - 50) {
+  inner.addEventListener('touchend', function(event) {
+    const touchEndX = event.changedTouches[0].screenX;
+    if (touchEndX < touchStartX - 50) {  // swipe left → next
       let pageIndex = Math.floor(currentIndex / visibleSlides) + 1;
-      if (pageIndex >= dotCount) {
-        pageIndex = 0;
-      }
+      if (pageIndex >= dotCount) { pageIndex = 0; }
       showPage(pageIndex);
-    }
-    // If swipe right (previous)
-    if (touchEndX > touchStartX + 50) {
+    } else if (touchEndX > touchStartX + 50) {  // swipe right → previous
       let pageIndex = Math.floor(currentIndex / visibleSlides) - 1;
-      if (pageIndex < 0) {
-        pageIndex = dotCount - 1;
-      }
+      if (pageIndex < 0) { pageIndex = dotCount - 1; }
       showPage(pageIndex);
     }
   });
