@@ -1,4 +1,4 @@
-window.addEventListener('scroll', function() {
+window.addEventListener('scroll', function () {
   const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
   const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
   const scrollPercent = (scrollTop / docHeight) * 100;
@@ -12,7 +12,7 @@ window.addEventListener('scroll', function() {
   }
 });
 
-document.getElementById('back-to-top')?.addEventListener('click', function() {
+document.getElementById('back-to-top')?.addEventListener('click', function () {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 
@@ -27,10 +27,10 @@ const textsToTranslate = {
   'btn-resume-text': { 'pt-BR': 'Meu currículo', en: 'My resume' },
   'about-title': { 'pt-BR': 'Sobre mim', en: 'About me' },
   'stat-projects-text': { 'pt-BR': 'Projetos Concluídos', en: 'Completed Projects' },
-  'about-description': { 
-  'pt-BR': 'Logo após ingressar na UFRJ, encontrei na Empresa Júnior EJCM um ambiente inspirador para iniciar minha trajetória como desenvolvedor front-end. Foi nesse espaço que aprendi a programar e comecei a desenvolver meus primeiros websites, despertando minha paixão pelo desenvolvimento e pela inovação digital. Posteriormente, migrei de curso para Ciência da Computação, reafirmando meu compromisso com o universo da tecnologia. Durante minha jornada acadêmica, tive a oportunidade de integrar um projeto de extensão no time de tecnologia, experiência que ampliou meus conhecimentos e fortaleceu minha prática profissional, motivando-me a me tornar um desenvolvedor fullstack. Além disso, desenvolvi projetos pessoais relevantes que ilustram minha evolução e criatividade – trabalhos que você poderá conferir nas próximas seções.',
-  en: 'Shortly after enrolling at UFRJ, I joined the Junior Enterprise EJCM at the university, which offered an inspiring environment to kick-start my journey as a front-end developer. It was there that I learned how to program and began developing my first websites, igniting my passion for digital innovation and development. Later, I switched my major to Computer Science, reaffirming my commitment to the technology field. During my academic journey, I had the opportunity to participate in an extension project with the technology team—a valuable experience that broadened my knowledge and strengthened my practical skills, motivating me to become a fullstack developer. Additionally, I developed several personal projects that showcase my growth and creativity, projects that you will have the chance to explore in the upcoming sections.'
-},
+  'about-description': {
+    'pt-BR': 'Logo após ingressar na UFRJ, encontrei na Empresa Júnior EJCM um ambiente inspirador para iniciar minha trajetória como desenvolvedor front-end. Foi nesse espaço que aprendi a programar e comecei a desenvolver meus primeiros websites, despertando minha paixão pelo desenvolvimento e pela inovação digital. Posteriormente, migrei de curso para Ciência da Computação, reafirmando meu compromisso com o universo da tecnologia. Durante minha jornada acadêmica, tive a oportunidade de integrar um projeto de extensão no time de tecnologia, experiência que ampliou meus conhecimentos e fortaleceu minha prática profissional, motivando-me a me tornar um desenvolvedor fullstack. Além disso, desenvolvi projetos pessoais relevantes que ilustram minha evolução e criatividade – trabalhos que você poderá conferir nas próximas seções.',
+    en: 'Shortly after enrolling at UFRJ, I joined the Junior Enterprise EJCM at the university, which offered an inspiring environment to kick-start my journey as a front-end developer. It was there that I learned how to program and began developing my first websites, igniting my passion for digital innovation and development. Later, I switched my major to Computer Science, reaffirming my commitment to the technology field. During my academic journey, I had the opportunity to participate in an extension project with the technology team—a valuable experience that broadened my knowledge and strengthened my practical skills, motivating me to become a fullstack developer. Additionally, I developed several personal projects that showcase my growth and creativity, projects that you will have the chance to explore in the upcoming sections.'
+  },
   'stat-clients-text': { 'pt-BR': 'Satisfação de Clientes', en: 'Client Satisfaction' },
   'stat-years-text': { 'pt-BR': 'Anos de Experiência', en: 'Years of Experience' },
   'projects-title': { 'pt-BR': 'Projetos', en: 'Projects' },
@@ -57,7 +57,7 @@ const textsToTranslate = {
   'project-back': { 'pt-BR': 'Voltar para Projetos', en: 'Back to Projects' },
   'project-next': { 'pt-BR': 'Próximo Projeto', en: 'Next Project' },
   'project-technologies-title': { 'pt-BR': 'Tecnologias Utilizadas', en: 'Technologies Used' },
-  'project-disney-title': { 
+  'project-disney-title': {
     'pt-BR': 'Dashboard Interativo Disney+',
     en: 'Interactive Dashboard Disney+'
   },
@@ -79,9 +79,9 @@ const textsToTranslate = {
     'pt-BR': 'Navega dev',
     en: 'Navega dev'
   },
-  'project-navegadev-description': {
-    'pt-BR': 'Projeto em que foquei no desenvolvimento backend utilizando Ruby on rails, voltado para a criação da lógicas que um blog necessita.',
-    en: 'Project under development using Vue.js and Node.js, aimed at creating an innovative digital experience.'
+  "project-navegadev-description": {
+    "pt-BR": "Este projeto foi desenvolvido com foco na robustez e segurança do backend. Para isso, escolhi o Ruby on Rails como framework principal, o que permitiu uma estrutura organizada e produtiva para construir APIs RESTful. Para o banco de dados, optei pelo PostgreSQL, que oferece alto desempenho e recursos avançados para o armazenamento de dados.\n\nEm termos de segurança, utilizei JWT (JSON Web Tokens) para autenticação e autorização, garantindo que apenas usuários autenticados acessem os recursos. Além disso, implementei bcrypt para criptografar senhas, adicionando uma camada extra de proteção.\n\nPara prevenir abusos de requisições, adotei a gem Rack::Attack, que limita o número de chamadas e ajuda a mitigar ataques de força bruta. Também configurei o rack-cors para gerenciar o compartilhamento de recursos entre diferentes domínios.\n\nNo processamento assíncrono, escolhi o Sidekiq, que, junto com o Redis, gerencia filas de tarefas em segundo plano, otimizando a performance da aplicação. Por fim, utilizei o kaminari para facilitar a paginação de grandes volumes de dados, melhorando a experiência de navegação dos usuários.\n\nEm resumo, essa combinação de tecnologias oferece uma base sólida, segura e escalável, proporcionando uma experiência eficiente e confiável para os usuários.",
+    "en": "This project was developed with a focus on backend robustness and security. To achieve this, I chose Ruby on Rails as the main framework, which provided an organized and productive structure for building RESTful APIs. For the database, I opted for PostgreSQL, offering high performance and advanced features for data storage.\n\nIn terms of security, I used JWT (JSON Web Tokens) for authentication and authorization, ensuring that only authenticated users can access the resources. Additionally, I implemented bcrypt for password encryption, adding an extra layer of protection.\n\nTo prevent request abuse, I adopted the Rack::Attack gem, which limits the number of calls and helps mitigate brute force attacks. I also configured rack-cors to manage resource sharing between different domains.\n\nFor asynchronous processing, I chose Sidekiq, which, together with Redis, manages background task queues, optimizing the application's performance. Finally, I used kaminari to facilitate the pagination of large data sets, enhancing the user navigation experience.\n\nIn summary, this combination of technologies provides a solid, secure, and scalable foundation, delivering an efficient and reliable experience for users."
   },
 
   'project-dev-title': {
@@ -124,7 +124,7 @@ function updateLanguage() {
   const emailField = document.getElementById('email');
   const subjectField = document.getElementById('subject');
   const messageField = document.getElementById('message');
-  
+
   if (nameField) nameField.placeholder = textsToTranslate['placeholder-name'][currentLanguage];
   if (emailField) emailField.placeholder = textsToTranslate['placeholder-email'][currentLanguage];
   if (subjectField) subjectField.placeholder = textsToTranslate['placeholder-subject'][currentLanguage];
@@ -144,7 +144,7 @@ function toggleLanguage() {
 languageToggle?.addEventListener('click', toggleLanguage);
 
 document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-  anchor.addEventListener('click', function(e) {
+  anchor.addEventListener('click', function (e) {
     e.preventDefault();
     const target = document.querySelector(this.getAttribute('href'));
     if (target) target.scrollIntoView({ behavior: 'smooth' });
@@ -162,7 +162,7 @@ document.querySelectorAll('.nav-menu a').forEach((item) => {
   });
 });
 
-(function() {
+(function () {
   if (window.emailjs) {
     emailjs.init("K2tkb-9FAioyrKLsx");
   }
@@ -171,7 +171,7 @@ document.querySelectorAll('.nav-menu a').forEach((item) => {
 const contactForm = document.getElementById('contact-form');
 const formStatus = document.getElementById('form-status');
 
-contactForm?.addEventListener('submit', function(e) {
+contactForm?.addEventListener('submit', function (e) {
   e.preventDefault();
   const formData = {
     name: document.getElementById('name').value,
@@ -181,13 +181,13 @@ contactForm?.addEventListener('submit', function(e) {
   };
   if (window.emailjs) {
     emailjs.send('service_vgb1h7i', 'template_agci0zr', formData)
-      .then(function() {
+      .then(function () {
         if (formStatus) {
           formStatus.style.color = 'green';
           formStatus.textContent = textsToTranslate['form-status-success'][currentLanguage];
         }
         contactForm.reset();
-      }, function() {
+      }, function () {
         if (formStatus) {
           formStatus.style.color = 'red';
           formStatus.textContent = textsToTranslate['form-status-error'][currentLanguage];
@@ -223,14 +223,14 @@ if (document.readyState === "loading") {
   createBgSymbols();
 }
 
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
   const carouselWrapper = document.querySelector('.carousel-wrapper');
   const inner = carouselWrapper.querySelector('.carousel-container');
   const items = inner.querySelectorAll('.carousel-slide');
   const dotsContainer = carouselWrapper.querySelector('.carousel-dots');
-  
+
   let currentIndex = 0;
-  const visibleSlides = 2; 
+  const visibleSlides = 2;
   const dotCount = Math.ceil(items.length / visibleSlides);
 
   function createDots() {
@@ -238,7 +238,7 @@ document.addEventListener("DOMContentLoaded", function() {
       const dot = document.createElement('div');
       dot.classList.add('dot');
       if (i === 0) dot.classList.add('active');
-      dot.addEventListener('click', function() {
+      dot.addEventListener('click', function () {
         showPage(i);
       });
       dotsContainer.appendChild(dot);
@@ -271,7 +271,7 @@ document.addEventListener("DOMContentLoaded", function() {
   const nextBtn = carouselWrapper.querySelector(".carousel-control.next");
 
   if (prevBtn) {
-    prevBtn.addEventListener("click", function() {
+    prevBtn.addEventListener("click", function () {
       let pageIndex = Math.floor(currentIndex / visibleSlides) - 1;
       if (pageIndex < 0) {
         pageIndex = dotCount - 1;
@@ -281,7 +281,7 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 
   if (nextBtn) {
-    nextBtn.addEventListener("click", function() {
+    nextBtn.addEventListener("click", function () {
       let pageIndex = Math.floor(currentIndex / visibleSlides) + 1;
       if (pageIndex >= dotCount) {
         pageIndex = 0;
@@ -301,7 +301,7 @@ document.addEventListener("DOMContentLoaded", function() {
   }, 5000);
 
   if (prevBtn) {
-    prevBtn.addEventListener("click", function() {
+    prevBtn.addEventListener("click", function () {
       clearInterval(autoSlide);
       autoSlide = setInterval(() => {
         let pageIndex = Math.floor(currentIndex / visibleSlides) + 1;
@@ -313,7 +313,7 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   }
   if (nextBtn) {
-    nextBtn.addEventListener("click", function() {
+    nextBtn.addEventListener("click", function () {
       clearInterval(autoSlide);
       autoSlide = setInterval(() => {
         let pageIndex = Math.floor(currentIndex / visibleSlides) + 1;
@@ -327,16 +327,16 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
   const carouselWrapper = document.querySelector('.project-carousel');
   if (!carouselWrapper) return;
-  
+
   const inner = carouselWrapper.querySelector('.carousel-inner');
-  if (!inner) return; 
+  if (!inner) return;
   const items = inner.querySelectorAll('.carousel-item');
-  
+
   let currentIndex = 0;
-  
+
   function showSlide(index) {
     if (index < 0) {
       currentIndex = items.length - 1;
@@ -345,41 +345,41 @@ document.addEventListener("DOMContentLoaded", function() {
     } else {
       currentIndex = index;
     }
-    
+
     items.forEach((item, i) => {
       item.classList.toggle("active", i === currentIndex);
     });
-    
+
     inner.style.transform = `translateX(-${currentIndex * 100}%)`;
   }
-  
+
   const prevBtn = carouselWrapper.querySelector('.carousel-control.prev');
   const nextBtn = carouselWrapper.querySelector('.carousel-control.next');
-  
+
   if (prevBtn) {
-    prevBtn.addEventListener('click', function() {
+    prevBtn.addEventListener('click', function () {
       showSlide(currentIndex - 1);
     });
   }
-  
+
   if (nextBtn) {
-    nextBtn.addEventListener('click', function() {
+    nextBtn.addEventListener('click', function () {
       showSlide(currentIndex + 1);
     });
   }
-  
+
   let autoSlide = setInterval(() => {
     showSlide(currentIndex + 1);
   }, 5000);
-  
+
   if (prevBtn) {
-    prevBtn.addEventListener('click', function() {
+    prevBtn.addEventListener('click', function () {
       clearInterval(autoSlide);
       autoSlide = setInterval(() => { showSlide(currentIndex + 1); }, 5000);
     });
   }
   if (nextBtn) {
-    nextBtn.addEventListener('click', function() {
+    nextBtn.addEventListener('click', function () {
       clearInterval(autoSlide);
       autoSlide = setInterval(() => { showSlide(currentIndex + 1); }, 5000);
     });
