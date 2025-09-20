@@ -472,143 +472,165 @@ class NavActive {
    9) App initialization
    ========================= */
 class App {
-  constructor() {
-    new ScrollUI();
-
+  constructor(translations) {
     this.i18n = new I18n({
       toggleSel: "#language-toggle",
-      texts: App.textsToTranslate,
+      texts: translations,
       defaultLang: "pt-BR",
     });
 
+    this.initStaticComponents();
+
+    if (document.querySelector(".projects-carousel .carousel-container")) {
+      this.loadHomepageProjects();
+    } else if (document.querySelector(".project-detail-wrapper")) {
+      this.loadProjectDetails();
+    }
+  }
+
+  initStaticComponents() {
+    this.scrollUI = new ScrollUI();
     new SmoothAnchors();
     new Menu();
     new BgSymbols();
-
-    new HomeCarousel();
-    new ProjectCarousel();
     new NavActive();
 
     const email = new EmailService("K2tkb-9FAioyrKLsx");
     new ContactForm({ emailService: email, i18n: this.i18n });
   }
 
-  static textsToTranslate = {
-    "hello-text": { "pt-BR": "Olá", en: "Hello" },
-    "i-am-text": { "pt-BR": "Eu sou", en: "I'm" },
-    "name-text": { "pt-BR": "Caio", en: "Caio" },
-    "role-text": {
-      "pt-BR": "Desenvolvedor FullStack",
-      en: "Software Developer",
-    },
-    "btn-project-text": { "pt-BR": "Tem um projeto?", en: "Got a project?" },
-    "btn-resume-text": { "pt-BR": "Meu currículo", en: "My resume" },
-    "about-title": { "pt-BR": "Sobre mim", en: "About me" },
-    "stat-projects-text": {
-      "pt-BR": "Projetos Concluídos",
-      en: "Completed Projects",
-    },
-    "about-description": {
-      "pt-BR":
-        "Logo após ingressar na UFRJ, encontrei na Empresa Júnior EJCM um ambiente inspirador para iniciar minha trajetória como desenvolvedor front-end. Foi nesse espaço que aprendi a programar e comecei a desenvolver meus primeiros websites, despertando minha paixão pelo desenvolvimento e pela inovação digital. Posteriormente, migrei de curso para Ciência da Computação, reafirmando meu compromisso com o universo da tecnologia. Durante minha jornada acadêmica, tive a oportunidade de integrar um projeto de extensão no time de tecnologia, experiência que ampliou meus conhecimentos e fortaleceu minha prática profissional, motivando-me a me tornar um desenvolvedor fullstack. Além disso, desenvolvi projetos pessoais relevantes que ilustram minha evolução e criatividade - trabalhos que você poderá conferir nas próximas seções.",
-      en: "Shortly after enrolling at UFRJ, I joined the Junior Enterprise EJCM at the university, which offered an inspiring environment to kick-start my journey as a front-end developer. It was there that I learned how to program and began developing my first websites, igniting my passion for digital innovation and development. Later, I switched my major to Computer Science, reaffirming my commitment to the technology field. During my academic journey, I had the opportunity to participate in an extension project with the technology team—a valuable experience that broadened my knowledge and strengthened my practical skills, motivating me to become a fullstack developer. Additionally, I developed several personal projects that showcase my growth and creativity, projects that you will have the chance to explore in the upcoming sections.",
-    },
-    "stat-clients-text": {
-      "pt-BR": "Satisfação de Clientes",
-      en: "Client Satisfaction",
-    },
-    "stat-years-text": {
-      "pt-BR": "Anos de Experiência",
-      en: "Years of Experience",
-    },
-    "projects-title": { "pt-BR": "Projetos", en: "Projects" },
-    "contact-title": { "pt-BR": "Contato", en: "Contact" },
-    "contact-instructions": {
-      "pt-BR": "Se você tem alguma proposta...",
-      en: "If you have any proposal...",
-    },
-    "project-text": {
-      "pt-BR": "Alguns projetos que criei ou participei...",
-      en: "If you have any proposal...",
-    },
-    "label-name": { "pt-BR": "Nome", en: "Name" },
-    "label-email": { "pt-BR": "E-mail", en: "Email" },
-    "label-subject": { "pt-BR": "Assunto", en: "Subject" },
-    "label-message": { "pt-BR": "Mensagem", en: "Message" },
-    "send-button": { "pt-BR": "Envie sua mensagem", en: "Send your message" },
-    "form-status-success": {
-      "pt-BR": "Mensagem enviada com sucesso!",
-      en: "Message sent successfully!",
-    },
-    "form-status-error": {
-      "pt-BR": "Ocorreu um erro...",
-      en: "An error occurred...",
-    },
-    "footer-text": {
-      "pt-BR": "© 2025 Caio Gullo. Todos os direitos reservados.",
-      en: "© 2025 Caio Gullo. All rights reserved.",
-    },
-    "placeholder-name": { "pt-BR": "Seu nome", en: "Your name" },
-    "placeholder-email": { "pt-BR": "Seu e-mail", en: "Your email" },
-    "placeholder-subject": { "pt-BR": "Assunto", en: "Subject" },
-    "placeholder-message": { "pt-BR": "Sua mensagem", en: "Your message" },
-    "nav-home": { "pt-BR": "Início", en: "Home" },
-    "nav-about": { "pt-BR": "Sobre", en: "About" },
-    "nav-projects": { "pt-BR": "Projetos", en: "Projects" },
-    "nav-contact": { "pt-BR": "Contato", en: "Contact" },
-    "project-prev": { "pt-BR": "Projeto Anterior", en: "Previous Project" },
-    "project-back": { "pt-BR": "Voltar para Projetos", en: "Back to Projects" },
-    "project-next": { "pt-BR": "Próximo Projeto", en: "Next Project" },
-    "project-technologies-title": {
-      "pt-BR": "Tecnologias Utilizadas",
-      en: "Technologies Used",
-    },
-    "project-disney-title": {
-      "pt-BR": "Dashboard Interativo Disney+",
-      en: "Interactive Dashboard Disney+",
-    },
-    "project-disney-description": {
-      "pt-BR":
-        "Projeto de dashboard interativo para o Disney+ desenvolvido utilizando Streamlit, que permite a visualização dinâmica de dados e insights sobre o serviço.",
-      en: "Interactive dashboard project for Disney+ developed using Streamlit, which allows dynamic visualization of data and insights about the service.",
-    },
-    "project-spotify-title": {
-      "pt-BR": "Dashboard Interativo Spotify",
-      en: "Interactive Dashboard Spotify",
-    },
-    "project-spotify-description": {
-      "pt-BR":
-        "Projeto de dashboard interativo para o Spotify desenvolvido com Streamlit, que exibe estatísticas e insights relevantes sobre a plataforma.",
-      en: "Interactive dashboard project for Spotify developed with Streamlit, displaying relevant statistics and insights about the platform.",
-    },
-    "project-navegadev-title": { "pt-BR": "Navega dev", en: "Navega dev" },
-    "project-navegadev-description": {
-      "pt-BR":
-        "Este projeto foi desenvolvido com foco na robustez e segurança do backend. Para isso, escolhi o Ruby on Rails...",
-      en: "This project was developed with a focus on backend robustness and security. To achieve this, I chose Ruby on Rails...",
-    },
-    "project-dev-title": {
-      "pt-BR": "DevConnected (Em Construção)",
-      en: "DevConnected (Under Construction)",
-    },
-    "project-dev-description": {
-      "pt-BR":
-        "Projeto em desenvolvimento utilizando Next.js, Tailwind, Nest.js, PostgreSQL e Prisma...",
-      en: "Project under development using Next.js, Tailwind, Nest.js, PostgreSQL, and Prisma...",
-    },
-    "project-port-title": { "pt-BR": "Meu Portfólio", en: "My Portfolio" },
-    "project-port-description": {
-      "pt-BR":
-        "Projeto do meu portfólio pessoal desenvolvido com HTML, CSS e JavaScript...",
-      en: "My personal portfolio project developed with HTML, CSS, and JavaScript...",
-    },
-    "project-ecofoto-title": { "pt-BR": "Ecofoto", en: "Ecofoto" },
-    "project-ecofoto-description": {
-      "pt-BR":
-        "Projeto de extensão universitária sobre fotografia contemporânea...",
-      en: "University extension project on contemporary photography...",
-    },
-  };
+  async loadHomepageProjects() {
+    try {
+      const response = await fetch("projects.json");
+      const data = await response.json();
+      const container = $(".projects-carousel .carousel-container");
+      if (!container) return;
+
+      const lang = this.i18n.lang;
+      let projectsHTML = "";
+      data.projects.forEach((project) => {
+        const projectTitle = project.title[lang] || project.title["pt-BR"];
+
+        projectsHTML += `
+          <div class="carousel-slide">
+            <img src="${project.thumbnail}" alt="${this.i18n.t(
+          "projects-title"
+        )} ${projectTitle}" />
+            <div class="info-overlay">
+              <h3>${projectTitle}</h3>
+              <p>${this.i18n.t(
+                "project-technologies-title"
+              )}: ${project.technologies.join(", ")}</p>
+              <a href="project.html?id=${
+                project.id
+              }" class="btn more-info">More Info</a>
+            </div>
+          </div>
+        `;
+      });
+      container.innerHTML = projectsHTML;
+
+      new HomeCarousel();
+      this.scrollUI.onScroll();
+    } catch (error) {
+      console.error("Erro ao carregar projetos:", error);
+    }
+  }
+
+  async loadProjectDetails() {
+    try {
+      const urlParams = new URLSearchParams(window.location.search);
+      const projectId = urlParams.get("id");
+      if (!projectId) return;
+
+      const response = await fetch("projects.json");
+      const data = await response.json();
+
+      const projectIndex = data.projects.findIndex((p) => p.id === projectId);
+      if (projectIndex === -1) return;
+
+      const project = data.projects[projectIndex];
+      const totalProjects = data.projects.length;
+      const prevProject =
+        data.projects[(projectIndex - 1 + totalProjects) % totalProjects];
+      const nextProject = data.projects[(projectIndex + 1) % totalProjects];
+      const lang = this.i18n.lang;
+
+      const projectTitle = project.title[lang] || project.title["pt-BR"];
+      const projectDescription =
+        project.description[lang] || project.description["pt-BR"];
+
+      document.title = `${projectTitle} - Caio Gullo`;
+
+      const wrapper = $(".project-detail-wrapper");
+      if (!wrapper) return;
+
+      // DENTRO DA FUNÇÃO loadProjectDetails
+      // ...
+      wrapper.innerHTML = `
+        <section class="project-detail">
+          <div class="container">
+            <h1>${projectTitle}</h1>
+            <p class="project-description">${projectDescription}</p>
+            <div class="project-technologies">
+              <h3 id="project-technologies-title"></h3>
+              <ul>
+                ${project.technologies
+                  .map((tech) => `<li>${tech}</li>`)
+                  .join("")}
+              </ul>
+            </div>
+            
+            <div class="projects-carousel">
+              <div class="carousel-wrapper">
+                <div class="carousel-container">
+                  ${project.images
+                    .map(
+                      (img) => `
+                    <div class="carousel-slide">
+                      <img src="${img}" alt="${projectTitle}">
+                    </div>`
+                    )
+                    .join("")}
+                </div>
+                <button class="carousel-control prev" aria-label="Anterior">
+                  <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="carousel-control next" aria-label="Próximo">
+                  <i class="fas fa-chevron-right"></i>
+                </button>
+                <div class="carousel-dots"></div>
+              </div>
+            </div>
+            <div class="project-navigation">
+              <a href="project.html?id=${
+                prevProject.id
+              }" class="btn project-nav-btn" id="project-prev"></a>
+              <a href="index.html#projects-carousel" class="btn project-nav-btn" id="project-back"></a>
+              <a href="project.html?id=${
+                nextProject.id
+              }" class="btn project-nav-btn" id="project-next"></a>
+            </div>
+          </div>
+        </section>
+      `;
+
+      new HomeCarousel(".project-detail .carousel-wrapper");
+      this.i18n.update();
+      this.scrollUI.onScroll();
+    } catch (error) {
+      console.error("Erro ao carregar detalhes do projeto:", error);
+    }
+  }
 }
 
-document.addEventListener("DOMContentLoaded", () => new App());
+document.addEventListener("DOMContentLoaded", async () => {
+  try {
+    const response = await fetch("translations.json");
+    const translations = await response.json();
+    new App(translations);
+  } catch (error) {
+    console.error("Falha ao carregar as traduções:", error);
+    new App({});
+  }
+});

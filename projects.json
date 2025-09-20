@@ -1,0 +1,127 @@
+{
+  "projects": [
+    {
+      "id": "ixplanabus",
+      "title": {
+        "pt-BR": "iXplanabus",
+        "en": "iXplanabus"
+      },
+      "description": {
+        "pt-BR": "O iXplanabus é um projeto de um hackathon que tem como objetivo melhorar a mobilidade urbana no Rio de Janeiro, oferecendo rotas de ônibus otimizadas e permitindo também o registro de incidentes em tempo real (buracos, acidentes, falta de luz, alagamentos, obras, etc.).",
+        "en": "iXplanabus is a hackathon project aimed at improving urban mobility in Rio de Janeiro, offering optimized bus routes and also allowing real-time incident reporting (potholes, accidents, power outages, floods, construction, etc.)."
+      },
+      "thumbnail": "assets/ixplana1.png",
+      "images": [
+        "assets/ixplana1.png",
+        "assets/ixplana2.png",
+        "assets/ixplana3.png"
+      ],
+      "technologies": ["React.js", "Node.js", "Google API", "DataRio API", "Cloudinary", "PostgreSQL"]
+    },
+    {
+      "id": "ecofoto",
+      "title": {
+        "pt-BR": "Ecofoto",
+        "en": "Ecofoto"
+      },
+      "description": {
+        "pt-BR": "Projeto de extensão universitária sobre fotografia contemporânea. Este projeto foi desenvolvido utilizando React.js no front-end, Node.js no back-end e SCSS para a estilização.",
+        "en": "University extension project on contemporary photography. This project was developed using React.js for the front-end, Node.js for the back-end, and SCSS for styling."
+      },
+      "thumbnail": "assets/ecofoto.png",
+      "images": [
+        "assets/ecofoto.png",
+        "assets/ecofoto1.png"
+      ],
+      "technologies": ["React.js", "Node.js", "SCSS", "Sequelize", "SQLite"]
+    },
+    {
+      "id": "disney",
+      "title": {
+        "pt-BR": "Dashboard Interativo Disney+",
+        "en": "Interactive Dashboard Disney+"
+      },
+      "description": {
+        "pt-BR": "Projeto de dashboard interativo para o Disney+ desenvolvido utilizando Streamlit, que permite a visualização dinâmica de dados e insights sobre o serviço.",
+        "en": "Interactive dashboard project for Disney+ developed using Streamlit, which allows dynamic visualization of data and insights about the service."
+      },
+      "thumbnail": "assets/disney.png",
+      "images": [
+        "assets/disney.png",
+        "assets/disney1.png",
+        "assets/disney2.png"
+      ],
+      "technologies": ["Streamlit"]
+    },
+    {
+      "id": "spotify",
+      "title": {
+        "pt-BR": "Dashboard Interativo Spotify",
+        "en": "Interactive Dashboard Spotify"
+      },
+      "description": {
+        "pt-BR": "Projeto de dashboard interativo para o Spotify desenvolvido com Streamlit, que exibe estatísticas e insights relevantes sobre a plataforma.",
+        "en": "Interactive dashboard project for Spotify developed with Streamlit, displaying relevant statistics and insights about the platform."
+      },
+      "thumbnail": "assets/spotify.png",
+      "images": [
+        "assets/spotify.png",
+        "assets/spotify1.png",
+        "assets/spotify2.png"
+      ],
+      "technologies": ["Streamlit"]
+    },
+    {
+      "id": "navegadev",
+      "title": {
+        "pt-BR": "Navega Dev",
+        "en": "Navega Dev"
+      },
+      "description": {
+        "pt-BR": "Projeto utilizando Vue.js e Ruby on Rails, voltado para a criação de uma experiência digital inovadora.",
+        "en": "Project using Vue.js and Ruby on Rails, aimed at creating an innovative digital experience."
+      },
+      "thumbnail": "assets/navega-dev.png",
+      "images": [
+        "assets/navega-dev.png",
+        "assets/navega-dev1.png",
+        "assets/navega-dev2.png"
+      ],
+      "technologies": ["Vue.js", "Ruby on Rails", "PostgreSQL"]
+    },
+    {
+      "id": "pokedex",
+      "title": {
+        "pt-BR": "Pokedex",
+        "en": "Pokedex"
+      },
+      "description": {
+        "pt-BR": "Projeto utilizando Vue.js e PokeApi",
+        "en": "Project using Vue.js and PokeApi"
+      },
+      "thumbnail": "assets/poke.png",
+      "images": [
+        "assets/poke.png",
+        "assets/poke1.png",
+        "assets/poke2.png"
+      ],
+      "technologies": ["Vue.js", "PokeApi"]
+    },
+    {
+      "id": "portfolio",
+      "title": {
+        "pt-BR": "Meu Portfólio",
+        "en": "My Portfolio"
+      },
+      "description": {
+        "pt-BR": "Projeto do meu portfólio pessoal desenvolvido com HTML, CSS e JavaScript. Esta página demonstra minhas habilidades e apresenta meus projetos de forma dinâmica e interativa.",
+        "en": "My personal portfolio project developed with HTML, CSS, and JavaScript. This page demonstrates my skills and showcases my projects in a dynamic and interactive way."
+      },
+      "thumbnail": "assets/port.png",
+      "images": [
+        "assets/port.png"
+      ],
+      "technologies": ["HTML", "CSS", "JavaScript"]
+    }
+  ]
+}
