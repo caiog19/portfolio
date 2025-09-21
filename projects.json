@@ -7,8 +7,8 @@
         "en": "iXplanabus"
       },
       "description": {
-        "pt-BR": "O iXplanabus é um projeto de um hackathon que tem como objetivo melhorar a mobilidade urbana no Rio de Janeiro, oferecendo rotas de ônibus otimizadas e permitindo também o registro de incidentes em tempo real (buracos, acidentes, falta de luz, alagamentos, obras, etc.).",
-        "en": "iXplanabus is a hackathon project aimed at improving urban mobility in Rio de Janeiro, offering optimized bus routes and also allowing real-time incident reporting (potholes, accidents, power outages, floods, construction, etc.)."
+        "pt-BR": "O iXplanabus é um projeto de hackathon para melhorar a mobilidade urbana no Rio de Janeiro, oferecendo rotas de ônibus otimizadas e registro de incidentes em tempo real.\n\n• Desenvolvi o frontend em React/Vite, mobile-first e responsivo, integrando a Google Maps JavaScript API para visualização de rotas.\n• Integrei no backend as APIs do Google Places, Directions e Geocoding, fornecendo buscas, rotas e endereçamento inteligente.\n• Consumi a API do DataRio para exibir em tempo real a posição dos ônibus no mapa.\n• Configurei upload e armazenamento de imagens no Cloudinary para os relatos dos usuários.\n• Realizei deploy do backend no Render e do frontend na Vercel.",
+        "en": "iXplanabus is a hackathon project focused on improving urban mobility in Rio de Janeiro, offering optimized bus routes and real-time incident reporting.\n\n• Built the mobile-first, responsive frontend with React/Vite and integrated the Google Maps JavaScript API for route visualization.\n• Integrated Google Places, Directions, and Geocoding APIs on the backend to provide search, routing, and smart addressing.\n• Consumed the DataRio API to display buses’ real-time positions on the map.\n• Set up image upload and storage on Cloudinary for user reports.\n• Deployed the backend on Render and the frontend on Vercel."
       },
       "thumbnail": "assets/ixplana1.png",
       "images": [
@@ -25,15 +25,22 @@
         "en": "Ecofoto"
       },
       "description": {
-        "pt-BR": "Projeto de extensão universitária sobre fotografia contemporânea. Este projeto foi desenvolvido utilizando React.js no front-end, Node.js no back-end e SCSS para a estilização.",
-        "en": "University extension project on contemporary photography. This project was developed using React.js for the front-end, Node.js for the back-end, and SCSS for styling."
+        "pt-BR": "Projeto de extensão universitária sobre fotografia contemporânea.\n\n• Estruturei o backend em Node.js/Express com Sequelize e criei endpoints para CRUD de fotos e edições, incluindo atualização de metadados e recuperação otimizada de dados.\n• Modelei e implementei lógica de edições atuais/anterior, permitindo definir e consultar edições em destaque.\n• No frontend React, desenvolvi componentes para galerias, grid de imagens e exibição de edições com carregamento progressivo de metadados.\n• Implementei recursos responsivos para dispositivos móveis, garantindo uma experiência fluida para o usuário.",
+        "en": "University extension project on contemporary photography.\n\n• Structured the backend in Node.js/Express with Sequelize and built endpoints for CRUD operations of photos and editions, including metadata updates and optimized data retrieval.\n• Modeled and implemented logic for current/previous editions, allowing definition and querying of featured editions.\n• On the React frontend, developed components for galleries, image grids, and edition displays with progressive metadata loading.\n• Implemented responsive features for mobile devices, ensuring a smooth user experience."
       },
       "thumbnail": "assets/ecofoto.png",
       "images": [
         "assets/ecofoto.png",
         "assets/ecofoto1.png"
       ],
-      "technologies": ["React.js", "Node.js", "SCSS", "Sequelize", "SQLite"]
+      "technologies": [
+        "React.js",
+        "Node.js",
+        "Express",
+        "SCSS",
+        "Sequelize",
+        "SQLite"
+      ]
     },
     {
       "id": "disney",
@@ -42,8 +49,8 @@
         "en": "Interactive Dashboard Disney+"
       },
       "description": {
-        "pt-BR": "Projeto de dashboard interativo para o Disney+ desenvolvido utilizando Streamlit, que permite a visualização dinâmica de dados e insights sobre o serviço.",
-        "en": "Interactive dashboard project for Disney+ developed using Streamlit, which allows dynamic visualization of data and insights about the service."
+        "pt-BR": "Dashboard interativo feito em Streamlit.\n\n• Filtros por tipo de conteúdo, país, data de adição e diretor.\n• KPIs gerais (títulos, diretores, países).\n• Gráficos: distribuição por tipo, ano de lançamento, países, diretores e classificações.\n• Detalhes individuais de cada título.\n• Exportação de dados filtrados em CSV.",
+        "en": "Interactive dashboard built with Streamlit.\n\n• Filters by content type, country, added date, and director.\n• General KPIs (titles, directors, countries).\n• Charts: distribution by type, release year, countries, directors, and ratings.\n• Individual details for each title.\n• Export of filtered data to CSV."
       },
       "thumbnail": "assets/disney.png",
       "images": [
@@ -51,8 +58,9 @@
         "assets/disney1.png",
         "assets/disney2.png"
       ],
-      "technologies": ["Streamlit"]
+      "technologies": ["Streamlit", "Pandas", "Plotly", "Seaborn", "Matplotlib"]
     },
+
     {
       "id": "spotify",
       "title": {
@@ -60,8 +68,8 @@
         "en": "Interactive Dashboard Spotify"
       },
       "description": {
-        "pt-BR": "Projeto de dashboard interativo para o Spotify desenvolvido com Streamlit, que exibe estatísticas e insights relevantes sobre a plataforma.",
-        "en": "Interactive dashboard project for Spotify developed with Streamlit, displaying relevant statistics and insights about the platform."
+        "pt-BR": "Dashboard em Streamlit com dados das músicas mais tocadas.\n\n• Filtros por artista, faixa, data de lançamento e ISRC.\n• KPIs gerais (streams totais, média por faixa, artistas e faixas únicas).\n• Gráficos de comparação entre plataformas (Spotify, YouTube, TikTok etc.).\n• Análises de correlação entre redes sociais, playlists e streams.\n• Detalhes completos de cada faixa selecionada.\n• Download de dados filtrados em CSV.",
+        "en": "Streamlit dashboard with most played songs data.\n\n• Filters by artist, track, release date, and ISRC.\n• General KPIs (total streams, average per track, unique artists and tracks).\n• Comparison charts across platforms (Spotify, YouTube, TikTok, etc.).\n• Correlation analyses between social media, playlists, and streams.\n• Complete details for each selected track.\n• Download of filtered data in CSV."
       },
       "thumbnail": "assets/spotify.png",
       "images": [
@@ -69,8 +77,9 @@
         "assets/spotify1.png",
         "assets/spotify2.png"
       ],
-      "technologies": ["Streamlit"]
+      "technologies": ["Streamlit", "Pandas", "Plotly"]
     },
+
     {
       "id": "navegadev",
       "title": {
@@ -78,8 +87,8 @@
         "en": "Navega Dev"
       },
       "description": {
-        "pt-BR": "Projeto utilizando Vue.js e Ruby on Rails, voltado para a criação de uma experiência digital inovadora.",
-        "en": "Project using Vue.js and Ruby on Rails, aimed at creating an innovative digital experience."
+        "pt-BR": "Projeto utilizando Vue.js e Ruby on Rails.\n\n• Desenvolvi o frontend em Vue 3, com listagem de posts, busca em tempo real, paginação e autenticação de rotas.\n• Implementei edição e exclusão de posts, criação de comentários e sistema de upvote/downvote.\n• Criei recursos de moderação para administradores, como ocultar ou revelar comentários.\n• No backend com Ruby on Rails, implementei autenticação JWT, atualização de perfil com verificação de senha e endpoints REST para posts, comentários, tags e usuários.\n• Estruturei lógica de votos e de ocultação de comentários, garantindo regras diferentes para usuários comuns e admins.\n• Configurei upload em lote de arquivos com processamento em background (Sidekiq).",
+        "en": "Project using Vue.js and Ruby on Rails.\n\n• Developed the frontend in Vue 3, with posts listing, real-time search, pagination, and route authentication.\n• Implemented post editing/deletion, comment creation, and an upvote/downvote system.\n• Created moderation features for admins, such as hiding or revealing comments.\n• On the backend with Ruby on Rails, implemented JWT authentication, profile updates with password verification, and REST endpoints for posts, comments, tags, and users.\n• Designed logic for votes and hidden comments, ensuring different rules for regular users and admins.\n• Configured batch file uploads with background processing (Sidekiq)."
       },
       "thumbnail": "assets/navega-dev.png",
       "images": [
@@ -87,7 +96,7 @@
         "assets/navega-dev1.png",
         "assets/navega-dev2.png"
       ],
-      "technologies": ["Vue.js", "Ruby on Rails", "PostgreSQL"]
+      "technologies": ["Vue.js", "Ruby on Rails", "PostgreSQL", "Sidekiq"]
     },
     {
       "id": "pokedex",
@@ -96,8 +105,8 @@
         "en": "Pokedex"
       },
       "description": {
-        "pt-BR": "Projeto utilizando Vue.js e PokeApi",
-        "en": "Project using Vue.js and PokeApi"
+        "pt-BR": "Projeto utilizando Vue.js e PokeAPI.\n\n• Desenvolvi em Vue 3 com componentes (Navbar, FilterBar, CustomSelect e PokemonCard).\n• Consumi a PokeAPI para listar pokémons (offset/limit) e buscar detalhes, espécies e cadeia de evolução.\n• Implementei filtros por nome/ID e por tipo, com select customizado (suporte a teclado e clique fora).\n• Exibi badges de tipos com cores, sprite oficial e ID formatado (#0001).\n• Criei menu lateral mobile com overlay, bloqueio de scroll e acessibilidade (aria-label/role).\n• Tratei erros de rede e deixei a interface responsiva.",
+        "en": "Project using Vue.js and PokeAPI.\n\n• Built in Vue 3 with components (Navbar, FilterBar, CustomSelect, and PokemonCard).\n• Consumed PokeAPI to list Pokémon (offset/limit) and fetch details, species, and evolution chain.\n• Implemented filters by name/ID and by type with a custom select (keyboard support and click-outside).\n• Displayed type badges with colors, official sprite, and formatted ID (#0001).\n• Added a mobile side menu with overlay, scroll lock, and accessibility (aria-label/role).\n• Handled network errors and made the UI responsive."
       },
       "thumbnail": "assets/poke.png",
       "images": [
@@ -105,7 +114,7 @@
         "assets/poke1.png",
         "assets/poke2.png"
       ],
-      "technologies": ["Vue.js", "PokeApi"]
+      "technologies": ["Vue.js", "PokeAPI"]
     },
     {
       "id": "portfolio",
@@ -114,8 +123,8 @@
         "en": "My Portfolio"
       },
       "description": {
-        "pt-BR": "Projeto do meu portfólio pessoal desenvolvido com HTML, CSS e JavaScript. Esta página demonstra minhas habilidades e apresenta meus projetos de forma dinâmica e interativa.",
-        "en": "My personal portfolio project developed with HTML, CSS, and JavaScript. This page demonstrates my skills and showcases my projects in a dynamic and interactive way."
+        "pt-BR": "Projeto do meu portfólio pessoal desenvolvido com HTML, CSS e JavaScript.\n\n• Estruturei a página com seções de Início, Sobre, Projetos e Contato.\n• Implementei carrossel de projetos com navegação responsiva e auto-play.\n• Criei suporte a múltiplos idiomas (português/inglês) com sistema de i18n.\n• Modelei efeitos visuais, símbolos animados de fundo e barra de progresso de scroll.\n• Configurei formulário de contato com integração ao EmailJS e Google reCAPTCHA.\n• Otimizei a responsividade para desktop e dispositivos móveis.",
+        "en": "Personal portfolio project developed with HTML, CSS, and JavaScript.\n\n• Structured the page with Home, About, Projects, and Contact sections.\n• Implemented a responsive project carousel with navigation and auto-play.\n• Added multi-language support (Portuguese/English) with i18n system.\n• Designed visual effects, animated background symbols, and scroll progress bar.\n• Set up contact form integrated with EmailJS and Google reCAPTCHA.\n• Optimized responsiveness for desktop and mobile devices."
       },
       "thumbnail": "assets/port.png",
       "images": [

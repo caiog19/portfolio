@@ -566,7 +566,6 @@ footer {
 .project-detail .project-description {
   font-size: 1.125rem;
   margin-bottom: var(--gap-20);
-  text-align: center;
   max-width: 800px;
   margin-inline: auto;
 }
@@ -591,7 +590,6 @@ footer {
   font-size: 0.9rem;
 }
 .project-detail {
-  /* Carrossel da página de projeto – altura uniforme */
 }
 .project-detail .project-carousel {
   position: relative;
@@ -623,6 +621,8 @@ footer {
   display: block;
 }
 .project-detail .project-carousel .carousel-control {
+  width: 35px;
+  height: 35px;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -669,6 +669,7 @@ footer {
    ========================= */
 .projects-carousel {
   position: relative;
+  height: 380px;
   max-width: 1800px;
   margin: var(--gap-xl) auto;
   overflow: hidden;
@@ -740,6 +741,8 @@ footer {
   opacity: 1;
 }
 .projects-carousel .carousel-control {
+  width: 35px;
+  height: 35px;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -891,4 +894,24 @@ footer {
   }
 }
 
-/*# sourceMappingURL=style.css.map */
+.project-detail .project-carousel.is-vertical {
+  aspect-ratio: 9 / 16;
+  max-width: 800px;
+  max-height: 80vh;
+  margin: 0 auto;
+}
+
+.project-detail .project-carousel.is-vertical .carousel-item {
+  min-width: 100%;
+  height: 100%;
+}
+
+.project-detail .project-carousel.is-vertical .carousel-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+.project-detail .project-description {
+  white-space: pre-line; 
+}

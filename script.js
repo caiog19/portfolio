@@ -291,15 +291,21 @@ class HomeCarousel {
    7) Project page carousel 
    ========================= */
 class ProjectCarousel {
-  constructor(wrapperSel = ".project-carousel") {
+  constructor(
+    wrapperSel = ".project-carousel",
+    { orientation = "horizontal" } = {}
+  ) {
     this.wrapper = $(wrapperSel);
     if (!this.wrapper) return;
+
     this.inner = $(".carousel-inner", this.wrapper);
     this.items = $$(".carousel-item", this.inner);
     this.prevBtn = $(".carousel-control.prev", this.wrapper);
     this.nextBtn = $(".carousel-control.next", this.wrapper);
     this.index = 0;
     this.timer = null;
+
+    this.vertical = orientation === "vertical";
 
     this.bind();
     this.show(this.index);
@@ -315,8 +321,13 @@ class ProjectCarousel {
     this.items.forEach((el, idx) =>
       el.classList.toggle("active", idx === this.index)
     );
-    if (this.inner)
-      this.inner.style.transform = `translateX(-${this.index * 100}%)`;
+
+    if (this.inner) {
+      const t = this.index * 100;
+      this.inner.style.transform = this.vertical
+        ? `translateY(-${t}%)`
+        : `translateX(-${t}%)`;
+    }
   }
 
   next() {
@@ -481,11 +492,13 @@ class App {
 
     this.initStaticComponents();
 
-    if (document.querySelector(".projects-carousel .carousel-container")) {
-      this.loadHomepageProjects();
-    } else if (document.querySelector(".project-detail-wrapper")) {
-      this.loadProjectDetails();
-    }
+    const hasHome = !!document.querySelector(
+      ".projects-carousel .carousel-container"
+    );
+    const hasProject = !!document.querySelector(".project-detail-wrapper");
+
+    if (hasHome) this.loadHomepageProjects();
+    if (hasProject) this.loadProjectDetails();
   }
 
   initStaticComponents() {
@@ -499,44 +512,57 @@ class App {
     new ContactForm({ emailService: email, i18n: this.i18n });
   }
 
+  // === HOME ===
   async loadHomepageProjects() {
     try {
-      const response = await fetch("projects.json");
+      const response = await fetch("projects.json", { cache: "no-store" });
       const data = await response.json();
+
+      const wrapper = $(".projects-carousel .carousel-wrapper");
       const container = $(".projects-carousel .carousel-container");
-      if (!container) return;
+      const dotsContainer = $(".projects-carousel .carousel-dots");
+
+      if (!wrapper || !container || !dotsContainer) {
+        console.warn("[HOME] Estrutura do carrossel não encontrada.");
+        return;
+      }
 
       const lang = this.i18n.lang;
-      let projectsHTML = "";
-      data.projects.forEach((project) => {
-        const projectTitle = project.title[lang] || project.title["pt-BR"];
-
-        projectsHTML += `
+      const slidesHTML = data.projects
+        .map((project) => {
+          const projectTitle =
+            project.title[lang] || project.title["pt-BR"] || "";
+          const techTitle =
+            this.i18n.t("project-technologies-title") || "Tecnologias";
+          return `
           <div class="carousel-slide">
-            <img src="${project.thumbnail}" alt="${this.i18n.t(
-          "projects-title"
-        )} ${projectTitle}" />
+            <img src="${project.thumbnail}" alt="${
+            this.i18n.t("projects-title") || "Projetos"
+          } ${projectTitle}" />
             <div class="info-overlay">
               <h3>${projectTitle}</h3>
-              <p>${this.i18n.t(
-                "project-technologies-title"
-              )}: ${project.technologies.join(", ")}</p>
+              <p>${techTitle}: ${project.technologies.join(", ")}</p>
               <a href="project.html?id=${
                 project.id
               }" class="btn more-info">More Info</a>
             </div>
           </div>
         `;
-      });
-      container.innerHTML = projectsHTML;
+        })
+        .join("");
 
+      container.innerHTML = slidesHTML;
+      dotsContainer.innerHTML = "";
       new HomeCarousel();
-      this.scrollUI.onScroll();
+
+      this.i18n.update?.();
+      this.scrollUI?.onScroll?.();
     } catch (error) {
-      console.error("Erro ao carregar projetos:", error);
+      console.error("Erro ao carregar projetos da HOME:", error);
     }
   }
 
+  // === PÁGINA DE PROJETO ===
   async loadProjectDetails() {
     try {
       const urlParams = new URLSearchParams(window.location.search);
@@ -565,13 +591,14 @@ class App {
       const wrapper = $(".project-detail-wrapper");
       if (!wrapper) return;
 
-      // DENTRO DA FUNÇÃO loadProjectDetails
-      // ...
+      const isIxplanabus = project.id === "ixplanabus";
+
       wrapper.innerHTML = `
         <section class="project-detail">
           <div class="container">
             <h1>${projectTitle}</h1>
             <p class="project-description">${projectDescription}</p>
+
             <div class="project-technologies">
               <h3 id="project-technologies-title"></h3>
               <ul>
@@ -580,28 +607,28 @@ class App {
                   .join("")}
               </ul>
             </div>
-            
-            <div class="projects-carousel">
-              <div class="carousel-wrapper">
-                <div class="carousel-container">
-                  ${project.images
-                    .map(
-                      (img) => `
-                    <div class="carousel-slide">
-                      <img src="${img}" alt="${projectTitle}">
-                    </div>`
-                    )
-                    .join("")}
-                </div>
-                <button class="carousel-control prev" aria-label="Anterior">
-                  <i class="fas fa-chevron-left"></i>
-                </button>
-                <button class="carousel-control next" aria-label="Próximo">
-                  <i class="fas fa-chevron-right"></i>
-                </button>
-                <div class="carousel-dots"></div>
+
+            <div class="project-carousel ${isIxplanabus ? "is-vertical" : ""}">
+              <button class="carousel-control prev" aria-label="Anterior">
+                <i class="fas fa-chevron-left"></i>
+              </button>
+              <div class="carousel-inner">
+                ${project.images
+                  .map(
+                    (img) => `
+                  <div class="carousel-item">
+                    <img src="${img}" alt="${projectTitle}">
+                  </div>
+                `
+                  )
+                  .join("")}
               </div>
+
+            <button class="carousel-control next" aria-label="Próximo">
+              <i class="fas fa-chevron-right"></i>
+            </button>
             </div>
+
             <div class="project-navigation">
               <a href="project.html?id=${
                 prevProject.id
@@ -615,7 +642,10 @@ class App {
         </section>
       `;
 
-      new HomeCarousel(".project-detail .carousel-wrapper");
+      new ProjectCarousel(".project-carousel", {
+        orientation: "horizontal" 
+      });
+
       this.i18n.update();
       this.scrollUI.onScroll();
     } catch (error) {
